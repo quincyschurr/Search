@@ -46,9 +46,9 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../SearchEngine/main.cpp \
-		../SearchEngine/avltree.cpp 
+		../SearchEngine/userinterface.cpp 
 OBJECTS       = main.o \
-		avltree.o
+		userinterface.o
 DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -164,7 +164,7 @@ DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/lex.prf \
 		../SearchEngine/SearchEngine.pro ../SearchEngine/main.cpp \
-		../SearchEngine/avltree.cpp
+		../SearchEngine/userinterface.cpp
 QMAKE_TARGET  = SearchEngine
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SearchEngine
@@ -447,7 +447,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SearchEngine1.0.0 || mkdir -p .tmp/SearchEngine1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/avltree.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
 
 
 clean:compiler_clean 
@@ -491,8 +491,8 @@ compiler_clean:
 main.o: ../SearchEngine/main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SearchEngine/main.cpp
 
-avltree.o: ../SearchEngine/avltree.cpp ../SearchEngine/avltree.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o avltree.o ../SearchEngine/avltree.cpp
+userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userinterface.o ../SearchEngine/userinterface.cpp
 
 ####### Install
 

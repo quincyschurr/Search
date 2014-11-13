@@ -16,7 +16,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    avltree.cpp
+    userinterface.cpp
 
 HEADERS += \
-    avltree.h
+    avltree.h \
+    userinterface.h
