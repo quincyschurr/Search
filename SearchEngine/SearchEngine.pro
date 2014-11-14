@@ -16,8 +16,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    userinterface.cpp
+    userinterface.cpp \
+    documentparser.cpp
 
 HEADERS += \
     avltree.h \
-    userinterface.h
+    userinterface.h \
+    documentparser.h \
+    ../rapidxml-1.13/rapidxml_iterators.hpp \
+    ../rapidxml-1.13/rapidxml_print.hpp \
+    ../rapidxml-1.13/rapidxml_utils.hpp \
+    ../rapidxml-1.13/rapidxml.hpp
