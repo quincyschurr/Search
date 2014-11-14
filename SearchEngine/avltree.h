@@ -32,6 +32,16 @@ private:
     };
 
     AVLNode* root;
+
+    void print(ostream& out, AVLNode* p) const
+    {
+        if(p != NULL)
+        {
+            print(out, p->left);
+            out << p->element << endl;
+            print(out, p->right);
+        }
+    }
 public:
     AVLTree()
     {
@@ -97,7 +107,7 @@ public:
         ar->right = temp->left;
         temp->left = ar;
         ar->height = max(height(ar->left), height(ar->right)) + 1;
-        temp-height = max(height(temp->left), height(temp->right)) + 1;
+        temp->height = max(height(temp->left), height(temp->right)) + 1;
         ar = temp;
     }
     void doubleWithLeftChild(AVLNode*& k3)
@@ -114,16 +124,6 @@ public:
     void print(ostream& out) const
     {
         print(out, root);
-    }
-
-    void print(ostream& out, AVLNode* p) const
-    {
-        if(p != NULL)
-        {
-            print(out, p->left);
-            out << p->element << endl;
-            print(out, p->right);
-        }
     }
 
     ~AVLTree()
