@@ -19,10 +19,12 @@ TEMPLATE = app
 SOURCES += main.cpp \
     userinterface.cpp \
     documentparser.cpp \
-    word.cpp
+    word.cpp \
+    page.cpp
 
 HEADERS += \
     avltree.h \
     userinterface.h \
     documentparser.h \
-    word.h
+    word.h \
+    page.h

@@ -48,11 +48,13 @@ OBJECTS_DIR   = ./
 SOURCES       = ../SearchEngine/main.cpp \
 		../SearchEngine/userinterface.cpp \
 		../SearchEngine/documentparser.cpp \
-		../SearchEngine/word.cpp 
+		../SearchEngine/word.cpp \
+		../SearchEngine/page.cpp 
 OBJECTS       = main.o \
 		userinterface.o \
 		documentparser.o \
-		word.o
+		word.o \
+		page.o
 DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -171,7 +173,8 @@ DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../SearchEngine/SearchEngine.pro ../SearchEngine/main.cpp \
 		../SearchEngine/userinterface.cpp \
 		../SearchEngine/documentparser.cpp \
-		../SearchEngine/word.cpp
+		../SearchEngine/word.cpp \
+		../SearchEngine/page.cpp
 QMAKE_TARGET  = SearchEngine
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SearchEngine
@@ -458,7 +461,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SearchEngine1.0.0 || mkdir -p .tmp/SearchEngine1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h ../SearchEngine/page.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp ../SearchEngine/page.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
 
 
 clean:compiler_clean 
@@ -510,6 +513,9 @@ documentparser.o: ../SearchEngine/documentparser.cpp ../SearchEngine/documentpar
 
 word.o: ../SearchEngine/word.cpp ../SearchEngine/word.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o word.o ../SearchEngine/word.cpp
+
+page.o: ../SearchEngine/page.cpp ../SearchEngine/page.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o page.o ../SearchEngine/page.cpp
 
 ####### Install
 

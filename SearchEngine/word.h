@@ -10,17 +10,16 @@ class Word
 private:
     string word;
     int hashKey;
-    vector <int> pageId;
+    int pageId;
+    vector <int> pageIds;
     vector <int> frequency;
 
 public:
     int getHashKey();
     string getWord();
-    int getPageId();
-    int getFrequency();
     void addFrequency();
     void addPageId(int pageId);
-    void frequencyCount();
+    void increaseFrequency();
     Word();
     Word(string word, int hashKey, int pageId, int frequency);
     ~Word();
