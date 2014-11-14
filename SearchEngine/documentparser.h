@@ -4,6 +4,12 @@
 #include "word.h"
 #include "page.h"
 #include <vector>
+#include "rapidxml.hpp"
+#include <iostream>
+#include <fstream>
+#include "rapidxml_utils.hpp"
+#include "rapidxml_print.hpp"
+//#include "rapidxml_iterators.hpp"
 
 using namespace std;
 
@@ -16,7 +22,7 @@ private:
 public:
     DocumentParser();
     ~DocumentParser();
-
+    void getInput();
 };
 
 #endif // DOCUMENTPARSER_H

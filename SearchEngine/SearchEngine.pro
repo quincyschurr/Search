@@ -30,4 +30,8 @@ HEADERS += \
     documentparser.h \
     word.h \
     page.h \
-    stopword.h
+    stopword.h \
+    rapidxml_iterators.hpp \
+    rapidxml_print.hpp \
+    rapidxml_utils.hpp \
+    rapidxml.hpp

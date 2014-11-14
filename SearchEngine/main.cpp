@@ -2,11 +2,14 @@
 #include <fstream>
 #include "avltree.h"
 //#include "english_stem.h"
+#include "documentparser.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
+    DocumentParser * d = new DocumentParser;
+    d->getInput();
 
     /*ofstream fout(argv[2]);
     AVLTree<int> test;
@@ -31,7 +34,7 @@ int main(int argc, char *argv[])
     test.insert(77);
     test.insert(69);
     test.insert(79);
-    test.print(fout);
+    test.print(fout);*/
 
     return 0;
 }
