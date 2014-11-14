@@ -13,11 +13,11 @@ MAKEFILE      = Makefile
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 DEFINES       = -DQT_CORE_LIB
-CFLAGS        = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -mmacosx-version-min=10.6 -Wall -W -fPIE $(DEFINES)
-CXXFLAGS      = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -mmacosx-version-min=10.6 -Wall -W -fPIE $(DEFINES)
+CFLAGS        = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -mmacosx-version-min=10.7 -Wall -W -fPIE $(DEFINES)
+CXXFLAGS      = -pipe -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -std=c++11 -stdlib=libc++ -mmacosx-version-min=10.7 -Wall -W -fPIE $(DEFINES)
 INCPATH       = -I../../../../Qt/5.3/clang_64/mkspecs/macx-clang -I../SearchEngine -I../../../../Qt/5.3/clang_64/lib/QtCore.framework/Versions/5/Headers -I. -I. -F/Users/quincyschurr/Qt/5.3/clang_64/lib
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-LFLAGS        = -headerpad_max_install_names -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -mmacosx-version-min=10.6
+LFLAGS        = -headerpad_max_install_names -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -stdlib=libc++ -mmacosx-version-min=10.7
 LIBS          = $(SUBLIBS) -F/Users/quincyschurr/Qt/5.3/clang_64/lib -framework QtCore 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
@@ -47,10 +47,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../SearchEngine/main.cpp \
 		../SearchEngine/userinterface.cpp \
-		../SearchEngine/documentparser.cpp 
+		../SearchEngine/documentparser.cpp \
+		../SearchEngine/word.cpp 
 OBJECTS       = main.o \
 		userinterface.o \
-		documentparser.o
+		documentparser.o \
+		word.o
 DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -152,6 +154,7 @@ DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/resolve_config.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/default_post.prf \
+		../../../../Qt/5.3/clang_64/mkspecs/features/c++11.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/default_post.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/objective_c.prf \
@@ -167,7 +170,8 @@ DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/lex.prf \
 		../SearchEngine/SearchEngine.pro ../SearchEngine/main.cpp \
 		../SearchEngine/userinterface.cpp \
-		../SearchEngine/documentparser.cpp
+		../SearchEngine/documentparser.cpp \
+		../SearchEngine/word.cpp
 QMAKE_TARGET  = SearchEngine
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SearchEngine
@@ -177,7 +181,9 @@ QMAKE_COMP_QMAKE_OBJECTIVE_CFLAGS = -pipe \
 		-g \
 		-isysroot \
 		/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk \
-		-mmacosx-version-min=10.6 \
+		-std=c++11 \
+		-stdlib=libc++ \
+		-mmacosx-version-min=10.7 \
 		-Wall \
 		-W
 
@@ -311,6 +317,7 @@ Makefile: ../SearchEngine/SearchEngine.pro ../../../../Qt/5.3/clang_64/mkspecs/m
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/resolve_config.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/default_post.prf \
+		../../../../Qt/5.3/clang_64/mkspecs/features/c++11.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/default_post.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/features/mac/objective_c.prf \
@@ -428,6 +435,7 @@ Makefile: ../SearchEngine/SearchEngine.pro ../../../../Qt/5.3/clang_64/mkspecs/m
 ../../../../Qt/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
 ../../../../Qt/5.3/clang_64/mkspecs/features/resolve_config.prf:
 ../../../../Qt/5.3/clang_64/mkspecs/features/default_post.prf:
+../../../../Qt/5.3/clang_64/mkspecs/features/c++11.prf:
 ../../../../Qt/5.3/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../Qt/5.3/clang_64/mkspecs/features/mac/default_post.prf:
 ../../../../Qt/5.3/clang_64/mkspecs/features/mac/objective_c.prf:
@@ -450,7 +458,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SearchEngine1.0.0 || mkdir -p .tmp/SearchEngine1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
 
 
 clean:compiler_clean 
@@ -499,6 +507,9 @@ userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface
 
 documentparser.o: ../SearchEngine/documentparser.cpp ../SearchEngine/documentparser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o documentparser.o ../SearchEngine/documentparser.cpp
+
+word.o: ../SearchEngine/word.cpp ../SearchEngine/word.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o word.o ../SearchEngine/word.cpp
 
 ####### Install
 
