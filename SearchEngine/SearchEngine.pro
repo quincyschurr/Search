@@ -22,8 +22,4 @@ SOURCES += main.cpp \
 HEADERS += \
     avltree.h \
     userinterface.h \
-    documentparser.h \
-    ../rapidxml-1.13/rapidxml_iterators.hpp \
-    ../rapidxml-1.13/rapidxml_print.hpp \
-    ../rapidxml-1.13/rapidxml_utils.hpp \
-    ../rapidxml-1.13/rapidxml.hpp
+    documentparser.h

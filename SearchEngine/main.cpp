@@ -1,5 +1,6 @@
 #include <iostream>
 #include "avltree.h"
+#include "english_stem.h"
 
 using namespace std;
 
