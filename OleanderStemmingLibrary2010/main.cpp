@@ -33,24 +33,7 @@ int main()
     //now the variable "word" should equal "document"
     std::wcout << L"(English) Stemmed text:\t" << word.c_str() << std::endl;
 
-    //Now try a French word
-    stemming::french_stem<> StemFrench;
-    word = L"continuellement";
-    std::wcout << L"\n(French) Original text:\t" << word.c_str() << std::endl;
-    StemFrench(word);
-    //now the variable "word" should equal "continuel"
-    std::wcout << L"(French) Stemmed text:\t" << word.c_str() << std::endl;
 
-    //Many other stemmers are also available
-    stemming::german_stem<> StemGerman;
-    stemming::finnish_stem<> StemFinnish;
-    stemming::swedish_stem<> StemSwedish;
-    stemming::dutch_stem<> StemDutch;
-    stemming::spanish_stem<> StemSpanish;
-    stemming::italian_stem<> StemItalian;
-    stemming::norwegian_stem<> StemNorwgian;
-    stemming::danish_stem<> StemDanish;
-    stemming::portuguese_stem<> StemPortuguese;
 
     /*if you are using std::string (ANSI strings) then convert it to a temporary
     wchar_t buffer, assign that to a std::wstring, and then stem that.*/

@@ -6,6 +6,7 @@ class DocumentParser
 public:
     DocumentParser();
     ~DocumentParser();
+
 };
 
 #endif // DOCUMENTPARSER_H

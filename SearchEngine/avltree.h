@@ -33,6 +33,37 @@ private:
 
     AVLNode* root;
 
+    void insert(T x, AVLNode*& t)
+    {
+        if(t == NULL)
+            t = new AVLNode(x, NULL, NULL);
+        else if(x < t->element)
+        {
+            insert(x, t->left);
+            if(height(t->left) - height(t->right) == 2)
+            {
+                if(x < t->left->element)
+                    rotateWithLeftChild(t);
+                else
+                    doubleWithLeftChild(t);
+            }
+        }
+
+        else if(x > t->element)
+        {
+            insert(x, t->right);
+            if(height(t->right) - height(t->left) == 2)
+            {
+                if(x > t->right->element)
+                    rotateWithRightChild(t);
+                else
+                    doubleWithRightChild(t);
+            }
+        }
+
+        t->height = max(height(t->left), height(t->right)) + 1;
+    }
+
     void print(ostream& out, AVLNode* p) const
     {
         if(p != NULL)
@@ -48,11 +79,6 @@ public:
         this->root = NULL;
     }
 
-    void clearTree()
-    {
-        delete root;
-    }
-
     int height(AVLNode*& n)
     {
         if(n == NULL)
@@ -61,35 +87,17 @@ public:
             return n->height;
     }
 
-    void insert(T x, AVLNode*& t)
+    void insert(const T& x)
     {
-        if(t == NULL)
-            t = new AVLNode(x, NULL, NULL);
-        else if(x < t->left)
-        {
-            insert(x, t->element);
-            if(height(t->left) - height(t->right) == 2)
-            {
-                if(x < t->left->element)
-                    rotateWithLeftChild(t);
-                else
-                    doubleWithLeftChild(t);
-            }
-        }
+        insert(x, root);
+    }
 
-        else if(x > t->left)
-        {
-            insert(x, t->right);
-            if(height(t->right) - height(t->left) == 2)
-            {
-                if(x > t->right->element)
-                    rotateWithRightChild(t);
-                else
-                    doubleWithRightChild(t);
-            }
-        }
-
-        t->height = max(height(t->left), height(t->right)) + 1;
+    bool isEmpty() const
+    {
+        if(root == NULL)
+            return true;
+        else
+            return false;
     }
 
     void rotateWithLeftChild(AVLNode*& al)//al = alpha left
@@ -123,6 +131,7 @@ public:
 
     void print(ostream& out) const
     {
+        out << "ROOT " << root->element << endl;
         print(out, root);
     }
 
