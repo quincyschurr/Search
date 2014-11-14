@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include "avltree.h"
+//#include "english_stem.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    ofstream fout(argv[1]);
+    /*ofstream fout(argv[1]);
     AVLTree<int> test;
     test.insert(5);
     test.insert(9);
@@ -30,5 +31,6 @@ int main(int argc, char *argv[])
     test.insert(69);
     test.insert(79);
     test.print(fout);
+    */
     return 0;
 }
