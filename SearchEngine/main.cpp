@@ -7,7 +7,8 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    ofstream fout(argv[1]);
+
+    /*ofstream fout(argv[2]);
     AVLTree<int> test;
     test.insert(5);
     test.insert(9);

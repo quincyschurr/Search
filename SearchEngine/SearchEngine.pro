@@ -21,11 +21,13 @@ SOURCES += main.cpp \
     documentparser.cpp \
     word.cpp \
     page.cpp \
-    stemmer.cpp
+    stemmer.cpp \
+    stopword.cpp
 
 HEADERS += \
     avltree.h \
     userinterface.h \
     documentparser.h \
     word.h \
-    page.h
+    page.h \
+    stopword.h
