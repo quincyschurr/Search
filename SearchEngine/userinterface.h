@@ -5,6 +5,7 @@ class UserInterface
 {
 public:
     UserInterface();
+    ~UserInterface();
 };
 
 #endif // USERINTERFACE_H
