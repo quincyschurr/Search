@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     userinterface.cpp \
     documentparser.cpp \
     word.cpp \
-    page.cpp
+    page.cpp \
+    stemmer.cpp
 
 HEADERS += \
     avltree.h \
