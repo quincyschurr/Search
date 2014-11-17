@@ -23,6 +23,7 @@ public:
     DocumentParser();
     ~DocumentParser();
     void getInput();
+    void stopWords();
 };
 
 #endif // DOCUMENTPARSER_H
