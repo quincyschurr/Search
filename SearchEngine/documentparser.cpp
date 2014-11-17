@@ -21,8 +21,9 @@ void DocumentParser::getInput() {
         cout << "with value " << attr->value() << "\n";
     }
     //sourceforge.net/p/rapidxml/bugs/16
+    //unordered hash map
 
-    std::cout << doc;
+    cout << doc;
 }
 
 
