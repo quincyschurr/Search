@@ -24,3 +24,5 @@ void DocumentParser::getInput() {
 
     std::cout << doc;
 }
+
+

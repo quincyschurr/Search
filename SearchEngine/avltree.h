@@ -2,6 +2,7 @@
 #define AVLTREE_H
 
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -141,6 +142,23 @@ public:
         //deallocate
 
         delete root;
+    }
+
+    friend bool operator> (const string& lhs, const string& rhs) {
+        if(strcmp(lhs.c_str(), rhs.c_str()) > 0) {
+            return true;
+        }
+        else
+            return false;
+
+    }
+
+    friend bool operator< (const string& lhs, const string& rhs) {
+        if(strcmp(lhs.c_str(), rhs.c_str()) < 0) {
+            return true;
+        }
+        else
+            return false;
     }
 };
 
