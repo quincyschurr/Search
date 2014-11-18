@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "avltree.h"
+#include "stopword.h"
 //#include "english_stem.h"
 #include "documentparser.h"
 
@@ -8,6 +9,9 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    ifstream fin(argv[2]);
+    StopWord* y = new StopWord();
+    y->createArray(fin);
     //DocumentParser * d = new DocumentParser;
     //d->getInput();
 

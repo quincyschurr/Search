@@ -11,10 +11,13 @@ class StopWord
 {
 private:
     string testWord;
-    //how should I store the stopWords? Just hardcode them in?
+    string inputWord;
+    string words[635];
 public:
+    void createArray(ifstream& fin);
     bool testForStopWord(string testWord);
     StopWord();
+    StopWord(ifstream&);
     StopWord(string testWord);
     ~StopWord();
 };

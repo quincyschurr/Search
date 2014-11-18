@@ -2,6 +2,7 @@
 #define WORD_H
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ private:
     string word;
     int hashKey;
     int pageId;
+    map <int, int> info;
     vector <int> pageIds;
     vector <int> frequency;
 
