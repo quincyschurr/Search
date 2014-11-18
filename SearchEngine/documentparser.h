@@ -8,8 +8,9 @@
 #include <iostream>
 #include <fstream>
 #include "rapidxml_utils.hpp"
-//#include "rapidxml_print.hpp"
-//#include "rapidxml_iterators.hpp"
+#include "rapidxml_print.hpp"
+#include "rapidxml_iterators.hpp"
+#include <sstream>
 
 using namespace std;
 using namespace rapidxml;
@@ -25,6 +26,7 @@ public:
     ~DocumentParser();
     void getInput();
     void stopWords();
+    void makeLowerCase(char*&);
 };
 
 #endif // DOCUMENTPARSER_H
