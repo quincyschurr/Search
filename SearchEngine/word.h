@@ -12,18 +12,20 @@ private:
     string word;
     int hashKey;
     int pageId;
+    int frequency;
     map <int, int> info;
-    vector <int> pageIds;
-    vector <int> frequency;
 
 public:
+    void addFrequency(int pageId);
     int getHashKey();
     string getWord();
-    void addFrequency();
-    void addPageId(int pageId);
-    void increaseFrequency();
+    void insertToMap(int pageId);
+
+    friend bool operator>(const Word& lhs, const Word& rhs);
+    friend bool operator<(const Word& lhs, const Word& rhs);
+
     Word();
-    Word(string word, int hashKey, int pageId, int frequency);
+    Word(string word, int hashKey, int pageId);
     ~Word();
 };
 

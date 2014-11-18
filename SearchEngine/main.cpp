@@ -1,17 +1,35 @@
 #include <iostream>
 #include <fstream>
 #include "avltree.h"
+#include "word.h"
 #include "stopword.h"
-//#include "english_stem.h"
+#include "userinterface.h"
+//user interface is the only .h we will need.
 #include "documentparser.h"
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    ifstream fin(argv[2]);
+
+    //to test the UserInterface
+    UserInterface* n = new UserInterface;
+    n->startProgram();//maybe need to add an ifstream to this
+    //also need to pass the stopWords arguments
+
+
+    //to test if the stopWords are added to a file
+    /*ifstream fin(argv[2]);
     StopWord* y = new StopWord();
-    y->createArray(fin);
+    y->createArray(fin);*/
+
+
+    //to test the Word class
+    /*Word* tester = new Word("something", 22, 3456);
+    tester->insertToMap(3456, 1);
+    tester->insertToMap(3456, 1);*/
+
+
     //DocumentParser * d = new DocumentParser;
     //d->getInput();
 
