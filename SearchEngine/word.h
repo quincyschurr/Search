@@ -2,6 +2,7 @@
 #define WORD_H
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -11,17 +12,20 @@ private:
     string word;
     int hashKey;
     int pageId;
-    vector <int> pageIds;
-    vector <int> frequency;
+    int frequency;
+    map <int, int> info;
 
 public:
+    void addFrequency(int pageId);
     int getHashKey();
     string getWord();
-    void addFrequency();
-    void addPageId(int pageId);
-    void increaseFrequency();
+    void insertToMap(int pageId);
+
+    friend bool operator>(const Word& lhs, const Word& rhs);
+    friend bool operator<(const Word& lhs, const Word& rhs);
+
     Word();
-    Word(string word, int hashKey, int pageId, int frequency);
+    Word(string word, int hashKey, int pageId);
     ~Word();
 };
 

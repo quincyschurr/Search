@@ -4,27 +4,17 @@ Word::Word()
 {
 }
 
-Word::Word(string word, int hashKey, int pageId, int freqency)
+Word::Word(string word, int hashKey, int pageId)
 {
     this->word = word;
     this->hashKey = hashKey;
     this->pageId = pageId;
-    this->frequency = frequency;
+    this->frequency = 1;
 }
 
-void Word::addFrequency()
+void addFrequency(int pageId)
 {
-    frequency.push_back(1);
-}
-
-void Word::addPageId(int pageId)
-{
-    pageIds.push_back(pageId);
-}
-
-void Word::increaseFrequency()
-{//supposed to add one to the correct subscript in the vector
-
+    info[pageId] = frequency++;
 }
 
 int Word::getHashKey()
@@ -35,6 +25,36 @@ int Word::getHashKey()
 string Word::getWord()
 {
     return word;
+}
+
+void insertToMap(int pageId)
+{
+    //iterator it;
+    //it = info.find(pageId);
+    if(info.find(pageId) == true)
+    {
+        info.addFrequency(pageId);
+    }
+    else
+    {
+        info.insert(pair<int, int> (pageId, frequency));
+    }
+}
+
+bool operator>(const Word& lhs, const Word& rhs)
+{
+    if(lhs.getWord() > rhs.getWord())
+        return true;
+    else
+        return false;
+}
+
+bool operator<(const Word& lhs, const Word& rhs)
+{
+    if(lhs.getWord() < rhs.getWord())
+        return true;
+    else
+        return false;
 }
 
 Word::~Word()
