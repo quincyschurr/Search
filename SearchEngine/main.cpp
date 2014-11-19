@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
 {
 
     //to test the UserInterface
-    UserInterface* n = new UserInterface;
-    n->startProgram();//maybe need to add an ifstream to this
+    //UserInterface* n = new UserInterface;
+    //n->startProgram();//maybe need to add an ifstream to this
     //also need to pass the stopWords arguments
 
 
@@ -30,13 +30,13 @@ int main(int argc, char *argv[])
     tester->insertToMap(3456, 1);*/
 
 
-    //DocumentParser * d = new DocumentParser;
-    //d->getInput();
+    DocumentParser * d = new DocumentParser;
+    d->getInput();
 
     //use prime number as table size for hash table
 
-    ofstream fout(argv[1]);
-    AVLTree<string> test;
+    //ofstream fout(argv[1]);
+    //AVLTree<string> test;
     /*test.insert("ckels");
     test.insert("abels");
     test.insert("zeleb");
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
     test.insert("lelsne");
     test.insert("poeple");
     */
-    test.print(fout);
+    //test.print(fout);
 
     return 0;
 }

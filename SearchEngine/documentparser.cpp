@@ -1,4 +1,6 @@
 #include "documentparser.h"
+using namespace std;
+using namespace rapidxml;
 
 DocumentParser::DocumentParser()
 {
@@ -6,87 +8,71 @@ DocumentParser::DocumentParser()
 
 void DocumentParser::getInput() {
     /*char * text = "books.xml";
-    rapidxml::file<> xmlFile(text);
+    ifstream fin(text);
+    stringstream buffer;
+    buffer << fin.rdbuf();
+    fin.close();
+    string content(buffer.str());
+    cout << content << endl;
+
+
+    //rapidxml::file<> xmlFile(text);
     rapidxml::xml_document<> doc;    // character type defaults to char
-    doc.parse<0>(xmlFile.data());    // 0 means default parse flags
+    doc.parse<0>(buffer.str().c_str());    // 0 means default parse flags
 
     cout << "Name of my first node is: " << doc.first_node()->name() << "\n";
+    //cout << doc.last_node()->name() << endl;
 
-    rapidxml::xml_node<> *node = doc.first_node("foobar");
-    cout << "Node foobar has value " << node->value() << "\n";
-    for (rapidxml::xml_attribute<> *attr = node->first_attribute();
-         attr; attr = attr->next_attribute())
-    {
-        cout << "Node foobar has attribute " << attr->name() << " ";
-        cout << "with value " << attr->value() << "\n";
+    if(doc.first_node()->next_sibling() == 0) {
+        cout << "0" << endl;
     }
+    else
+        cout << "true" << endl;
+
+    rapidxml::xml_node<> *curNode = doc.first_node();
+
+
     //sourceforge.net/p/rapidxml/bugs/16
     //unordered hash map
+    //cout << doc;*/
 
-    cout << doc;*/
+    /*cout << "Parsing my beer journal..." << endl;
+        xml_document<> doc;
+        xml_node<> * root_node;
+        // Read the xml file into a vector
+        ifstream theFile ("beerJournal.xml");
+        vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
+        buffer.push_back('\0');
+        // Parse the buffer using the xml file parsing library into doc
+        doc.parse<0>(&buffer[0]);*/
+        // Find our root node
+    xml_document<> doc;
+    std::ifstream file("beerJournal.xml");
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    file.close();
+    std::string content(buffer.str());
+    doc.parse<0>(&content[0]);
+    xml_node<> * root_node;
+        root_node = doc.first_node("MyBeerJournal");
+        // Iterate over the brewerys
+        for (xml_node<> * brewery_node = root_node->first_node("Brewery"); brewery_node; brewery_node = brewery_node->next_sibling())
+        {
+            printf("I have visited %s in %s. ",
+                brewery_node->first_attribute("name")->value(),
+                brewery_node->first_attribute("location")->value());
+                // Interate over the beers
+            for(xml_node<> * beer_node = brewery_node->first_node("Beer"); beer_node; beer_node = beer_node->next_sibling())
+            {
+                printf("On %s, I tried their %s which is a %s. ",
+                    beer_node->first_attribute("dateSampled")->value(),
+                    beer_node->first_attribute("name")->value(),
+                    beer_node->first_attribute("description")->value());
+                printf("I gave it the following review: %s", beer_node->value());
+            }
+            cout << endl;
+        }
 
-    std::ifstream fin("books.xml");
-    std::stringstream ss;
-    ss << fin.rdbuf();
-    std::string xml = ss.str();
-
-    // string to dynamic cstring
-    std::vector<char> stringCopy(xml.length(), '\0');
-    std::copy(xml.begin(), xml.end(), stringCopy.begin());
-    char *cstr = &stringCopy[0];
-
-    // create xml document object and parse cstring
-    // character type defaults to char
-    rapidxml::xml_document<> parsedFromFile;
-    // 0 means default parse flags
-    try
-    {
-        parsedFromFile.parse<0>(cstr);
-
-        rapidxml::xml_node<> *addressNode = parsedFromFile.first_node("Address");
-        //outputAddress(*addressNode);
-
-        // Print to stream using operator <<
-        std::cout << parsedFromFile;
-
-        // Print to stream using print function, specifying printing flags
-        // 0 means default printing flags
-        rapidxml::print(std::cout, parsedFromFile, 0);
-    }
-    catch(const rapidxml::parse_error &e)
-    {
-        std::cout << "Parse error due to " << e.what() << std::endl;
-    }
-
-    // ---- create from scratch ----
-    rapidxml::xml_document<> fromScratch;
-    rapidxml::xml_node<> *addressNode = fromScratch.allocate_node(rapidxml::node_element, "Address");
-    rapidxml::xml_node<> *recipientNode =
-        fromScratch.allocate_node(rapidxml::node_element, "Recipient", "Mr Malcolm Reynolds");
-    rapidxml::xml_node<> *houseNode =
-        fromScratch.allocate_node(rapidxml::node_element, "House", "3");
-    rapidxml::xml_node<> *streetNode =
-        fromScratch.allocate_node(rapidxml::node_element, "Street", "Serenity");
-    rapidxml::xml_node<> *townNode =
-        fromScratch.allocate_node(rapidxml::node_element, "Town", "Space");
-    rapidxml::xml_node<> *postCodeNode =
-        fromScratch.allocate_node(rapidxml::node_element, "PostCode", "DE18 5HI");
-    //rapidxml::xml_document<> fromScratch;
-
-    addressNode->append_node(recipientNode);
-    addressNode->append_node(houseNode);
-    addressNode->append_node(streetNode);
-    addressNode->append_node(townNode);
-    addressNode->append_node(postCodeNode);
-
-    fromScratch.append_node(addressNode);
-
-    //outputAddress(*addressNode);
-
-    // ---- output to file ----
-
-    //std::ofstream fout("test.xml");
-    cout << fromScratch;
 }
 
 void DocumentParser::makeLowerCase(char *& word) {

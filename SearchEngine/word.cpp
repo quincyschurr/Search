@@ -12,7 +12,7 @@ Word::Word(string word, int hashKey, int pageId)
     this->frequency = 1;
 }
 
-void addFrequency(int pageId)
+void Word::addFrequency(int pageId)
 {
     info[pageId] = frequency++;
 }
@@ -27,7 +27,7 @@ string Word::getWord()
     return word;
 }
 
-void insertToMap(int pageId)
+/*void Word::insertToMap(int pageId)
 {
     //iterator it;
     //it = info.find(pageId);
@@ -60,4 +60,4 @@ bool operator<(const Word& lhs, const Word& rhs)
 Word::~Word()
 {
 
-}
+}*/

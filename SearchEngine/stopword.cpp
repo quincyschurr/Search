@@ -1,6 +1,6 @@
 #include "stopword.h"
 
-StopWord::StopWord()
+/*StopWord::StopWord()
 {
 }
 
@@ -34,3 +34,4 @@ StopWord::~StopWord()
 {
 
 }
+*/
