@@ -19,9 +19,15 @@ int main(int argc, char *argv[])
 
 
     //to test if the stopWords are added to a file
+<<<<<<< HEAD
     //ifstream fin(argv[2]);
     //StopWord* y = new StopWord(fin);
     //y->createArray(fin);
+=======
+    ifstream fin(argv[2]);
+    StopWord* y = new StopWord();
+    y->createArray(fin);
+>>>>>>> c516c95e9142ae117e5b6f5f6fceba3d5413b307
 
 
     //to test the Word class

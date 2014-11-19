@@ -5,6 +5,8 @@
 #include <vector>
 #include <iostream>
 #include <array>
+#include <fstream>
+#include <cstring>
 
 using namespace std;
 
@@ -15,11 +17,9 @@ private:
     string inputWord;
     string words[635];
 public:
-    void createArray(ifstream& fin);
-    bool testForStopWord(string testWord);
+    void createArray(ifstream&);
+    bool isStopWord(const string& testWord);
     StopWord();
-    StopWord(ifstream&);
-    StopWord(string testWord);
     ~StopWord();
 };
 
