@@ -22,23 +22,24 @@ int Word::getHashKey()
     return hashKey;
 }
 
-string Word::getWord()
+string Word::getWord() const
 {
     return word;
 }
 
-/*void Word::insertToMap(int pageId)
+void Word::insertToMap(int pageId)
 {
+    cout << "getting to insert function!" << endl;
     //iterator it;
     //it = info.find(pageId);
-    if(info.find(pageId) == true)
+    /*if(info.find(pageId) == true)
     {
         info.addFrequency(pageId);
     }
     else
     {
         info.insert(pair<int, int> (pageId, frequency));
-    }
+    }*/
 }
 
 bool operator>(const Word& lhs, const Word& rhs)
@@ -60,4 +61,4 @@ bool operator<(const Word& lhs, const Word& rhs)
 Word::~Word()
 {
 
-}*/
+}

@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ private:
 public:
     void addFrequency(int pageId);
     int getHashKey();
-    string getWord();
+    string getWord() const;
     void insertToMap(int pageId);
 
     friend bool operator>(const Word& lhs, const Word& rhs);

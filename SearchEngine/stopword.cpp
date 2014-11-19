@@ -1,12 +1,12 @@
 #include "stopword.h"
 
-/*StopWord::StopWord()
+StopWord::StopWord()
 {
+
 }
 
 StopWord::StopWord(ifstream& fin)
 {
-
 }
 
 StopWord::StopWord(string testWord)
@@ -34,4 +34,4 @@ StopWord::~StopWord()
 {
 
 }
-*/
+
