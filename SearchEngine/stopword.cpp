@@ -15,9 +15,9 @@ StopWord::StopWord(string testWord)
 
 }
 
-void createArray(ifstream& fin)
+void StopWord::createArray(ifstream& fin)
 {
-    for(int i = 0; i < words.size(); i++)
+    for(int i = 0; i < words.length(); i++)
     {
         fin >> inputWord;
         words[i] = inputWord;
