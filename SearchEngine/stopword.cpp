@@ -5,7 +5,7 @@ StopWord::StopWord()
 
 }
 
-StopWord::StopWord(ifstream& fin)
+/*StopWord::StopWord(ifstream& fin)
 {
 }
 
@@ -33,5 +33,5 @@ bool StopWord::testForStopWord(string testWord)
 StopWord::~StopWord()
 {
 
-}
+}*/
 
