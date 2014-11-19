@@ -19,19 +19,19 @@ int main(int argc, char *argv[])
 
 
     //to test if the stopWords are added to a file
-    /*ifstream fin(argv[2]);
-    StopWord* y = new StopWord();
-    y->createArray(fin);*/
+    ifstream fin(argv[2]);
+    //StopWord* y = new StopWord(fin);
+    //y->createArray(fin);
 
 
     //to test the Word class
-    /*Word* tester = new Word("something", 22, 3456);
-    tester->insertToMap(3456, 1);
-    tester->insertToMap(3456, 1);*/
+    Word* tester = new Word("something", 22, 3456);
+    //tester->insertToMap(3456);
+    //tester->insertToMap(3456);
 
 
-    DocumentParser * d = new DocumentParser;
-    d->getInput();
+    //DocumentParser * d = new DocumentParser;
+    //d->getInput();
 
     //use prime number as table size for hash table
 
