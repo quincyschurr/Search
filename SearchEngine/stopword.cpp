@@ -5,27 +5,25 @@ StopWord::StopWord()
 
 }
 
-StopWord::StopWord(ifstream& fin)
-{
-}
-
-StopWord::StopWord(string testWord)
-{
-    this->testWord = testWord;
-
-}
-
 void StopWord::createArray(ifstream& fin)
 {
-    for(int i = 0; i < words.length(); i++)
+    for(int i = 0; i < 635; i++)
     {
         fin >> inputWord;
         words[i] = inputWord;
     }
 }
 
-bool StopWord::testForStopWord(string testWord)
+bool StopWord::isStopWord(const string& testWord)
 {
+   for(int j = 0; j < 635; j++)
+   {
+       if(testWord == words[j])
+       {
+           return true;
+       }
+   }
+   return false;
 
 }
 
