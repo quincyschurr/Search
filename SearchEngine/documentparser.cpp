@@ -8,12 +8,13 @@ DocumentParser::DocumentParser()
 
 }
 
-void DocumentParser::addPage(const Page &p)
+void DocumentParser::addPage(Page*& p)
 {
-     pages.push_back(p);
+       //causes error
+     //pages.push_back(p);
 }
 
-void DocumentParser::addWord(const Word& w)
+void DocumentParser::addWord(Word*& w)
 {
     StopWord* sw = new StopWord();
 
@@ -93,18 +94,9 @@ void DocumentParser::getInput() {
         cout << titles[i] << endl;
         cout << ids[i] << endl;
         cout << texts[i] << endl << endl;
+        Page* p = new Page(titles[i], ids[i], texts[i]);
+        addPage(p);
     }
-
-
-
-
-
-
-
-    //I didn't know what the variables were called to pass to page
-    //Page* p = new Page(title, id, text);
-    //addPage(p);
-
 
     //I just need to understand what the xml parser is taking in and how to
     //add that to a Word object
@@ -114,7 +106,8 @@ void DocumentParser::getInput() {
 
 }
 
-void DocumentParser::makeLowerCase(char *& word) {
+void DocumentParser::makeLowerCase(char *& word)
+{
     tolower(word[0]);
 }
 

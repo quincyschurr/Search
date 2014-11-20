@@ -26,8 +26,8 @@ public:
     DocumentParser();
     ~DocumentParser();
 
-    void addWord(const Word& w);
-    void addPage(const Page& p);
+    void addWord(Word*& w);
+    void addPage(Page*& p);
     void getInput();
     void stopWords();
     void makeLowerCase(char*&);
