@@ -26,7 +26,9 @@ public:
     friend bool operator<(const Word& lhs, const Word& rhs);
 
     Word();
-    Word(string word, int hashKey, int pageId);
+    //this is the beginning constructor for when we have a hash table
+    //Word(string word, int hashKey, int pageId);
+    Word(string word, int pageId);
     ~Word();
 };
 

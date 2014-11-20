@@ -28,13 +28,9 @@ int main(int argc, char *argv[])
 
 
     //to test the Word class
-    Word* tester = new Word("something", 22, 3456);
-    tester->insertToMap(3456);
-    tester->insertToMap(3456);
-
-
-    //DocumentParser * d = new DocumentParser;
-    //d->getInput();
+    //Word* tester = new Word("something", 3456);
+    //tester->insertToMap(3456);
+    //tester->insertToMap(3456);
 
     //use prime number as table size for hash table
 

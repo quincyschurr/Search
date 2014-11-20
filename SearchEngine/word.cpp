@@ -4,12 +4,18 @@ Word::Word()
 {
 }
 
-Word::Word(string word, int hashKey, int pageId)
+/*Word::Word(string word, int hashKey, int pageId)
 {
     this->word = word;
     this->hashKey = hashKey;
     this->pageId = pageId;
     this->frequency = 1;
+}*/
+
+Word::Word(string word, int pageId)
+{
+    this->word = word;
+    this->pageId = pageId;
 }
 
 void Word::addFrequency(int pageId)

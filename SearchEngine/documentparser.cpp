@@ -20,13 +20,15 @@ void DocumentParser::addWord(Word*& w)
 
     if(sw->isStopWord("word") == true)
     {
+        //stemWord
         //add a parameter to this argument
         //w.addFrequency();
     }
 
     else
     {
-
+        //stemWord
+        //words.push_back(w);
     }
 }
 
@@ -94,14 +96,23 @@ void DocumentParser::getInput() {
         cout << titles[i] << endl;
         cout << ids[i] << endl;
         cout << texts[i] << endl << endl;
-        Page* p = new Page(titles[i], ids[i], texts[i]);
-        addPage(p);
+    }
+
+    for(int j = 0; j < page-1; j++)
+    {
+        for(int g = 0; g < texts.size(); g++)
+        {
+            //need to change Page to take in the vector or whatever each page has...
+            Page* p = new Page(titles[i], ids[i], texts[i]);
+            addPage(p);
+            //need to get separate word
+            Word* w = new Word(texts[i], pageId);
+        }
     }
 
     //I just need to understand what the xml parser is taking in and how to
     //add that to a Word object
     //need to parse each text for a word
-    //Word* w = new Word(word, 5, pageId);
 
 
 }
