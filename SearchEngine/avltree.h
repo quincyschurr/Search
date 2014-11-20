@@ -3,7 +3,7 @@
 
 #include <string>
 #include <cstring>
-
+#include <iostream>
 using namespace std;
 
 //good website for the traversal
@@ -84,7 +84,7 @@ public:
     {
         if(root == NULL)
         {
-            //throw some error or break
+            throw(strerror);
         }
         else if (x == root->element)
         {

@@ -9,6 +9,10 @@ DocumentParser::DocumentParser()
 
 }
 
+void DocumentParser::addPage(const Page &p)
+{
+     pages.push_back(p);
+}
 
 void DocumentParser::getInput() {
     //unordered hash map
@@ -76,9 +80,19 @@ void DocumentParser::getInput() {
         cout << texts[i] << endl << endl;
     }
 
-    //Page* p = new Page(title, id, text);
-    //pages.push_back(p);
 
+
+
+
+
+
+    //I didn't know what the variables were called to pass to page
+    //Page* p = new Page(title, id, text);
+    //addPage(p);
+
+
+    //I just need to understand what the xml parser is taking in and how to
+    //add that to a Word object
     //need to parse each text for a word
     //Word* w = new Word(word, 5, pageId);
 

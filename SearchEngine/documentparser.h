@@ -25,6 +25,7 @@ public:
     DocumentParser();
     ~DocumentParser();
 
+    void addPage(const Page& p);
     void getInput();
     void stopWords();
     void makeLowerCase(char*&);
