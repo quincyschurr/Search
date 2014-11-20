@@ -3,6 +3,7 @@
 
 #include "word.h"
 #include "page.h"
+#include "stopword.h"
 #include <vector>
 #include "rapidxml.hpp"
 #include <iostream>
@@ -25,6 +26,7 @@ public:
     DocumentParser();
     ~DocumentParser();
 
+    void addWord(const Word& w);
     void addPage(const Page& p);
     void getInput();
     void stopWords();

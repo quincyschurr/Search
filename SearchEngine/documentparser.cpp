@@ -1,6 +1,5 @@
 #include "documentparser.h"
-#include "page.h"
-#include "word.h"
+
 using namespace std;
 using namespace rapidxml;
 
@@ -12,6 +11,22 @@ DocumentParser::DocumentParser()
 void DocumentParser::addPage(const Page &p)
 {
      pages.push_back(p);
+}
+
+void DocumentParser::addWord(const Word& w)
+{
+    StopWord* sw = new StopWord();
+
+    if(sw->isStopWord("word") == true)
+    {
+        //add a parameter to this argument
+        //w.addFrequency();
+    }
+
+    else
+    {
+
+    }
 }
 
 void DocumentParser::getInput() {
