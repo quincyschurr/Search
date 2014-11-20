@@ -9,6 +9,7 @@
 #include <fstream>
 #include "rapidxml_utils.hpp"
 #include <sstream>
+#include <cstdlib>
 
 using namespace std;
 using namespace rapidxml;

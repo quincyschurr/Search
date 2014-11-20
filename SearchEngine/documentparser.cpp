@@ -39,17 +39,35 @@ void DocumentParser::getInput() {
     xml_node<> * curTitle;
     xml_node<> * curText;
     xml_node<> * curID;
+    vector<string> titles(0); //probably need to dynamically allocate
+    vector<int> ids(0); //probably need to dynamically allocate
+    vector<string> texts(0); //probably need to dynamically allocate
     int page = 1;
+    string sTemp;
+    int iTemp;
     while(curPage != 0) {
-        cout << "page " << page++ << endl;
+        //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
-        cout << "title " << curTitle->value() << endl;
+        sTemp = curTitle->value();
+        titles.push_back(sTemp);
+        //cout << "title " << curTitle->value() << endl;
         curID = curTitle->next_sibling("id");
-        cout << "id " << curID->value() << endl;
+        iTemp = atoi(curID->value());
+        ids.push_back(iTemp);
+        //cout << "id " << curID->value() << endl;
         curText = curID->next_sibling("revision");
         curText = curText->first_node("text");
-        cout << curText->value() << endl << endl;
+        //sTemp = curText->value();
+        texts.push_back(curText->value());
+        //cout << curText->value() << endl << endl;
         curPage = curPage->next_sibling();
+        page++;
+    }
+    for(int i = 0; i < page-1; i++) {
+        cout << "page " << i+1 << endl;
+        cout << titles[i] << endl;
+        cout << ids[i] << endl;
+        cout << texts[i] << endl << endl;
     }
 
 
