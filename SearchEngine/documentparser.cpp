@@ -4,6 +4,7 @@ using namespace rapidxml;
 
 DocumentParser::DocumentParser()
 {
+
 }
 
 void DocumentParser::getInput() {

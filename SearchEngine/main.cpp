@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
 {
 
     //to test the UserInterface
-    //UserInterface* n = new UserInterface;
-    //n->startProgram();//maybe need to add an ifstream to this
+    UserInterface* n = new UserInterface;
+    n->startProgram();//maybe need to add an ifstream to this
     //also need to pass the stopWords arguments
 
 
@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
     //tester->insertToMap(3456);
 
 
-    DocumentParser * d = new DocumentParser;
-    d->getInput();
+    //DocumentParser * d = new DocumentParser;
+    //d->getInput();
 
     //use prime number as table size for hash table
 
