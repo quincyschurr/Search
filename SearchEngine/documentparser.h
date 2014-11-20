@@ -31,8 +31,9 @@ public:
     void addWord(Word*& w);
     void addPage(Page*& p);
     void getInput();
-    void stopWords();
     void makeLowerCase(char*&);
+    void stopWords();
+    char** splitWords(char* buffer, int size);
 };
 
 #endif // DOCUMENTPARSER_H

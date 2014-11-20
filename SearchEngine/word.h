@@ -10,7 +10,7 @@ using namespace std;
 class Word
 {
 private:
-    string word;
+    char** word;
     int hashKey;
     int pageId;
     int frequency;
@@ -19,7 +19,7 @@ private:
 public:
     void addFrequency(int pageId);
     int getHashKey();
-    string getWord() const;
+    char** getWord() const;
     void insertToMap(int pageId);
 
     friend bool operator>(const Word& lhs, const Word& rhs);
@@ -28,7 +28,7 @@ public:
     Word();
     //this is the beginning constructor for when we have a hash table
     //Word(string word, int hashKey, int pageId);
-    Word(string word, int pageId);
+    Word(char** word, int pageId);
     ~Word();
 };
 
