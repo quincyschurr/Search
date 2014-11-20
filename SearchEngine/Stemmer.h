@@ -1,7 +1,18 @@
+#ifndef STEMMER_H
+#define STEMMER_H
+
 #include <string.h>  /* for memmove */
 
 #define TRUE 1
 #define FALSE 0
+
+//returns an integer that tells you where to put the null terminator
+//then you set that index # to be null
+//char* arr = new char[8];
+//ctrcp(arr, "running");
+//arr[stem(arr, 0, strlen(arr) -1)] = '/o';
+//delete [] arr;
+
 
 //code taken from http://tartarus.org/martin/PorterStemmer/c.txt
 
@@ -339,3 +350,6 @@
           else putchar(ch);
        }
     }
+
+
+#endif // STEMMER_H

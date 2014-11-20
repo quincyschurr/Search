@@ -4,11 +4,13 @@
 #include "word.h"
 #include "page.h"
 #include "stopword.h"
-#include <vector>
+#include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
+//#include "Stemmer.h"
+#include <vector>
 #include <iostream>
 #include <fstream>
-#include "rapidxml_utils.hpp"
+#include <string>
 #include <sstream>
 #include <cstdlib>
 #include <map>

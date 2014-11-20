@@ -21,7 +21,6 @@ SOURCES += main.cpp \
     documentparser.cpp \
     word.cpp \
     page.cpp \
-    stemmer.cpp \
     stopword.cpp \
     indexhandler.cpp
 
@@ -34,4 +33,5 @@ HEADERS += \
     stopword.h \
     rapidxml_utils.hpp \
     rapidxml.hpp \
-    indexhandler.h
+    indexhandler.h \
+    Stemmer.h

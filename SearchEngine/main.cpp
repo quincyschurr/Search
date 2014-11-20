@@ -1,3 +1,9 @@
+/*
+ * Jake Osselaer
+ * &
+ * Quincy Schurr
+ * */
+
 #include <iostream>
 #include <fstream>
 #include "avltree.h"

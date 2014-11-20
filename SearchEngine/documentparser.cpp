@@ -90,6 +90,13 @@ void DocumentParser::getInput() {
         curPage = curPage->next_sibling();
         page++;
     }
+
+    for(int k = 0; k < page-1; k++)
+    {
+        char* str = texts[k];
+        char* singleWord;
+        singleWord = strchr(str, ' ');
+    }
     for(int i = 0; i < page-1; i++)
     {
         cout << "page " << i+1 << endl;
@@ -100,20 +107,16 @@ void DocumentParser::getInput() {
 
     for(int j = 0; j < page-1; j++)
     {
+        Page* p = new Page(titles[j], ids[j], texts[j]);
+        addPage(p);
         for(int g = 0; g < texts.size(); g++)
         {
             //need to change Page to take in the vector or whatever each page has...
-            Page* p = new Page(titles[i], ids[i], texts[i]);
-            addPage(p);
             //need to get separate word
-            Word* w = new Word(texts[i], pageId);
+            //add a map to this
+            Word* w = new Word(texts[g], ids[g]);
         }
     }
-
-    //I just need to understand what the xml parser is taking in and how to
-    //add that to a Word object
-    //need to parse each text for a word
-
 
 }
 
