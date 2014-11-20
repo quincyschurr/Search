@@ -67,7 +67,7 @@ void DocumentParser::getInput() {
     xml_node<> * curID;
     vector<string> titles(0); //probably need to dynamically allocate
     vector<int> ids(0); //probably need to dynamically allocate
-    vector<string> texts(0); //probably need to dynamically allocate
+    vector<char*> texts(0); //probably need to dynamically allocate
     int page = 1;
     string sTemp;
     int iTemp;
