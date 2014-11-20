@@ -80,6 +80,26 @@ public:
         this->root = NULL;
     }
 
+    T& find(const T& x, AVLNode*& root)
+    {
+        if(root == NULL)
+        {
+            //throw some error or break
+        }
+        else if (x == root->element)
+        {
+            return root->element;
+        }
+        else if(x < root->element)
+        {
+            return find(x, root->left);
+        }
+        else if(x > root->element)
+        {
+            return find(x, root->right);
+        }
+    }
+
     int height(AVLNode*& n)
     {
         if(n == NULL)
