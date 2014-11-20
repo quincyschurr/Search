@@ -34,7 +34,7 @@ void Word::insertToMap(int pageId)
     //it = info.find(pageId);
     /*if(info.find(pageId) == true)
     {
-        info.addFrequency(pageId);
+        info->addFrequency(pageId);
     }
     else
     {
