@@ -10,8 +10,11 @@ private:
     AVLTree <Word> avlindex;
     //hashtable
 public:
-
-
+    //all this for indexinterface
+    //.cpp will just look like this
+    //Interface::Interface()
+    //{
+    //}
     virtual void addtoindex(string&, int) = 0;
     virtual void removefromindex(string&) = 0;
     virtual vector<int> search(string&) = 0;

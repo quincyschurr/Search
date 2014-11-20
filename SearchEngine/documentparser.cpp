@@ -18,7 +18,7 @@ void DocumentParser::addWord(Word*& w)
 {
     StopWord* sw = new StopWord();
 
-    if(sw->isStopWord("word") == true)
+    if(sw->isStopWord(w->getWord()) == true)
     {
         //stemWord
         //add a parameter to this argument
@@ -93,9 +93,15 @@ void DocumentParser::getInput() {
 
     for(int k = 0; k < page-1; k++)
     {
+
         char* str = texts[k];
         char* singleWord;
+        //for loop. Every time I replace with null terminal. Vector or char*
+        //look at the lab2 for this
         singleWord = strchr(str, ' ');
+        Word* w = new Word(singleWord, ids[k]);
+        cout << "CREATED NEW WORD" << endl;
+        addWord(w);
     }
     for(int i = 0; i < page-1; i++)
     {
@@ -109,13 +115,6 @@ void DocumentParser::getInput() {
     {
         Page* p = new Page(titles[j], ids[j], texts[j]);
         addPage(p);
-        for(int g = 0; g < texts.size(); g++)
-        {
-            //need to change Page to take in the vector or whatever each page has...
-            //need to get separate word
-            //add a map to this
-            Word* w = new Word(texts[g], ids[g]);
-        }
     }
 
 }
