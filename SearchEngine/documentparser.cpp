@@ -1,4 +1,6 @@
 #include "documentparser.h"
+#include "page.h"
+#include "word.h"
 using namespace std;
 using namespace rapidxml;
 
@@ -6,6 +8,7 @@ DocumentParser::DocumentParser()
 {
 
 }
+
 
 void DocumentParser::getInput() {
     //unordered hash map
@@ -46,7 +49,8 @@ void DocumentParser::getInput() {
     int page = 1;
     string sTemp;
     int iTemp;
-    while(curPage != 0) {
+    while(curPage != 0)
+    {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
         sTemp = curTitle->value();
@@ -64,12 +68,19 @@ void DocumentParser::getInput() {
         curPage = curPage->next_sibling();
         page++;
     }
-    for(int i = 0; i < page-1; i++) {
+    for(int i = 0; i < page-1; i++)
+    {
         cout << "page " << i+1 << endl;
         cout << titles[i] << endl;
         cout << ids[i] << endl;
         cout << texts[i] << endl << endl;
     }
+
+    //Page* p = new Page(title, id, text);
+    //pages.push_back(p);
+
+    //need to parse each text for a word
+    //Word* w = new Word(word, 5, pageId);
 
 
 }

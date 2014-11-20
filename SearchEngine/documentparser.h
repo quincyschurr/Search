@@ -10,6 +10,7 @@
 #include "rapidxml_utils.hpp"
 #include <sstream>
 #include <cstdlib>
+#include <map>
 
 using namespace std;
 using namespace rapidxml;
@@ -23,6 +24,7 @@ private:
 public:
     DocumentParser();
     ~DocumentParser();
+
     void getInput();
     void stopWords();
     void makeLowerCase(char*&);
