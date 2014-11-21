@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     word.cpp \
     page.cpp \
     stopword.cpp \
-    indexhandler.cpp
+    indexhandler.cpp \
+    hashtable.cpp
 
 HEADERS += \
     avltree.h \
@@ -34,4 +35,5 @@ HEADERS += \
     rapidxml_utils.hpp \
     rapidxml.hpp \
     indexhandler.h \
-    Stemmer.h
+    Stemmer.h \
+    hashtable.h

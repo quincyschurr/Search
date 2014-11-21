@@ -21,6 +21,7 @@ public:
     int getHashKey();
     char** getWord() const;
     void insertToMap(int pageId);
+    char* getHashWord(); //add functionality
 
     friend bool operator>(const Word& lhs, const Word& rhs);
     friend bool operator<(const Word& lhs, const Word& rhs);
