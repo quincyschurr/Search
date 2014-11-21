@@ -13,7 +13,7 @@ public:
     ~HashTable();
     void addWord(Word&);
     unsigned hashKey(const char*);
-    Word searchTrees(char*);
+    Word searchTrees(string);
     bool containsKey(char*);
 };
 
