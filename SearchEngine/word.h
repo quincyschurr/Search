@@ -11,7 +11,7 @@ using namespace std;
 class Word
 {
 private:
-    char** word;
+    string word;
     int hashKey;
     int pageId;
     //Frequency* freq;
@@ -21,7 +21,7 @@ private:
 public:
     void addFrequency(int pageId);
     int getHashKey();
-    char** getWord() const;
+    string getWord() const;
     void insertToMap(int pageId);
     //char* getHashWord(); //add functionality
 
@@ -31,7 +31,7 @@ public:
     Word();
     //this is the beginning constructor for when we have a hash table
     //Word(string word, int hashKey, int pageId);
-    Word(char** word, int pageId);
+    Word(string word, int pageId);
     ~Word();
 };
 
