@@ -17,20 +17,7 @@ void DocumentParser::addPage(Page*& p)
 
 void DocumentParser::addWord(Word*& w)
 {
-    StopWord* sw = new StopWord();
 
-    /*if(sw->isStopWord(w->getWord()) == true)
-    {
-        //stemWord
-        //add a parameter to this argument
-        //w.addFrequency();
-    }
-
-    else
-    {
-        //stemWord
-        //words.push_back(w);
-    }*/
 }
 
 void DocumentParser::getInput() {
@@ -92,35 +79,46 @@ void DocumentParser::getInput() {
         page++;
     }
 
-    //for(int k = 0; k < page-1; k++)
-    //{
 
-        /*char* testBuffer = "This is a test string to see if I can split words";
-        //int size = sizeof(testBuffer);
-        char** singleWord;
-        //for loop. Every time I replace with null terminal. Vector or char*
-        //look at the lab2 for this
-        singleWord = splitWords(testBuffer, 41);
-        Word* w = new Word(singleWord, 1);
-        cout << "CREATED NEW WORD" << endl;
-        addWord(w);*/
-    //}
+    vector<char*> test;
+    test.push_back("this is another test string with char* references.");
+    test.push_back("why won't this function work?");
+    test.push_back("adkfjaljf diijjgs   adjfoajokj  asdfjk;o kdiil josd");
+    //char* testBuffer = new char [101];
 
-    for(int k = 0; k < page-1; k++)
+    /*string temp = "";
+
+    for(int k = 0; k < test.size(); k++)
     {
+        char* testBuffer = new char[51];
+        strcpy(testBuffer, test[k]);
+        stringstream ss(testBuffer);
+        while (ss >> temp)
+        {
+            cout << "word = " << temp << endl;
+        }
 
+
+        //add makelowerCaser, stop word, then stemmer, then add to word
+
+        //end loop with
+        //temp = "";
+    }*/
+
+    for(int j = 0; j < texts.size(); j++)
+    {
+        cout << "THIS IS PAGE " << j+1 << endl;
+        string temp = "";
+        char* testBuffer = new char[1000];
+        strcpy(testBuffer, texts[j]);
+        stringstream ss(testBuffer);
+        while(ss >> temp)
+        {
+            cout << "word = " << temp << endl;
+        }
     }
 
-    char* testBuffer = new char[51];
-    strcpy(testBuffer, texts[0]);
-    stringstream ss(testBuffer);
-    string temp;
-    while (ss >> temp)
-    {
-        cout << "word = " << temp << endl;
-    }
-
-    for(int i = 0; i < page-1; i++)
+    for(int i = 0; i < titles.size(); i++)
     {
         cout << "page " << i+1 << endl;
         cout << titles[i] << endl;
@@ -128,54 +126,17 @@ void DocumentParser::getInput() {
         cout << texts[i] << endl << endl;
     }
 
-    for(int j = 0; j < page-1; j++)
+    /*for(int j = 0; j < page-1; j++)
     {
         Page* p = new Page(titles[j], ids[j], texts[j]);
         addPage(p);
-    }
+    }*/
 
 }
 
 void DocumentParser::makeLowerCase(char *& word)
 {
     tolower(word[0]);
-}
-
-char** DocumentParser::splitWords(char* buffer, int size)
-{
-    char** builder = new char*[size];
-    char* bufferPtr = buffer;
-    int index = 0;
-
-    do
-    {
-        if(*buffer == ' ')
-        {
-            *(buffer++) = '\0';
-            builder[index] = new char[strlen(bufferPtr) + 1];
-            strcpy(builder[index++], bufferPtr);
-
-            bufferPtr = buffer;
-        }
-
-        else if(*(buffer + 1) == '\0')
-        {
-            ++buffer;
-            builder[index] = new char[strlen(bufferPtr) + 1];
-            strcpy(builder[index++], bufferPtr);
-            bufferPtr = buffer;
-        }
-
-        else
-        {
-            ++buffer;
-        }
-
-
-    }while(*buffer != '\0');
-
-    return builder;
-
 }
 
 DocumentParser::~DocumentParser()

@@ -15,7 +15,7 @@ HashTable::~HashTable() {
 }
 
 void HashTable::addWord(Word& w) {
-    char* test = w.getHashWord();
+    //char* test = w.getHashWord();
     //int key = hashKey(test) % count;
     //trees[key].insert(w);
 }

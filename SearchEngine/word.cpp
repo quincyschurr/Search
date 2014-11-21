@@ -12,7 +12,7 @@ Word::Word()
     this->frequency = 1;
 }*/
 
-Word::Word(char** word, int pageId)
+Word::Word(string word, int pageId)
 {
     this->word = word;
     this->pageId = pageId;
@@ -28,7 +28,7 @@ int Word::getHashKey()
     return hashKey;
 }
 
-char** Word::getWord() const
+string Word::getWord() const
 {
     return word;
 }
