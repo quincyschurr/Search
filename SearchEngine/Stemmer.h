@@ -1,5 +1,3 @@
-
-
 #include <string.h>  /* for memmove */
 
 #define TRUE 1
