@@ -185,6 +185,10 @@ public:
         else
             return false;
     }
+
+    AVLNode * getRoot() {
+        return root;
+    }
 };
 
 #endif // AVLTREE_H
