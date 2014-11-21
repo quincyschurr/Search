@@ -15,9 +15,9 @@ HashTable::~HashTable() {
 }
 
 void HashTable::addWord(Word& w) {
-    //char* test = w.getHashWord();
-    //int key = hashKey(test) % count;
-    //trees[key].insert(w);
+    string test = w.getWord();
+    int key = hashKey(test.c_str()) % count;
+    trees[key].insert(w);
 }
 
 unsigned HashTable::hashKey(const char* word) {
@@ -28,8 +28,9 @@ unsigned HashTable::hashKey(const char* word) {
 }
 
 Word HashTable::searchTrees(char* test) {
-    int key = hashKey(test);
+    int key = hashKey(test) % count;
     //need get roodnode funciton in AVL
-    //trees[key].find(Word, root);
+    AVLNode * root = trees[key].getRoot();
+    trees[key].find(test, root);
 }
 
