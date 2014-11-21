@@ -138,7 +138,6 @@ void DocumentParser::getInput() {
 
             }
         }
-
     }
 
 

@@ -32,5 +32,6 @@ Word HashTable::searchTrees(string test) {
     return trees[key].returnWord1(test);
     //AVLNode* root = trees[key].getRoot();
     //string temp2 = trees[key].find(test);
+
 }
 
