@@ -20,13 +20,14 @@ int main(int argc, char *argv[])
 {
 
     //to test the UserInterface
-    UserInterface* n = new UserInterface;
-    n->startProgram();//maybe need to add an ifstream to this
+
     //also need to pass the stopWords arguments
 
 
     //to test if the stopWords are added to a file
     //ifstream fin(argv[2]);
+    UserInterface* n = new UserInterface();
+    n->startProgram();//maybe need to add an ifstream to this
     //StopWord* y = new StopWord(fin);
     //y->createArray(fin);
     //ifstream fin(argv[2]);

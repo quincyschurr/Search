@@ -9,6 +9,7 @@ DocumentParser::DocumentParser()
 
 }
 
+
 void DocumentParser::addPage(Page*& p)
 {
        //causes error
@@ -84,8 +85,7 @@ void DocumentParser::getInput() {
     vector<char*> test;
     test.push_back("this is another test string with char* references.");
     test.push_back("why won't this function work?");
-    test.push_back("adkfjaljf diijjgs   adjfoajokj  asdfjk;o kdiil josd");
-    //char* testBuffer = new char [101];
+    test.push_back("between able why becuase zero");
 
     /*string temp = "";
 
@@ -107,6 +107,7 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
+<<<<<<< HEAD
     string testBuffer = "";
 
 
@@ -116,23 +117,53 @@ void DocumentParser::getInput() {
         //cout << "THIS IS PAGE " << j+1 << endl;
         string temp = "";
         testBuffer = "";
+=======
+    sw->createArray();
+    string testBuffer = "";
+    string temp = "";
+    int size = 0;
+    for(int j = 0; j < test.size(); j++)
+
+    string testBuffer = "";
+    for(int j = 0; j < texts.size(); j++)
+    {
+        cout << "THIS IS PAGE " << j+1 << endl;
+        temp = "";
+        testBuffer = "";
+        testBuffer = test[j];
+>>>>>>> f8db1995e0ac780e25c4caa43d9111929b56afe9
         testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
+<<<<<<< HEAD
             //cout << "word = " << temp << endl;
             /*if(sw->isStopWord(temp) == true)
+=======
+            cout << "word = " << temp << endl;
+            if(sw->isStopWord(temp) == true)
+>>>>>>> f8db1995e0ac780e25c4caa43d9111929b56afe9
             {
-
+                cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
             else
             {
+                cout << "STOP WORD IS FALSE" << endl;
+                size = temp.size();
+                char* arr = new char[size];
+                strcpy(arr, temp.c_str());
+                arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
+                delete [] arr;
+                cout << "Now the word is " << temp << endl;
 
-            }*/
+            }
         }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f8db1995e0ac780e25c4caa43d9111929b56afe9
     }
 
 

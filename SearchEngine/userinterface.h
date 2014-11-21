@@ -4,6 +4,9 @@
 #include <cstdlib>
 #include <chrono>
 #include <ctime>
+#include <iostream>
+#include <fstream>
+#include <istream>
 
 using namespace std;
 class UserInterface
