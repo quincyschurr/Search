@@ -30,7 +30,7 @@ void DocumentParser::getInput() {
     /*    xml_document<> doc;
         xml_node<> * root_node;
         // Read the xml file into a vector
-        ifstream theFile ("books.xml");
+        ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml.xml");
         vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
         buffer.push_back('\0');
         // Parse the buffer using the xml file parsing library into doc
@@ -107,6 +107,7 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
+
     sw->createArray();
     string testBuffer = "";
     string temp = "";
@@ -120,7 +121,7 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            cout << "word = " << temp << endl;
+            //cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
             {
                 cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
