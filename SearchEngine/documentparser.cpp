@@ -106,6 +106,11 @@ void DocumentParser::getInput() {
         addWord(w);*/
     //}
 
+    for(int k = 0; k < page-1; k++)
+    {
+
+    }
+
     char* testBuffer = new char[51];
     strcpy(testBuffer, texts[0]);
     stringstream ss(testBuffer);
