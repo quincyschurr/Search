@@ -36,7 +36,8 @@ void DocumentParser::getInput() {
         doc.parse<0>(&buffer[0]);*/
         // Find our root node
     xml_document<> doc;
-    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
     std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
@@ -106,28 +107,28 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
-
+    string testBuffer = "";// = new char[1001];
     for(int j = 0; j < texts.size(); j++)
     {
         cout << "THIS IS PAGE " << j+1 << endl;
         string temp = "";
-        char* testBuffer = new char[1000];
+        testBuffer = "";
         strcpy(testBuffer, texts[j]);
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            //cout << "word = " << temp << endl;
-            if(sw->isStopWord(temp) == true)
+            cout << "word = " << temp << endl;
+            /*if(sw->isStopWord(temp) == true)
             {
 
             }
             else
             {
 
-            }
+            }*/
         }
 
-
+    //delete [] testBuffer;
 
     }
 
