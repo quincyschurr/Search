@@ -11,7 +11,7 @@ private:
 public:
     HashTable();
     ~HashTable();
-    void addWord(Word);
+    void addWord(Word&);
     unsigned hashKey(const char*);
     Word searchTrees(char*);
     bool containsKey(char*);
