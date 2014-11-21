@@ -6,8 +6,9 @@ StopWord::StopWord()
 }
 
 
-void StopWord::createArray(ifstream& fin)
+void StopWord::createArray()
 {
+    ifstream fin("stopWords.txt");
     for(int i = 0; i < 635; i++)
     {
         fin >> inputWord;

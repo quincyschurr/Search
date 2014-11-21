@@ -9,6 +9,7 @@ DocumentParser::DocumentParser()
 
 }
 
+
 void DocumentParser::addPage(Page*& p)
 {
        //causes error
@@ -83,8 +84,7 @@ void DocumentParser::getInput() {
     vector<char*> test;
     test.push_back("this is another test string with char* references.");
     test.push_back("why won't this function work?");
-    test.push_back("adkfjaljf diijjgs   adjfoajokj  asdfjk;o kdiil josd");
-    //char* testBuffer = new char [101];
+    test.push_back("between able why becuase zero");
 
     /*string temp = "";
 
@@ -106,28 +106,35 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
-    //char* testBuffer;// = new char[1000];
+    sw->createArray();
     string testBuffer = "";
-    for(int j = 0; j < texts.size(); j++)
+    string temp = "";
+    int size = 0;
+    for(int j = 0; j < test.size(); j++)
     {
         cout << "THIS IS PAGE " << j+1 << endl;
-        string temp = "";
+        temp = "";
         testBuffer = "";
-        //testBuffer = new char[1000];
-        testBuffer = texts[j];
-        //strcpy(testBuffer, texts[j]);
+        testBuffer = test[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
             cout << "word = " << temp << endl;
-            /*if(sw->isStopWord(temp) == true)
+            if(sw->isStopWord(temp) == true)
             {
-
+                cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
             else
             {
+                cout << "STOP WORD IS FALSE" << endl;
+                size = temp.size();
+                char* arr = new char[size];
+                strcpy(arr, temp.c_str());
+                arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
+                delete [] arr;
+                cout << "Now the word is " << temp << endl;
 
-            }*/
+            }
         }
 
     }

@@ -17,7 +17,7 @@ private:
     string inputWord;
     string words[635];
 public:
-    void createArray(ifstream&);
+    void createArray();
     bool isStopWord(const string& testWord);
     StopWord();
     ~StopWord();
