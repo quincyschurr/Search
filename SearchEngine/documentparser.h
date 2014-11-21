@@ -6,7 +6,7 @@
 #include "stopword.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
-//#include "Stemmer.h"
+#include "Stemmer.h"
 #include <vector>
 #include <iostream>
 #include <fstream>

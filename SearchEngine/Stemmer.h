@@ -1,10 +1,12 @@
-#ifndef STEMMER_H
-#define STEMMER_H
+
 
 #include <string.h>  /* for memmove */
 
 #define TRUE 1
 #define FALSE 0
+
+#ifndef STEMMER_H
+#define STEMMER_H
 
 //returns an integer that tells you where to put the null terminator
 //then you set that index # to be null
@@ -290,7 +292,7 @@
        file.
     */
 
-    int stem(char * p, int i, int j)
+    static int stem(char * p, int i, int j)
     {  b = p; k = j; k0 = i; /* copy the parameters into statics */
        if (k <= k0+1) return k; /*-DEPARTURE-*/
 
@@ -305,51 +307,51 @@
        }
        return k;
     }
-
+#endif // STEMMER_H
     /*--------------------stemmer definition ends here------------------------*/
 
-    #include <stdio.h>
-    #include <stdlib.h>      /* for malloc, free */
-    #include <ctype.h>       /* for isupper, islower, tolower */
+//   #include <stdio.h>
+//    #include <stdlib.h>      /* for malloc, free */
+//    #include <ctype.h>       /* for isupper, islower, tolower */
 
-    static char * s;         /* a char * (=string) pointer; passed into b above */
+//    static char * s;         /* a char * (=string) pointer; passed into b above */
 
-    #define INC 50           /* size units in which s is increased */
-    static int i_max = INC;  /* maximum offset in s */
+//    #define INC 50           /* size units in which s is increased */
+//    static int i_max = INC;  /* maximum offset in s */
 
-    void increase_s()
-    {  i_max += INC;
-       {  char * new_s = (char *) malloc(i_max+1);
-          { int i; for (i = 0; i < i_max; i++) new_s[i] = s[i]; } /* copy across */
-          free(s); s = new_s;
-       }
-    }
+//    void increase_s()
+//    {  i_max += INC;
+//       {  char * new_s = (char *) malloc(i_max+1);
+//          { int i; for (i = 0; i < i_max; i++) new_s[i] = s[i]; } /* copy across */
+//          free(s); s = new_s;
+//       }
+//    }
 
-    #define LETTER(ch) (isupper(ch) || islower(ch))
+//    #define LETTER(ch) (isupper(ch) || islower(ch))
 
-    static void stemfile(FILE * f)
-    {  while(TRUE)
-       {  int ch = getc(f);
-          if (ch == EOF) return;
-          if (LETTER(ch))
-          {  int i = 0;
-             while(TRUE)
-             {  if (i == i_max) increase_s();
+//    static void stemfile(FILE * f)
+//    {  while(TRUE)
+//       {  int ch = getc(f);
+//          if (ch == EOF) return;
+//          if (LETTER(ch))
+//          {  int i = 0;
+//             while(TRUE)
+//             {  if (i == i_max) increase_s();
 
-                ch = tolower(ch); /* forces lower case */
+//                ch = tolower(ch); /* forces lower case */
 
-                s[i] = ch; i++;
-                ch = getc(f);
-                if (!LETTER(ch)) { ungetc(ch,f); break; }
-             }
-             s[stem(s,0,i-1)+1] = 0;
-             /* the previous line calls the stemmer and uses its result to
-                zero-terminate the string in s */
-             printf("%s",s);
-          }
-          else putchar(ch);
-       }
-    }
+//                s[i] = ch; i++;
+//                ch = getc(f);
+//                if (!LETTER(ch)) { ungetc(ch,f); break; }
+//             }
+//             s[stem(s,0,i-1)+1] = 0;
+//             /* the previous line calls the stemmer and uses its result to
+//                zero-terminate the string in s */
+//             printf("%s",s);
+//          }
+//          else putchar(ch);
+//       }
+//    }
 
 
-#endif // STEMMER_H
+

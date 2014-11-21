@@ -1,12 +1,13 @@
 #include "hashtable.h"
 
-HashTable::HashTable()
+/*HashTable::HashTable()
 {
     count = 104729;
     trees = new AVLTree<Word>[count]; //might seg fault
-    /*for(int i = 0; i < count; i++) {
-        trees[i] = new AVLTree<Word>;
-    }*/
+    //for(int i = 0; i < count; i++)
+    //{
+        //trees[i] = new AVLTree<Word>;
+    //}
 }
 
 HashTable::~HashTable() {
@@ -29,4 +30,4 @@ unsigned HashTable::hashKey(const char* word) {
 Word HashTable::searchTrees(char* test) {
     int key = hashKey(test);
     //trees[key].find(Word);
-}
+}*/
