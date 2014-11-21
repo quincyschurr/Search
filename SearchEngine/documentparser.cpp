@@ -116,7 +116,7 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            cout << "word = " << temp << endl;
+            //cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
             {
 
