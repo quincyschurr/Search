@@ -85,7 +85,7 @@ public:
         this->root = NULL;
     }
 
-    T& find(const T& x, AVLNode*& root)
+    T& find(const T& x, AVLNode* root)
     {
         if(root == NULL)
         {
@@ -104,6 +104,21 @@ public:
             return find(x, root->right);
         }
     }
+
+    /*T*& returnWord(string test)
+    {
+        if(root == NULL)
+        {
+            throw(strerror);
+        }
+        else if(test = root->element)
+        {
+            return root;
+        }
+        else if()
+    }*/
+
+
 
     int height(AVLNode*& n)
     {

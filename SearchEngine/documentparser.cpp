@@ -56,7 +56,7 @@ void DocumentParser::getInput() {
     xml_node<> * curID;
     vector<string> titles(0); //probably need to dynamically allocate
     vector<int> ids(0); //probably need to dynamically allocate
-    vector<char*> texts(0); //probably need to dynamically allocate
+    vector<string> texts(0); //probably need to dynamically allocate
     int page = 1;
     string sTemp;
     int iTemp;
@@ -107,13 +107,24 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
+<<<<<<< HEAD
     string testBuffer = "";// = new char[1001];
+=======
+    //char* testBuffer;// = new char[1000];
+    string testBuffer = "";
+>>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
     for(int j = 0; j < texts.size(); j++)
     {
         cout << "THIS IS PAGE " << j+1 << endl;
         string temp = "";
         testBuffer = "";
+<<<<<<< HEAD
         strcpy(testBuffer, texts[j]);
+=======
+        //testBuffer = new char[1000];
+        testBuffer = texts[j];
+        //strcpy(testBuffer, texts[j]);
+>>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
@@ -128,9 +139,13 @@ void DocumentParser::getInput() {
             }*/
         }
 
+<<<<<<< HEAD
     //delete [] testBuffer;
 
+=======
+>>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
     }
+
 
     /*for(int i = 0; i < titles.size(); i++)
     {
