@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include "frequency.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ private:
     char** word;
     int hashKey;
     int pageId;
+    //Frequency* freq;
     int frequency;
     map <int, int> info;
 

@@ -1,4 +1,5 @@
 #include "documentparser.h"
+#include <sstream>
 
 using namespace std;
 using namespace rapidxml;
@@ -94,16 +95,26 @@ void DocumentParser::getInput() {
     //for(int k = 0; k < page-1; k++)
     //{
 
-        char* testBuffer = "This is a test string to see if I can split words";
-        //int size = sizeof(buffer);
+        /*char* testBuffer = "This is a test string to see if I can split words";
+        //int size = sizeof(testBuffer);
         char** singleWord;
         //for loop. Every time I replace with null terminal. Vector or char*
         //look at the lab2 for this
-        singleWord = splitWords(testBuffer, 201);
+        singleWord = splitWords(testBuffer, 41);
         Word* w = new Word(singleWord, 1);
         cout << "CREATED NEW WORD" << endl;
-        addWord(w);
+        addWord(w);*/
     //}
+
+    char* testBuffer = new char[51];
+    strcpy(testBuffer, texts[0]);
+    stringstream ss(testBuffer);
+    string temp;
+    while (ss >> temp)
+    {
+        cout << "word = " << temp << endl;
+    }
+
     for(int i = 0; i < page-1; i++)
     {
         cout << "page " << i+1 << endl;
@@ -133,37 +144,29 @@ char** DocumentParser::splitWords(char* buffer, int size)
 
     do
     {
-       if(*buffer != '\0')
-       {
-           buffer++;
-           bufferPtr = buffer;
+        if(*buffer == ' ')
+        {
+            *(buffer++) = '\0';
+            builder[index] = new char[strlen(bufferPtr) + 1];
+            strcpy(builder[index++], bufferPtr);
 
-           while(*buffer != ' ')
-           {
-               ++buffer;
-           }
+            bufferPtr = buffer;
+        }
 
-           //this next line causes it to stop
-           *(buffer++) = '\0';
-           builder[index] = new char[strlen(bufferPtr) + 1];
-           strcpy(builder[index++], bufferPtr);
+        else if(*(buffer + 1) == '\0')
+        {
+            ++buffer;
+            builder[index] = new char[strlen(bufferPtr) + 1];
+            strcpy(builder[index++], bufferPtr);
+            bufferPtr = buffer;
+        }
 
-           buffer++; //ignores next space
-           bufferPtr = buffer;
-       }
+        else
+        {
+            ++buffer;
+        }
 
-       else if(*(buffer+1) == '\0')
-       {
-           ++buffer;
 
-           builder[index] = new char[strlen(bufferPtr) + 1];
-           strcpy(builder[index++], bufferPtr);
-
-           bufferPtr = buffer;
-       }
-
-       else
-           ++buffer;
     }while(*buffer != '\0');
 
     return builder;
