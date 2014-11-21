@@ -105,6 +105,8 @@ void DocumentParser::getInput() {
         //temp = "";
     }*/
 
+    StopWord* sw = new StopWord();
+
     for(int j = 0; j < texts.size(); j++)
     {
         cout << "THIS IS PAGE " << j+1 << endl;
@@ -115,16 +117,27 @@ void DocumentParser::getInput() {
         while(ss >> temp)
         {
             cout << "word = " << temp << endl;
+            if(sw->isStopWord(temp) == true)
+            {
+
+            }
+            else
+            {
+
+            }
         }
+
+
+
     }
 
-    for(int i = 0; i < titles.size(); i++)
+    /*for(int i = 0; i < titles.size(); i++)
     {
         cout << "page " << i+1 << endl;
         cout << titles[i] << endl;
         cout << ids[i] << endl;
         cout << texts[i] << endl << endl;
-    }
+    }*/
 
     /*for(int j = 0; j < page-1; j++)
     {
