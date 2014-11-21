@@ -91,18 +91,19 @@ void DocumentParser::getInput() {
         page++;
     }
 
-    for(int k = 0; k < page-1; k++)
-    {
+    //for(int k = 0; k < page-1; k++)
+    //{
 
-        char* buffer = texts[k];
+        char* testBuffer = "This is a test string to see if I can split words";
+        //int size = sizeof(buffer);
         char** singleWord;
         //for loop. Every time I replace with null terminal. Vector or char*
         //look at the lab2 for this
-        singleWord = splitWords(buffer, 41);
-        Word* w = new Word(singleWord, ids[k]);
+        singleWord = splitWords(testBuffer, 201);
+        Word* w = new Word(singleWord, 1);
         cout << "CREATED NEW WORD" << endl;
         addWord(w);
-    }
+    //}
     for(int i = 0; i < page-1; i++)
     {
         cout << "page " << i+1 << endl;
@@ -126,6 +127,46 @@ void DocumentParser::makeLowerCase(char *& word)
 
 char** DocumentParser::splitWords(char* buffer, int size)
 {
+    char** builder = new char*[size];
+    char* bufferPtr = buffer;
+    int index = 0;
+
+    do
+    {
+       if(*buffer != '\0')
+       {
+           buffer++;
+           bufferPtr = buffer;
+
+           while(*buffer != ' ')
+           {
+               ++buffer;
+           }
+
+           //this next line causes it to stop
+           *(buffer++) = '\0';
+           builder[index] = new char[strlen(bufferPtr) + 1];
+           strcpy(builder[index++], bufferPtr);
+
+           buffer++; //ignores next space
+           bufferPtr = buffer;
+       }
+
+       else if(*(buffer+1) == '\0')
+       {
+           ++buffer;
+
+           builder[index] = new char[strlen(bufferPtr) + 1];
+           strcpy(builder[index++], bufferPtr);
+
+           bufferPtr = buffer;
+       }
+
+       else
+           ++buffer;
+    }while(*buffer != '\0');
+
+    return builder;
 
 }
 
