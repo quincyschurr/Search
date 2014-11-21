@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 3.2.0, 2014-11-21T16:01:44. -->
-=======
-<!-- Written by QtCreator 3.1.2, 2014-11-21T15:27:13. -->
->>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
+<!-- Written by QtCreator 3.2.0, 2014-11-21T16:47:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -241,7 +237,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">SearchEngine</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">SearchEngine2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/Jake/Desktop/search/SearchEngine/SearchEngine.pro</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">output.txt stopWords.txt</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">output.txt</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">SearchEngine.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">true</value>

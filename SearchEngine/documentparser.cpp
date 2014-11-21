@@ -29,7 +29,7 @@ void DocumentParser::getInput() {
     /*    xml_document<> doc;
         xml_node<> * root_node;
         // Read the xml file into a vector
-        ifstream theFile ("books.xml");
+        ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml.xml");
         vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
         buffer.push_back('\0');
         // Parse the buffer using the xml file parsing library into doc
@@ -107,28 +107,20 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
-<<<<<<< HEAD
-    string testBuffer = "";// = new char[1001];
-=======
-    //char* testBuffer;// = new char[1000];
     string testBuffer = "";
->>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
+
+
+
     for(int j = 0; j < texts.size(); j++)
     {
-        cout << "THIS IS PAGE " << j+1 << endl;
+        //cout << "THIS IS PAGE " << j+1 << endl;
         string temp = "";
         testBuffer = "";
-<<<<<<< HEAD
-        strcpy(testBuffer, texts[j]);
-=======
-        //testBuffer = new char[1000];
         testBuffer = texts[j];
-        //strcpy(testBuffer, texts[j]);
->>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            cout << "word = " << temp << endl;
+            //cout << "word = " << temp << endl;
             /*if(sw->isStopWord(temp) == true)
             {
 
@@ -139,11 +131,8 @@ void DocumentParser::getInput() {
             }*/
         }
 
-<<<<<<< HEAD
-    //delete [] testBuffer;
 
-=======
->>>>>>> ae4c6791ada408fd44b726ba5ffcbe2d67f052ef
+
     }
 
 

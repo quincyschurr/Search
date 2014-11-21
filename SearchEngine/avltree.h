@@ -70,6 +70,8 @@ private:
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 
+
+
     void print(ostream& out, AVLNode* p) const
     {
         if(p != NULL)
@@ -79,6 +81,27 @@ private:
             print(out, p->right);
         }
     }
+
+    T& returnWord(string test, AVLNode* root)
+    {
+        if(root == NULL)
+        {
+            throw(strerror);
+        }
+        else if(test == root->element.getWord())
+        {
+            return root->element;
+        }
+        else if(test < root->element.getWord())
+        {
+            return returnWord(test, root->left);
+        }
+        else if(test > root->element.getWord())
+        {
+            return returnWord(test, root->right);
+        }
+    }
+
 public:
     AVLTree()
     {
@@ -91,10 +114,10 @@ public:
         {
             throw(strerror);
         }
-        //else if (x == root->element)
-        //{
-        //    return root->element;
-        //}
+        else if (x == root->element)
+        {
+            return root->element;
+        }
         else if(x < root->element)
         {
             return find(x, root->left);
@@ -105,18 +128,11 @@ public:
         }
     }
 
-    /*T*& returnWord(string test)
+    T& returnWord1(string test)
     {
-        if(root == NULL)
-        {
-            throw(strerror);
-        }
-        else if(test = root->element)
-        {
-            return root;
-        }
-        else if()
-    }*/
+        return returnWord(test, root);
+
+    }
 
 
 
@@ -195,6 +211,14 @@ public:
 
     friend bool operator< (const string& lhs, const string& rhs) {
         if(strcmp(lhs.c_str(), rhs.c_str()) < 0) {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    friend bool operator==(const string& lhs, const string& rhs) {
+        if(strcmp(lhs.c_str(), rhs.c_str()) == 0) {
             return true;
         }
         else
