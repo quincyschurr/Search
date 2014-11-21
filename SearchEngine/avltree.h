@@ -91,10 +91,10 @@ public:
         {
             throw(strerror);
         }
-        else if (x == root->element)
-        {
-            return root->element;
-        }
+        //else if (x == root->element)
+        //{
+        //    return root->element;
+        //}
         else if(x < root->element)
         {
             return find(x, root->left);
