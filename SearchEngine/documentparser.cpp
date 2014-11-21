@@ -107,17 +107,7 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
-<<<<<<< HEAD
-    string testBuffer = "";
 
-
-
-    for(int j = 0; j < texts.size(); j++)
-    {
-        //cout << "THIS IS PAGE " << j+1 << endl;
-        string temp = "";
-        testBuffer = "";
-=======
     sw->createArray();
     string testBuffer = "";
     string temp = "";
@@ -131,18 +121,13 @@ void DocumentParser::getInput() {
         temp = "";
         testBuffer = "";
         testBuffer = test[j];
->>>>>>> f8db1995e0ac780e25c4caa43d9111929b56afe9
-        testBuffer = texts[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-<<<<<<< HEAD
             //cout << "word = " << temp << endl;
-            /*if(sw->isStopWord(temp) == true)
-=======
-            cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
->>>>>>> f8db1995e0ac780e25c4caa43d9111929b56afe9
+
             {
                 cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
@@ -159,11 +144,7 @@ void DocumentParser::getInput() {
             }
         }
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> f8db1995e0ac780e25c4caa43d9111929b56afe9
     }
 
 
