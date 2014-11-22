@@ -107,6 +107,7 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
+    //add hashTable
 
     sw->createArray();
     string testBuffer = "";
@@ -125,6 +126,8 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
+            //Word* word = new Word()
+            //addword(word)
             //cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
 <<<<<<< HEAD
