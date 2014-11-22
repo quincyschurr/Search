@@ -124,6 +124,7 @@ void DocumentParser::getInput() {
     }*/
 
     StopWord* sw = new StopWord();
+    //add hashTable
 
     sw->createArray();
     string testBuffer = "";
@@ -158,10 +159,7 @@ void DocumentParser::getInput() {
                 //you can then use.
 
 
-
-
-
-                if(checkForWord(temp) == true)
+                /*if(checkForWord(temp) == true)
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = new Word(temp, ids[j]);
@@ -178,7 +176,7 @@ void DocumentParser::getInput() {
                     w->addPages(ids[j]);
                     w->addToMap(ids[j]);
                     words.push_back(w);
-                }
+                }*/
 
 
                 //to test the stemming
