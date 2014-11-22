@@ -21,8 +21,12 @@ void DocumentParser::addWord(Word*& w)
     words.push_back(w);
 }
 
-bool DocumentParser::checkForPage(string& temp, Word*& x)
+bool DocumentParser::checkForPage(int page, Word*& x)
 {
+    if(x->lookForPage(page) == true)
+        return true;
+    else
+        return false;
 
 }
 
@@ -163,7 +167,7 @@ void DocumentParser::getInput() {
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = new Word(temp, ids[j]);
-                    checkForPage(temp, x);
+                    checkForPage(temp, ids[j], x);
                     //check for page number, if page does exist
                     //then add frequency to page map
                     //if not add page to vector and incream frequency

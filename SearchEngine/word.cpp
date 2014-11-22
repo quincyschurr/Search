@@ -41,6 +41,20 @@ void Word::increaseFrequency(int pageId)
     cout << info[pageId] << endl;
 }
 
+bool Word::lookForPage(int page)
+{
+    for(int k = 0; k < pageIds.size(); k++)
+    {
+        if(page == pageIds[k])
+        {
+            return true;
+        }
+
+    }
+
+    return false;
+}
+
 bool operator>(const Word& lhs, const Word& rhs)
 {
     if(lhs.getWord() > rhs.getWord())
