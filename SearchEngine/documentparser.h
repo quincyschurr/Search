@@ -32,11 +32,11 @@ public:
 
     void addWord(Word*& w);
     void addPage(Page*& p);
-    bool checkForPage(string& temp, Word*& x);
+    bool checkForPage(int page, Word*& x);
     bool checkForWord(string& temp);
     void getInput();
     void makeLowerCase(string&);
-    void stopWords();
+    Word* returnWordObject(string&);
 };
 
 #endif // DOCUMENTPARSER_H

@@ -21,8 +21,12 @@ void DocumentParser::addWord(Word*& w)
     words.push_back(w);
 }
 
-bool DocumentParser::checkForPage(string& temp, Word*& x)
+bool DocumentParser::checkForPage(int page, Word*& x)
 {
+    if(x->lookForPage(page) == true)
+        return true;
+    else
+        return false;
 
 }
 
@@ -142,11 +146,14 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
+<<<<<<< HEAD
 
             //Word* word = new Word()
             //addword(word)
             //cout << "word = " << temp << endl;
 
+=======
+>>>>>>> 49b82b31c189eb1c343fe013b93bd05522f90781
             makeLowerCase(temp);
             cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
@@ -163,11 +170,23 @@ void DocumentParser::getInput() {
                 //this will create a vector of Word* that
                 //you can then use.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 49b82b31c189eb1c343fe013b93bd05522f90781
                 /*if(checkForWord(temp) == true)
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
-                    Word* x = new Word(temp, ids[j]);
-                    checkForPage(temp, x);
+                    //find the word object that already exists for word
+                    Word* x = returnWordObject(temp);
+                    if(checkForPage(ids[j], x) == true)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                     //check for page number, if page does exist
                     //then add frequency to page map
                     //if not add page to vector and incream frequency
@@ -215,6 +234,17 @@ void DocumentParser::getInput() {
 void DocumentParser::makeLowerCase(string& word)
 {
     tolower(word[0]);
+}
+
+Word* DocumentParser::returnWordObject(string& temp)
+{
+    for(int m = 0; m < words.size(); m++)
+    {
+        if(words[m]->getWord() == temp)
+            return words[m];
+    }
+    //return NULl;
+
 }
 
 DocumentParser::~DocumentParser()
