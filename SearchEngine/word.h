@@ -22,6 +22,7 @@ public:
     string getWord() const;
     int getPageId() const;
     void increaseFrequency(int pageId);
+    bool lookForPage();
 
     friend bool operator>(const Word& lhs, const Word& rhs);
     friend bool operator<(const Word& lhs, const Word& rhs);

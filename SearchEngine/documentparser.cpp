@@ -161,7 +161,7 @@ void DocumentParser::getInput() {
 
 
 
-                /*if(checkForWord(temp) == true)
+                if(checkForWord(temp) == true)
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = new Word(temp, ids[j]);
@@ -178,7 +178,7 @@ void DocumentParser::getInput() {
                     w->addPages(ids[j]);
                     w->addToMap(ids[j]);
                     words.push_back(w);
-                }*/
+                }
 
 
                 //to test the stemming
