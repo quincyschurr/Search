@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 3.1.2, 2014-11-22T17:08:48. -->
-=======
-<<<<<<< HEAD
-<!-- Written by QtCreator 3.2.0, 2014-11-22T17:05:40. -->
-=======
-<!-- Written by QtCreator 3.1.2, 2014-11-22T17:02:45. -->
->>>>>>> 8a3183481b26136d00577342df40746e2d9120d1
->>>>>>> 90f5ef5d2d2d577d2a58c338057b6e706e81677a
+<!-- Written by QtCreator 3.1.2, 2014-11-22T17:58:37. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -241,7 +233,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">SearchEngine</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/quincyschurr/Documents/SMUsophomore/Search/SearchEngine/SearchEngine.pro</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">output.txts</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">SearchEngine.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">true</value>

@@ -111,10 +111,10 @@ void DocumentParser::getInput() {
     }
 
 
-    /*vector<char*> test;
+    vector<char*> test;
     test.push_back("this is another test apples string with char* references.");
     test.push_back("why won't this apples function work?");
-    test.push_back("between apples able why becuase apples zero work?");*/
+    test.push_back("between apples able why becuase apples zero work?");
 
     /*string temp = "";
 
@@ -142,32 +142,32 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < texts.size(); j++)
+    for(int j = 0; j < test.size(); j++)
     {
         //need to make sure that it just doesn't add frequency to one page
         //but checks for words all over pages
         //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
-        testBuffer = texts[j];
+        testBuffer = test[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
 
             //Word* word = new Word()
             //addword(word)
-            //cout << "word = " << temp << endl;
+            cout << "word = " << temp << endl;
 
             //makeLowerCase(temp); //dont use faster lowercase above
             //word = " << temp << endl;
-            //if(sw->isStopWord(temp) == true)
+            if(sw->isStopWord(temp) == true)
             {
-                //cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
+                cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
-            //else
+            else
             {
-                //cout << "STOP WORD IS FALSE" << endl;
+                cout << "STOP WORD IS FALSE" << endl;
 
                 //Use this to test the hashtable
                 //Word* r = new Word(temp, ids[j]);

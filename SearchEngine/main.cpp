@@ -19,11 +19,6 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-    //to test the UserInterface
-
-    //also need to pass the stopWords arguments
-
-
     //to test if the stopWords are added to a file
     //ifstream fin(argv[2]);
     UserInterface* n = new UserInterface(); //START

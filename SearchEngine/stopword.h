@@ -15,7 +15,8 @@ class StopWord
 private:
     string testWord;
     string inputWord;
-    string words[635];
+    vector<string> stWordArray;
+    //string words[635];
 public:
     void createArray();
     bool isStopWord(const string& testWord);

@@ -12,20 +12,16 @@ void StopWord::createArray()
     for(int i = 0; i < 635; i++)
     {
         fin >> inputWord;
-        words[i] = inputWord;
+        stWordArray.push_back(inputWord);
     }
 }
 
 bool StopWord::isStopWord(const string& testWord)
 {
-   for(int j = 0; j < 635; j++)
-   {
-       if(testWord == words[j])
-       {
-           return true;
-       }
-   }
-   return false;
+    if(find(stWordArray.begin(), stWordArray.end(), testWord) == stWordArray.end())
+        return false;
+    else
+        return true;
 
 }
 
