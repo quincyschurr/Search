@@ -36,7 +36,7 @@ public:
     bool checkForWord(string& temp);
     void getInput();
     void makeLowerCase(string&);
-    void stopWords();
+    Word* returnWordObject(string&);
 };
 
 #endif // DOCUMENTPARSER_H

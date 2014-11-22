@@ -166,8 +166,16 @@ void DocumentParser::getInput() {
                 /*if(checkForWord(temp) == true)
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
-                    Word* x = new Word(temp, ids[j]);
-                    checkForPage(temp, ids[j], x);
+                    //find the word object that already exists for word
+                    Word* x = returnWordObject(temp);
+                    if(checkForPage(ids[j], x) == true)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
                     //check for page number, if page does exist
                     //then add frequency to page map
                     //if not add page to vector and incream frequency
@@ -215,6 +223,17 @@ void DocumentParser::getInput() {
 void DocumentParser::makeLowerCase(string& word)
 {
     tolower(word[0]);
+}
+
+Word* DocumentParser::returnWordObject(string& temp)
+{
+    for(int m = 0; m < words.size(); m++)
+    {
+        if(words[m]->getWord() == temp)
+            return words[m];
+    }
+    //return NULl;
+
 }
 
 DocumentParser::~DocumentParser()
