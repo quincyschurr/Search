@@ -146,14 +146,11 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-<<<<<<< HEAD
 
             //Word* word = new Word()
             //addword(word)
             //cout << "word = " << temp << endl;
 
-=======
->>>>>>> 49b82b31c189eb1c343fe013b93bd05522f90781
             makeLowerCase(temp);
             cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
@@ -170,10 +167,7 @@ void DocumentParser::getInput() {
                 //this will create a vector of Word* that
                 //you can then use.
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 49b82b31c189eb1c343fe013b93bd05522f90781
                 /*if(checkForWord(temp) == true)
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
@@ -232,8 +226,9 @@ void DocumentParser::getInput() {
 }
 
 void DocumentParser::makeLowerCase(string& word)
-{
-    tolower(word[0]);
+{//maybe also use islower to save time
+    //tolower(word[0]);
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
 }
 
 Word* DocumentParser::returnWordObject(string& temp)
