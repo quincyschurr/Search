@@ -6,12 +6,11 @@
 #include "stopword.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
-#include "Stemmer.h"
+//#include "Stemmer.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
-//#include <cstring>
 #include <sstream>
 #include <cstdlib>
 #include <map>
@@ -22,8 +21,8 @@ using namespace rapidxml;
 class DocumentParser
 {
 private:
-    vector <Page> pages;
-    vector <Word> words;
+    vector <Page*> pages;
+    vector <Word*> words;
     ifstream fin;
 
 public:
@@ -33,10 +32,11 @@ public:
 
     void addWord(Word*& w);
     void addPage(Page*& p);
+    bool checkForPage(string& temp, Word*& x);
+    bool checkForWord(string& temp);
     void getInput();
-    void makeLowerCase(char*&);
+    void makeLowerCase(string&);
     void stopWords();
-    char** splitWords(char* buffer, int size);
 };
 
 #endif // DOCUMENTPARSER_H

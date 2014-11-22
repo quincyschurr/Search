@@ -18,7 +18,24 @@ void DocumentParser::addPage(Page*& p)
 
 void DocumentParser::addWord(Word*& w)
 {
+    words.push_back(w);
+}
 
+bool DocumentParser::checkForPage(string& temp, Word*& x)
+{
+
+}
+
+bool DocumentParser::checkForWord(string& temp)
+{
+   //string compString = find(words.begin().getWord(), words.end().getWord(), temp);
+    for(int b = 0; b < words.size(); b++)
+    {
+        if(words[b]->getWord() == temp)
+            return true;
+    }
+
+    return false;
 }
 
 void DocumentParser::getInput() {
@@ -27,7 +44,7 @@ void DocumentParser::getInput() {
 
     //might be faster
 
-    /*    xml_document<> doc;
+    /*  xml_document<> doc;
         xml_node<> * root_node;
         // Read the xml file into a vector
         ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml.xml");
@@ -83,9 +100,9 @@ void DocumentParser::getInput() {
 
 
     vector<char*> test;
-    test.push_back("this is another test string with char* references.");
-    test.push_back("why won't this function work?");
-    test.push_back("between able why becuase zero");
+    test.push_back("this is another test apples string with char* references.");
+    test.push_back("why won't this apples function work?");
+    test.push_back("between apples able why becuase apples zero work?");
 
     /*string temp = "";
 
@@ -113,47 +130,74 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < test.size(); j++)
+    for(int j = 0; j < texts.size(); j++)
     {
-        cout << "THIS IS PAGE " << j+1 << endl;
+        //need to make sure that it just doesn't add frequency to one page
+        //but checks for words all over pages
+        //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-<<<<<<< HEAD
-        //testBuffer = texts[j];
-=======
->>>>>>> 1aa009bf899a042ce2c365d2ca83694a2fc24884
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
+<<<<<<< HEAD
             //Word* word = new Word()
             //addword(word)
             //cout << "word = " << temp << endl;
-            if(sw->isStopWord(temp) == true)
-<<<<<<< HEAD
-
 =======
->>>>>>> 1aa009bf899a042ce2c365d2ca83694a2fc24884
+            makeLowerCase(temp);
+            cout << "word = " << temp << endl;
+>>>>>>> 13af26837496a091b91250ce675c4ca0937c490c
+            if(sw->isStopWord(temp) == true)
             {
-                cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
+                //cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
             else
             {
-                cout << "STOP WORD IS FALSE" << endl;
-                size = temp.size();
+                //cout << "STOP WORD IS FALSE" << endl;
+
+                //Use this to test the hashtable
+                //Word* r = new Word(temp, ids[j]);
+                //addWord(r);
+                //this will create a vector of Word* that
+                //you can then use.
+
+
+
+
+
+                /*if(checkForWord(temp) == true)
+                {
+                    cout << "WORD ALREADY EXISTS" << endl;
+                    Word* x = new Word(temp, ids[j]);
+                    checkForPage(temp, x);
+                    //check for page number, if page does exist
+                    //then add frequency to page map
+                    //if not add page to vector and incream frequency
+
+                    //x->increaseFrequency(ids[j]);
+                }
+                else
+                {
+                    Word* w = new Word(temp, ids[j]);
+                    w->addPages(ids[j]);
+                    w->addToMap(ids[j]);
+                    words.push_back(w);
+                }*/
+
+
+                //to test the stemming
+                /*size = temp.size();
                 char* arr = new char[size];
                 strcpy(arr, temp.c_str());
                 arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
                 delete [] arr;
-                cout << "Now the word is " << temp << endl;
+                cout << "Now the word is " << temp << endl;*/
 
             }
         }
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 1aa009bf899a042ce2c365d2ca83694a2fc24884
     }
 
 
@@ -173,7 +217,7 @@ void DocumentParser::getInput() {
 
 }
 
-void DocumentParser::makeLowerCase(char *& word)
+void DocumentParser::makeLowerCase(string& word)
 {
     tolower(word[0]);
 }

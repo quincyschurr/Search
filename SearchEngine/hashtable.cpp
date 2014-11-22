@@ -29,10 +29,9 @@ unsigned HashTable::hashKey(const char* word) {
 
 Word HashTable::searchTrees(string test) {
     int key = hashKey(test.c_str()) % count;
-
     return trees[key].returnWord1(test);
-
-
+    //AVLNode* root = trees[key].getRoot();
+    //string temp2 = trees[key].find(test);
 
 }
 
