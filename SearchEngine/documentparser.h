@@ -35,9 +35,8 @@ public:
     bool checkForPage(string& temp, Word*& x);
     bool checkForWord(string& temp);
     void getInput();
-    void makeLowerCase(char*&);
+    void makeLowerCase(string&);
     void stopWords();
-    char** splitWords(char* buffer, int size);
 };
 
 #endif // DOCUMENTPARSER_H

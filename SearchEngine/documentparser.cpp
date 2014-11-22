@@ -18,7 +18,7 @@ void DocumentParser::addPage(Page*& p)
 
 void DocumentParser::addWord(Word*& w)
 {
-    words.push_back(r);
+    words.push_back(w);
 }
 
 bool DocumentParser::checkForPage(string& temp, Word*& x)
@@ -129,19 +129,19 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    //Word* x = new Word();
-    for(int j = 0; j < test.size(); j++)
+    for(int j = 0; j < texts.size(); j++)
     {
         //need to make sure that it just doesn't add frequency to one page
         //but checks for words all over pages
         //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-        //testBuffer = texts[j];
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
+            makeLowerCase(temp);
             cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
             {
@@ -210,7 +210,7 @@ void DocumentParser::getInput() {
 
 }
 
-void DocumentParser::makeLowerCase(char *& word)
+void DocumentParser::makeLowerCase(string& word)
 {
     tolower(word[0]);
 }
