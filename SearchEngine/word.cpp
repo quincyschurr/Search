@@ -4,13 +4,6 @@ Word::Word()
 {
 }
 
-/*Word::Word(string word, int hashKey, int pageId)
-{
-    this->word = word;
-    this->hashKey = hashKey;
-    this->pageId = pageId;
-    this->frequency = 1;
-}*/
 
 Word::Word(string word, int pageId)
 {
@@ -18,34 +11,34 @@ Word::Word(string word, int pageId)
     this->pageId = pageId;
 }
 
-void Word::addFrequency(int pageId)
+void Word::addPages(int pageId)
 {
-    info[pageId] = frequency++;
+    pageIds.push_back(pageId);
 }
 
-int Word::getHashKey()
+void Word::addToMap(int pageId)
 {
-    return hashKey;
+    cout << "getting to insert function!" << endl;
+    int page = pageId;
+    int occurance = 1;
+    info[page] = occurance;
 }
+
 
 string Word::getWord() const
 {
     return word;
 }
 
-void Word::insertToMap(int pageId)
+int Word::getPageId() const
 {
-    cout << "getting to insert function!" << endl;
-    //iterator it;
-    //it = info.find(pageId);
-    /*if(info.find(pageId) == true)
-    {
-        info->addFrequency(pageId);
-    }
-    else
-    {
-        info.insert(pair<int, int> (pageId, frequency));
-    }*/
+    return pageId;
+}
+
+void Word::increaseFrequency(int pageId)
+{
+    info[pageId]++;
+    cout << info[pageId] << endl;
 }
 
 bool operator>(const Word& lhs, const Word& rhs)

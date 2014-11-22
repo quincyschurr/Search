@@ -11,24 +11,22 @@ class Word
 {
 private:
     string word;
-    int hashKey;
     int pageId;
+    vector <int> pageIds;
     int frequency;
     map <int, int> info;
 
 public:
-    void addFrequency(int pageId);
-    int getHashKey();
+    void addPages(int pageId);
+    void addToMap(int pageId);
     string getWord() const;
-    void insertToMap(int pageId);
-    //char* getHashWord(); //add functionality
+    int getPageId() const;
+    void increaseFrequency(int pageId);
 
     friend bool operator>(const Word& lhs, const Word& rhs);
     friend bool operator<(const Word& lhs, const Word& rhs);
 
     Word();
-    //this is the beginning constructor for when we have a hash table
-    //Word(string word, int hashKey, int pageId);
     Word(string word, int pageId);
     ~Word();
 };

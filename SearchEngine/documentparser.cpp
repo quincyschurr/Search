@@ -21,13 +21,25 @@ void DocumentParser::addWord(Word*& w)
 
 }
 
+bool DocumentParser::checkForWord(string& temp)
+{
+   //string compString = find(words.begin().getWord(), words.end().getWord(), temp);
+    for(int b = 0; b < words.size(); b++)
+    {
+        if(words[b]->getWord() == temp)
+            return true;
+    }
+
+    return false;
+}
+
 void DocumentParser::getInput() {
     //unordered hash map
 
 
     //might be faster
 
-    /*    xml_document<> doc;
+    /*  xml_document<> doc;
         xml_node<> * root_node;
         // Read the xml file into a vector
         ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml.xml");
@@ -83,9 +95,9 @@ void DocumentParser::getInput() {
 
 
     vector<char*> test;
-    test.push_back("this is another test string with char* references.");
-    test.push_back("why won't this function work?");
-    test.push_back("between able why becuase zero");
+    test.push_back("this is another test apples string with char* references.");
+    test.push_back("why won't this apples function work?");
+    test.push_back("between apples able why becuase apples zero work?");
 
     /*string temp = "";
 
@@ -112,29 +124,54 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
+    Word* x = new Word();
     for(int j = 0; j < test.size(); j++)
     {
-        cout << "THIS IS PAGE " << j+1 << endl;
+        //need to make sure that it just doesn't add frequency to one page
+        //but checks for words all over pages
+        //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
         testBuffer = test[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            //cout << "word = " << temp << endl;
+            cout << "word = " << temp << endl;
             if(sw->isStopWord(temp) == true)
             {
-                cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
+                //cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
             else
             {
-                cout << "STOP WORD IS FALSE" << endl;
-                size = temp.size();
+                //cout << "STOP WORD IS FALSE" << endl;
+
+                if(checkForWord(temp) == true)
+                {
+                    cout << "WORD ALREADY EXISTS" << endl;
+
+                    //check for page number, if page does exist
+                    //then add frequency to page map
+                    //if not add page to vector and incream frequency
+
+                    //x->increaseFrequency(ids[j]);
+                }
+                else
+                {
+                    Word* w = new Word(temp, ids[j]);
+                    w->addPages(int pageId);
+                    w->addToMap(ids[j]);
+                    words.push_back(w);
+                }
+
+
+                //to test the stemming
+                /*size = temp.size();
                 char* arr = new char[size];
                 strcpy(arr, temp.c_str());
                 arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
                 delete [] arr;
-                cout << "Now the word is " << temp << endl;
+                cout << "Now the word is " << temp << endl;*/
 
             }
         }
