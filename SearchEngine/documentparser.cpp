@@ -142,14 +142,13 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-<<<<<<< HEAD
+
             //Word* word = new Word()
             //addword(word)
             //cout << "word = " << temp << endl;
-=======
+
             makeLowerCase(temp);
             cout << "word = " << temp << endl;
->>>>>>> 13af26837496a091b91250ce675c4ca0937c490c
             if(sw->isStopWord(temp) == true)
             {
                 //cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
@@ -163,10 +162,6 @@ void DocumentParser::getInput() {
                 //addWord(r);
                 //this will create a vector of Word* that
                 //you can then use.
-
-
-
-
 
                 /*if(checkForWord(temp) == true)
                 {
