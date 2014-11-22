@@ -32,6 +32,7 @@ public:
 
     void addWord(Word*& w);
     void addPage(Page*& p);
+    bool checkForPage(string& temp, Word*& x);
     bool checkForWord(string& temp);
     void getInput();
     void makeLowerCase(char*&);

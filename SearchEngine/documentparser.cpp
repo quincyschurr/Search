@@ -18,6 +18,11 @@ void DocumentParser::addPage(Page*& p)
 
 void DocumentParser::addWord(Word*& w)
 {
+    words.push_back(r);
+}
+
+bool DocumentParser::checkForPage(string& temp, Word*& x)
+{
 
 }
 
@@ -124,7 +129,7 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    Word* x = new Word();
+    //Word* x = new Word();
     for(int j = 0; j < test.size(); j++)
     {
         //need to make sure that it just doesn't add frequency to one page
@@ -146,10 +151,21 @@ void DocumentParser::getInput() {
             {
                 //cout << "STOP WORD IS FALSE" << endl;
 
-                if(checkForWord(temp) == true)
+                //Use this to test the hashtable
+                //Word* r = new Word(temp, ids[j]);
+                //addWord(r);
+                //this will create a vector of Word* that
+                //you can then use.
+
+
+
+
+
+                /*if(checkForWord(temp) == true)
                 {
                     cout << "WORD ALREADY EXISTS" << endl;
-
+                    Word* x = new Word(temp, ids[j]);
+                    checkForPage(temp, x);
                     //check for page number, if page does exist
                     //then add frequency to page map
                     //if not add page to vector and incream frequency
@@ -159,10 +175,10 @@ void DocumentParser::getInput() {
                 else
                 {
                     Word* w = new Word(temp, ids[j]);
-                    w->addPages(int pageId);
+                    w->addPages(ids[j]);
                     w->addToMap(ids[j]);
                     words.push_back(w);
-                }
+                }*/
 
 
                 //to test the stemming
