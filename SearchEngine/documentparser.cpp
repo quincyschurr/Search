@@ -51,7 +51,7 @@ void DocumentParser::getInput() {
     /*  xml_document<> doc;
         xml_node<> * root_node;
         // Read the xml file into a vector
-        ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml.xml");
+        ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
         vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
         buffer.push_back('\0');
         // Parse the buffer using the xml file parsing library into doc
@@ -66,6 +66,13 @@ void DocumentParser::getInput() {
     std::string content(buffer.str());
     //cout << content << endl;
     doc.parse<0>(&content[0]);
+
+    /*ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
+    vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
+    buffer.push_back('\0');
+    // Parse the buffer using the xml file parsing library into doc
+    doc.parse<0>(&buffer[0]);*/
+
     xml_node<> * root_node;
     root_node = doc.first_node("mediawiki");
     xml_node<> * page_node;
@@ -98,15 +105,16 @@ void DocumentParser::getInput() {
         //sTemp = curText->value();
         texts.push_back(curText->value());
         //cout << curText->value() << endl << endl;
-        curPage = curPage->next_sibling();
+        curPage = curPage->next_sibling(); //maybe faster
+        makeLowerCase(texts[page-1]);
         page++;
     }
 
 
-    vector<char*> test;
+    /*vector<char*> test;
     test.push_back("this is another test apples string with char* references.");
     test.push_back("why won't this apples function work?");
-    test.push_back("between apples able why becuase apples zero work?");
+    test.push_back("between apples able why becuase apples zero work?");*/
 
     /*string temp = "";
 
@@ -146,13 +154,18 @@ void DocumentParser::getInput() {
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            makeLowerCase(temp);
-            cout << "word = " << temp << endl;
-            if(sw->isStopWord(temp) == true)
+
+            //Word* word = new Word()
+            //addword(word)
+            //cout << "word = " << temp << endl;
+
+            //makeLowerCase(temp); //dont use faster lowercase above
+            //word = " << temp << endl;
+            //if(sw->isStopWord(temp) == true)
             {
                 //cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
             }
-            else
+            //else
             {
                 //cout << "STOP WORD IS FALSE" << endl;
 
@@ -221,8 +234,9 @@ void DocumentParser::getInput() {
 }
 
 void DocumentParser::makeLowerCase(string& word)
-{
-    tolower(word[0]);
+{//maybe also use islower to save time
+    //tolower(word[0]);
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
 }
 
 Word* DocumentParser::returnWordObject(string& temp)

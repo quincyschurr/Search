@@ -518,8 +518,7 @@ main.o: ../SearchEngine/main.cpp ../SearchEngine/avltree.h \
 		../SearchEngine/documentparser.h \
 		../SearchEngine/page.h \
 		../SearchEngine/rapidxml_utils.hpp \
-		../SearchEngine/rapidxml.hpp \
-		../SearchEngine/Stemmer.h
+		../SearchEngine/rapidxml.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SearchEngine/main.cpp
 
 userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface.h \
@@ -528,8 +527,7 @@ userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface
 		../SearchEngine/page.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/rapidxml_utils.hpp \
-		../SearchEngine/rapidxml.hpp \
-		../SearchEngine/Stemmer.h
+		../SearchEngine/rapidxml.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userinterface.o ../SearchEngine/userinterface.cpp
 
 documentparser.o: ../SearchEngine/documentparser.cpp ../SearchEngine/documentparser.h \
@@ -537,8 +535,7 @@ documentparser.o: ../SearchEngine/documentparser.cpp ../SearchEngine/documentpar
 		../SearchEngine/page.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/rapidxml_utils.hpp \
-		../SearchEngine/rapidxml.hpp \
-		../SearchEngine/Stemmer.h
+		../SearchEngine/rapidxml.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o documentparser.o ../SearchEngine/documentparser.cpp
 
 word.o: ../SearchEngine/word.cpp ../SearchEngine/word.h

@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
     //to test if the stopWords are added to a file
     //ifstream fin(argv[2]);
-    UserInterface* n = new UserInterface();
+    UserInterface* n = new UserInterface(); //START
     n->startProgram();//maybe need to add an ifstream to this
     //StopWord* y = new StopWord(fin);
     //y->createArray(fin);
