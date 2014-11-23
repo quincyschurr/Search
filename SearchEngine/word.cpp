@@ -18,7 +18,6 @@ void Word::addPages(int pageId)
 
 void Word::addToMap(int pageId)
 {
-    cout << "getting to insert function!" << endl;
     int page = pageId;
     int occurance = 1;
     info[page] = occurance;
@@ -38,7 +37,6 @@ int Word::getPageId() const
 void Word::increaseFrequency(int pageId)
 {
     info[pageId]++;
-    cout << info[pageId] << endl;
 }
 
 bool Word::lookForPage(int page)

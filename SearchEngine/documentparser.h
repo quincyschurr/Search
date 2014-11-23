@@ -23,15 +23,11 @@ class DocumentParser
 private:
     vector <Page*> pages;
     vector <Word*> words;
-    ifstream fin;
 
 public:
     DocumentParser();
-    DocumentParser(ifstream& fin);
     ~DocumentParser();
 
-    void addWord(Word*& w);
-    void addPage(Page*& p);
     bool checkForPage(int page, Word*& x);
     bool checkForWord(string& temp);
     void getInput();

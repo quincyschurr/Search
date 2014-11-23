@@ -9,18 +9,6 @@ DocumentParser::DocumentParser()
 
 }
 
-
-void DocumentParser::addPage(Page*& p)
-{
-       //causes error
-     //pages.push_back(p);
-}
-
-void DocumentParser::addWord(Word*& w)
-{
-    words.push_back(w);
-}
-
 bool DocumentParser::checkForPage(int page, Word*& x)
 {
     if(x->lookForPage(page) == true)
@@ -58,8 +46,10 @@ void DocumentParser::getInput() {
         doc.parse<0>(&buffer[0]);*/
         // Find our root node
     xml_document<> doc;
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+
     std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
@@ -111,29 +101,10 @@ void DocumentParser::getInput() {
     }
 
 
-    vector<char*> test;
-    test.push_back("this is another test apples string with char* references.");
-    test.push_back("why won't this apples function work?");
-    test.push_back("between apples able why becuase apples zero work?");
-
-    /*string temp = "";
-
-    for(int k = 0; k < test.size(); k++)
-    {
-        char* testBuffer = new char[51];
-        strcpy(testBuffer, test[k]);
-        stringstream ss(testBuffer);
-        while (ss >> temp)
-        {
-            cout << "word = " << temp << endl;
-        }
-
-
-        //add makelowerCaser, stop word, then stemmer, then add to word
-
-        //end loop with
-        //temp = "";
-    }*/
+    //vector<char*> test;
+    //test.push_back("this is apples another test apples string with apples");
+    //test.push_back("why won't this apples function apples work?");
+    //test.push_back("between apples able why becuase apples zero work?");
 
     StopWord* sw = new StopWord();
     //add hashTable
@@ -142,32 +113,30 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < test.size(); j++)
+    for(int j = 0; j < texts.size(); j++)
     {
         //need to make sure that it just doesn't add frequency to one page
         //but checks for words all over pages
         //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-        //testBuffer = texts[j];
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
 
-            //Word* word = new Word()
-            //addword(word)
-            cout << "word = " << temp << endl;
+            //cout << "word = " << temp << endl;
 
             //makeLowerCase(temp); //dont use faster lowercase above
-            //word = " << temp << endl;
+            transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
             if(sw->isStopWord(temp) == true)
             {
-                cout << "STOP WORD IS TRUE!!!!!!!!!!" << endl;
+                //don't need to do anything
             }
             else
             {
-                cout << "STOP WORD IS FALSE" << endl;
+                //cout << "STOP WORD IS FALSE" << endl;
 
                 //Use this to test the hashtable
                 //Word* r = new Word(temp, ids[j]);
@@ -176,24 +145,20 @@ void DocumentParser::getInput() {
                 //you can then use.
 
 
-                /*if(checkForWord(temp) == true)
+                if(checkForWord(temp) == true)
                 {
-                    cout << "WORD ALREADY EXISTS" << endl;
-                    //find the word object that already exists for word
-                    Word* x = returnWordObject(temp);
+                    //cout << "WORD ALREADY EXISTS" << endl;
+                    Word* x = returnWordObject(temp);//This returns the correct Word object
                     if(checkForPage(ids[j], x) == true)
                     {
-
+                        x->increaseFrequency(ids[j]);
                     }
                     else
                     {
-
+                        x->addPages(ids[j]);
+                        x->addToMap(ids[j]);
                     }
-                    //check for page number, if page does exist
-                    //then add frequency to page map
-                    //if not add page to vector and incream frequency
 
-                    //x->increaseFrequency(ids[j]);
                 }
                 else
                 {
@@ -201,42 +166,30 @@ void DocumentParser::getInput() {
                     w->addPages(ids[j]);
                     w->addToMap(ids[j]);
                     words.push_back(w);
-                }*/
+                }
 
 
                 //to test the stemming
-                /*size = temp.size();
-                char* arr = new char[size];
-                strcpy(arr, temp.c_str());
-                arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
-                delete [] arr;
-                cout << "Now the word is " << temp << endl;*/
+                //size = temp.size();
+                //char* arr = new char[size];
+                //strcpy(arr, temp.c_str());
+                //arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
+                //delete [] arr;
+                //cout << "Now the word is " << temp << endl;*/
 
             }
         }
-    }
 
-
-    /*for(int i = 0; i < titles.size(); i++)
-    {
-        cout << "page " << i+1 << endl;
-        cout << titles[i] << endl;
-        cout << ids[i] << endl;
-        cout << texts[i] << endl << endl;
-    }*/
-
-    /*for(int j = 0; j < page-1; j++)
-    {
         Page* p = new Page(titles[j], ids[j], texts[j]);
-        addPage(p);
-    }*/
+        pages.push_back(p);
+    }
 
 }
 
 void DocumentParser::makeLowerCase(string& word)
 {//maybe also use islower to save time
     //tolower(word[0]);
-    transform(word.begin(), word.end(), word.begin(), ::tolower);
+    //transform(word.begin(), word.end(), word.begin(), ::tolower);
 }
 
 Word* DocumentParser::returnWordObject(string& temp)

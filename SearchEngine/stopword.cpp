@@ -18,11 +18,15 @@ void StopWord::createArray()
 
 bool StopWord::isStopWord(const string& testWord)
 {
-    if(find(stWordArray.begin(), stWordArray.end(), testWord) == stWordArray.end())
-        return false;
-    else
+    if(binary_search(stWordArray.begin(), stWordArray.end(), testWord))
         return true;
+    else
+        return false;
 
+    /*if(find(stWordArray.begin(), stWordArray.end(), testWord) == stWordArray.end())
+        return false;//means that the word wasn't found
+    else
+        return true;*/
 }
 
 
