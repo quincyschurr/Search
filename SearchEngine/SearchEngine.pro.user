@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 3.2.0, 2014-11-23T14:29:41. -->
-=======
-<!-- Written by QtCreator 3.1.2, 2014-11-23T14:04:07. -->
->>>>>>> b5ff3b7c548d04f14cce65e5784a6ce70f8b050f
+<!-- Written by QtCreator 3.2.0, 2014-11-23T16:44:19. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -69,11 +65,7 @@
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
-<<<<<<< HEAD
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/Users/Jake/Desktop/xmls</value>
-=======
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/Users/quincyschurr/Documents/SMUsophomore/Search/build-SearchEngine-Desktop_Qt_5_3_clang_64bit-Debug</value>
->>>>>>> b5ff3b7c548d04f14cce65e5784a6ce70f8b050f
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">/Users/Jake/Desktop/search/build-SearchEngine-Desktop_Qt_5_3_clang_64bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -243,15 +235,9 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">SearchEngine</value>
-<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">SearchEngine2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/Jake/Desktop/search/SearchEngine/SearchEngine.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">output.txt</value>
-=======
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/quincyschurr/Documents/SMUsophomore/Search/SearchEngine/SearchEngine.pro</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
->>>>>>> b5ff3b7c548d04f14cce65e5784a6ce70f8b050f
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">SearchEngine.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">true</value>

@@ -13,8 +13,9 @@ Word::Word(string word, int pageId)
 
 void Word::addPages(int pageId)
 {
-    pages.insert(pageId);
+    //pages.insert(pageId);
     //pageIds.push_back(pageId);
+    pages.push_back(pageId);
 }
 
 void Word::addToMap(int pageId)
@@ -42,7 +43,12 @@ void Word::increaseFrequency(int pageId)
 
 bool Word::lookForPage(int page)
 {
-    if(pages.search(page, pages.getRoot()) == true)
+    /*if(pages.search(page, pages.getRoot()) == true)
+        return true;
+    else
+        return false;*/
+
+    if(binary_search(pages.begin(), pages.end(), page)) //might have to return false
         return true;
     else
         return false;
@@ -82,6 +88,30 @@ bool operator==(const Word& lhs, const Word& rhs)
     else
         return false;
 }
+
+/*bool operator>(const Word& lhs, const Word& rhs)
+{
+    if(strcmp(lhs.getWord(), rhs.getWord()) > 0)
+        return true;
+    else
+        return false;
+}
+
+bool operator<(const Word& lhs, const Word& rhs)
+{
+    if(strcmp(lhs.getWord(), rhs.getWord()) < 0)
+        return true;
+    else
+        return false;
+}
+
+bool operator==(const Word& lhs, const Word& rhs)
+{
+    if(strcmp(lhs.getWord(), rhs.getWord()) == 0)
+        return true;
+    else
+        return false;
+}*/
 
 
 Word::~Word()

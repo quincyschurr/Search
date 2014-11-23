@@ -4,7 +4,8 @@
 #include <string>
 #include <map>
 #include <iostream>
-#include "avltree.h"
+#include <cstring>
+#include <algorithm>
 
 using namespace std;
 
@@ -13,7 +14,8 @@ class Word
 private:
     string word;
     int pageId;
-    AVLTree <int> pages;
+    //AVLTree <int> pages;
+    vector <int> pages;
     //vector <int> pageIds;
     int frequency;
     map <int, int> info;
@@ -26,9 +28,9 @@ public:
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
 
-    friend bool operator>(const Word& lhs, const Word& rhs);
-    friend bool operator<(const Word& lhs, const Word& rhs);
-    friend bool operator==(const Word& lhs, const Word& rhs);
+    friend bool operator>(const string& lhs, const Word& rhs);
+    friend bool operator<(const string& lhs, const Word& rhs);
+    friend bool operator==(const string& lhs, const Word& rhs);
 
 
     Word();
