@@ -136,13 +136,14 @@ void DocumentParser::getInput() {
             }
             else
             {
-                //cout << "STOP WORD IS FALSE" << endl;
 
-                //Use this to test the hashtable
-                //Word* r = new Word(temp, ids[j]);
-                //addWord(r);
-                //this will create a vector of Word* that
-                //you can then use.
+                //to test the stemming
+                //size = temp.size();
+                //char* arr = new char[size];
+                //strcpy(arr, temp.c_str());
+                //arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
+                //delete [] arr;
+                //cout << "Now the word is " << temp << endl;*/
 
 
                 if(checkForWord(temp) == true)
@@ -167,15 +168,6 @@ void DocumentParser::getInput() {
                     w->addToMap(ids[j]);
                     words.push_back(w);
                 }
-
-
-                //to test the stemming
-                //size = temp.size();
-                //char* arr = new char[size];
-                //strcpy(arr, temp.c_str());
-                //arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
-                //delete [] arr;
-                //cout << "Now the word is " << temp << endl;*/
 
             }
         }
