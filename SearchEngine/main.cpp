@@ -18,45 +18,41 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-
-    //to test if the stopWords are added to a file
-    //ifstream fin(argv[2]);
     UserInterface* n = new UserInterface(); //START
     n->startProgram();//maybe need to add an ifstream to this
-    //StopWord* y = new StopWord(fin);
-    //y->createArray(fin);
-    //ifstream fin(argv[2]);
-    //StopWord* y = new StopWord();
-    //y->createArray(fin);
-
-
-    //to test the Word class
-    //Word* tester = new Word("something", 3456);
-    //tester->insertToMap(3456);
-    //tester->insertToMap(3456);
 
     //use prime number as table size for hash table
 
     /*ofstream fout(argv[1]);
-    AVLTree<string> test;
-    test.insert("ckels");
-    test.insert("abels");
-    test.insert("zeleb");
-    test.insert("dekls");
-    test.insert("lenent");
-    test.insert("apple");
-    test.insert("bannana");
-    test.insert("pineapple");
-    test.insert("watermelon");
-    test.insert("orange");
-    test.insert("zebra");
-    test.insert("giraffe");
-    test.insert("wembly");
-    test.insert("lelsne");
-    test.insert("poeple");
-    test.insert("sdfeeih");
-    test.insert("unsdd");
-    test.insert("umbrella");
+    AVLTree<int> test;
+    test.insert(6);
+    test.insert(34);
+    test.insert(29);
+    test.insert(52);
+    test.insert(79);
+    test.insert(12);
+    test.insert(7);
+    test.insert(45);
+    test.insert(67);
+    test.insert(100);
+    test.insert(6);
+    test.insert(99);
+    test.insert(80);
+    test.insert(78);
+    test.insert(82);
+    test.insert(83);
+    test.insert(41);
+    test.insert(94);
+
+    int searchString = 53;
+    if(test.search(searchString, test.getRoot()) == true)
+    {
+        cout << "The item was found" << endl;
+    }
+
+    else
+        cout << "The item was not found" << endl;
+
 
     test.print(fout);*/
 

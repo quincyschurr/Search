@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include "avltree.h"
 
 using namespace std;
 
@@ -12,7 +13,8 @@ class Word
 private:
     string word;
     int pageId;
-    vector <int> pageIds;
+    AVLTree <int> pages;
+    //vector <int> pageIds;
     int frequency;
     map <int, int> info;
 

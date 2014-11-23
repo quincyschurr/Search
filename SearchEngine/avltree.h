@@ -186,10 +186,26 @@ public:
         rotateWithRightChild(k2);
     }
 
+
     void print(ostream& out) const
     {
         out << "ROOT " << root->element << endl;
         print(out, root);
+    }
+
+    bool search (T& x, AVLNode* root)
+    {
+        if(root == NULL)
+            return false;
+        else if(x == root->element)
+            return true;
+        else if(x < root->element)
+            return search(x, root->left);
+        else if(x > root->element)
+            return search(x, root->right);
+        else
+            return false;
+
     }
 
     ~AVLTree()
@@ -225,7 +241,8 @@ public:
             return false;
     }
 
-    AVLNode * getRoot() {
+    AVLNode* getRoot()
+    {
         return root;
     }
 };
