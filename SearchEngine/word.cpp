@@ -75,6 +75,14 @@ bool operator<(const Word& lhs, const Word& rhs)
         return false;
 }
 
+bool operator==(const string lhs, const Word& rhs)
+{
+    if(lhs == rhs.getWord())
+        return true;
+    else
+        return false;
+}
+
 Word::~Word()
 {
 

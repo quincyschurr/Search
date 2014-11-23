@@ -4,6 +4,7 @@
 #include "word.h"
 #include "page.h"
 #include "stopword.h"
+#include "avltree.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
 #include <vector>
@@ -24,12 +25,14 @@ class DocumentParser
 private:
     vector <Page*> pages;
     vector <Word*> words;
+    AVLTree <Word*> wordAVL;
 
 public:
     DocumentParser();
     ~DocumentParser();
 
     bool checkForWord(string& temp);
+    bool checkForWord(Word*& temp);
     void getInput();
     void makeLowerCase(string&);
     Word* returnWordObject(string&);

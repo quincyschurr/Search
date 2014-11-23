@@ -10,8 +10,21 @@ DocumentParser::DocumentParser()
 
 }
 
+bool DocumentParser::checkForWord(Word*& temp)
+{
+    if(wordAVL.search(temp, wordAVL.getRoot()) == true)
+        return true;
+    else
+        return false;
+}
+
 bool DocumentParser::checkForWord(string& temp)
 {
+    /*if(wordAVL.search(temp, wordAVL.getRoot()) == true)
+        return true;
+    else
+        return false;*/
+
    //I think we can optimize this but I don't know how becuase find doesn't work
     for(int b = 0; b < words.size(); b++)
     {
@@ -142,8 +155,37 @@ void DocumentParser::getInput() {
                 {
 
                 }
-                else if(checkForWord(temp) == true)
+
+                else
                 {
+                    Word* x = returnWordObject(temp);
+                    if(checkForWord(x) == true)
+                    {
+                        cout << temp << endl;
+                        if(x->lookForPage(page) == true)
+                        {
+                            x->increaseFrequency(ids[j]);
+                        }
+                        else
+                        {
+                            x->addPages(ids[j]);
+                            x->addToMap(ids[j]);
+                        }
+
+                    }
+
+                    else
+                    {
+                        x->addPages(ids[j]);
+                        x->addToMap(ids[j]);
+                        wordAVL.insert(x);
+                    }
+                }
+
+
+                /*else if(checkForWord(temp) == true)
+                {
+                    cout << temp << endl;
                     //cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = returnWordObject(temp);//This returns the correct Word object
                     if(x->lookForPage(page) == true)
@@ -161,7 +203,8 @@ void DocumentParser::getInput() {
                     w->addPages(ids[j]);
                     w->addToMap(ids[j]);
                     words.push_back(w);
-                }
+                    //wordAVL.insert(w);
+                }*/
 
             }
         }
@@ -180,12 +223,15 @@ void DocumentParser::makeLowerCase(string& word)
 
 Word* DocumentParser::returnWordObject(string& temp)
 {
-    for(int m = 0; m < words.size(); m++)
+
+    Word* v = wordAVL.returnWord1(temp);
+    return v;
+
+    /*for(int m = 0; m < words.size(); m++)
     {
         if(words[m]->getWord() == temp)
             return words[m];
-    }
-    //return NULl;
+    }*/
 
 }
 

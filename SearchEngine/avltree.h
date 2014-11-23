@@ -88,15 +88,15 @@ private:
         {
             throw(strerror);
         }
-        else if(test == root->element.getWord())
+        else if(test == root->element)
         {
             return root->element;
         }
-        else if(test < root->element.getWord())
+        else if(test < root->element)
         {
             return returnWord(test, root->left);
         }
-        else if(test > root->element.getWord())
+        else if(test > root->element)
         {
             return returnWord(test, root->right);
         }
