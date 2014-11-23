@@ -130,7 +130,7 @@ public:
 
     T& returnWord1(string test)
     {
-        //return returnWord(test, root);
+        return returnWord(test, root);
     }
 
 
