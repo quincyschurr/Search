@@ -82,7 +82,7 @@ private:
         }
     }
 
-    T& returnWord(string test, AVLNode* root)
+    T& returnWord(string& test, AVLNode* root)
     {
         if(root == NULL)
         {
