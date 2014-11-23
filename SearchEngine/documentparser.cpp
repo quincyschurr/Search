@@ -52,8 +52,8 @@ void DocumentParser::getInput() {
         // Find our root node
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -106,10 +106,10 @@ void DocumentParser::getInput() {
     }
 
 
-    vector<char*> test;
+    /*vector<char*> test;
     test.push_back("this is running apples anot/her te?sting apples string with apples");
     test.push_back("why w\on't this apples. !functioning apples work?");
-    test.push_back("between apples ab%l*e why becuase apples zero work?");
+    test.push_back("between apples ab%l*e why becuase apples zero work?");*/
 
     StopWord* sw = new StopWord();
     //add hashTable
@@ -133,13 +133,13 @@ void DocumentParser::getInput() {
 
             //cout << "word = " << temp << endl;
 
-            //makeLowerCase(temp); //dont use faster lowercase above
-            transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
-            if(sw->isStopWord(temp) == true)
+            //makeLowerCase(temp); //dont use, faster lowercase above
+            //transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
+            //if(sw->isStopWord(temp) == true)
             {
                 //don't need to do anything
             }
-            else
+            //else
             {
 
                 char* arr = (char*)temp.c_str();
@@ -218,7 +218,7 @@ void DocumentParser::getInput() {
 void DocumentParser::makeLowerCase(string& word)
 {//islower would take longer, more comparisons
     //tolower(word[0]);
-    //transform(word.begin(), word.end(), word.begin(), ::tolower);
+    transform(word.begin(), word.end(), word.begin(), ::tolower);
 }
 
 Word* DocumentParser::returnWordObject(string& temp)
