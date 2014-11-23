@@ -130,8 +130,7 @@ public:
 
     T& returnWord1(string test)
     {
-        return returnWord(test, root);
-
+        //return returnWord(test, root);
     }
 
 
@@ -217,7 +216,8 @@ public:
     }
 
     friend bool operator> (const string& lhs, const string& rhs) {
-        if(strcmp(lhs.c_str(), rhs.c_str()) > 0) {
+        if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
+        {
             return true;
         }
         else
@@ -225,7 +225,8 @@ public:
 
     }
 
-    friend bool operator< (const string& lhs, const string& rhs) {
+    friend bool operator< (const string& lhs, const string& rhs)
+    {
         if(strcmp(lhs.c_str(), rhs.c_str()) < 0) {
             return true;
         }
@@ -233,8 +234,10 @@ public:
             return false;
     }
 
-    friend bool operator==(const string& lhs, const string& rhs) {
-        if(strcmp(lhs.c_str(), rhs.c_str()) == 0) {
+    friend bool operator==(const string& lhs, const string& rhs)
+    {
+        if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
+        {
             return true;
         }
         else
