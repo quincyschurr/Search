@@ -67,6 +67,7 @@ bool operator>(const Word& lhs, const Word& rhs)
         return false;
 }
 
+
 bool operator<(const Word& lhs, const Word& rhs)
 {
     if(lhs.getWord() < rhs.getWord())

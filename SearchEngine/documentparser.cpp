@@ -132,8 +132,6 @@ void DocumentParser::getInput() {
         {
 
             //cout << "word = " << temp << endl;
-
-            //makeLowerCase(temp); //dont use, faster lowercase above
             transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
             if(sw->isStopWord(temp) == true)
             {
