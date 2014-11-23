@@ -59,7 +59,7 @@ bool Word::lookForPage(int page)
     return false;*/
 }
 
-bool operator>(const string& lhs, const Word*& rhs)
+bool operator>(const Word& lhs, const Word& rhs)
 {
     if(lhs.getWord() > rhs.getWord())
         return true;
@@ -67,7 +67,7 @@ bool operator>(const string& lhs, const Word*& rhs)
         return false;
 }
 
-bool operator<(const string& lhs, const Word*& rhs)
+bool operator<(const Word& lhs, const Word& rhs)
 {
     if(lhs.getWord() < rhs.getWord())
         return true;
@@ -75,13 +75,6 @@ bool operator<(const string& lhs, const Word*& rhs)
         return false;
 }
 
-bool operator==(string& lhs, const Word*& rhs)
-{
-    if(lhs == rhs->getWord())
-        return true;
-    else
-        return false;
-}
 
 Word::~Word()
 {

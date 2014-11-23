@@ -28,7 +28,7 @@ public:
 
     friend bool operator>(const string& lhs, const Word*& rhs);
     friend bool operator<(const string& lhs, const Word*& rhs);
-    friend bool operator==(string& lhs, const Word*& rhs);
+
 
     Word();
     Word(string word, int pageId);
