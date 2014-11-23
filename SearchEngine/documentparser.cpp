@@ -52,8 +52,8 @@ void DocumentParser::getInput() {
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -134,12 +134,12 @@ void DocumentParser::getInput() {
             //cout << "word = " << temp << endl;
 
             //makeLowerCase(temp); //dont use, faster lowercase above
-            //transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
-            //if(sw->isStopWord(temp) == true)
+            transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
+            if(sw->isStopWord(temp) == true)
             {
                 //don't need to do anything
             }
-            //else
+            else
             {
 
                 char* arr = (char*)temp.c_str();
