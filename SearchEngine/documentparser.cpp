@@ -138,7 +138,7 @@ void DocumentParser::getInput() {
                 //attempt to remove punctuation
                 temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
 
-                if(temp == "")
+                if(temp == "" || temp == "•" || temp.size() == 1)
                 {
 
                 }
