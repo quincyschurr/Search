@@ -17,7 +17,7 @@ HashTable::~HashTable() {
 void HashTable::addWord(Word& w) {
     string test = w.getWord();
     int key = hashKey(test.c_str()) % count;
-    trees[key].insert(w);
+    //trees[key].insert(w);
 }
 
 unsigned HashTable::hashKey(const char* word) {
