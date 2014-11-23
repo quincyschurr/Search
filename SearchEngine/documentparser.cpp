@@ -52,8 +52,8 @@ void DocumentParser::getInput() {
         // Find our root node
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -139,7 +139,7 @@ void DocumentParser::getInput() {
             {
                 //don't need to do anything
             }
-            else
+            //else
             {
 
                 char* arr = (char*)temp.c_str();
