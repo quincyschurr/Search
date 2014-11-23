@@ -82,7 +82,7 @@ private:
         }
     }
 
-    T& returnWord(string& test, AVLNode* root)
+    T& returnWord(string& test, AVLNode*& root)
     {
         if(root == NULL)
         {
@@ -90,7 +90,7 @@ private:
         }
         else if(test == root->element)
         {
-            return root->element;
+            return root->element;//this should be returning a Word object
         }
         else if(test < root->element)
         {
@@ -209,9 +209,6 @@ public:
 
     ~AVLTree()
     {
-        //clear the tree
-        //deallocate
-
         delete root;
     }
 
