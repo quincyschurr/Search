@@ -26,8 +26,9 @@ public:
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
 
-    friend bool operator>(const string& lhs, const Word*& rhs);
-    friend bool operator<(const string& lhs, const Word*& rhs);
+    friend bool operator>(const Word& lhs, const Word& rhs);
+    friend bool operator<(const Word& lhs, const Word& rhs);
+    friend bool operator==(const Word& lhs, const Word& rhs);
 
 
     Word();

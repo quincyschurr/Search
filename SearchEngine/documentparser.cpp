@@ -52,8 +52,8 @@ void DocumentParser::getInput() {
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     //chrono::time_point<chrono::system_clock> start, end;
     //start = chrono::system_clock::now();
@@ -170,7 +170,7 @@ void DocumentParser::getInput() {
 
                 }
 
-                /*else
+                else
                 {
                     Word* x = returnWordObject(temp);
                     if(checkForWord(x) == true)
@@ -194,10 +194,10 @@ void DocumentParser::getInput() {
                         x->addToMap(ids[j]);
                         wordAVL.insert(x);
                     }
-                }*/
+                }
 
 
-                else if(checkForWord(temp) == true)
+                /*else if(checkForWord(temp) == true)
                 {
                     //cout << temp << endl;
                     //cout << "WORD ALREADY EXISTS" << endl;
@@ -218,7 +218,7 @@ void DocumentParser::getInput() {
                     w->addToMap(ids[j]);
                     words.push_back(w);
                     //wordAVL.insert(w);
-                }
+                }*/
 
             }
         }
@@ -238,14 +238,14 @@ void DocumentParser::makeLowerCase(string& word)
 Word* DocumentParser::returnWordObject(string& temp)
 {
 
-    //Word* v = wordAVL.returnWord1(temp);
-    //return v;
+    Word* v = wordAVL.returnWord1(temp);
+    return v;
 
-    for(int m = 0; m < words.size(); m++)
+    /*for(int m = 0; m < words.size(); m++)
     {
         if(words[m]->getWord() == temp)
             return words[m];
-    }
+    }*/
 
 }
 
