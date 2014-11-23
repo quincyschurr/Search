@@ -1,3 +1,4 @@
+a
 able
 about
 above
@@ -118,6 +119,7 @@ c's
 currently
 dare
 daren't
+day
 definitely
 described
 despite
@@ -186,12 +188,14 @@ furthermore
 get
 gets
 getting
+give
 given
 gives
 go
 goes
 going
 gone
+good
 got
 gotten
 greetings
@@ -231,6 +235,7 @@ how
 howbeit
 however
 hundred
+i
 i'd
 ie
 if
@@ -387,6 +392,7 @@ particularly
 past
 per
 perhaps
+person
 placed
 please
 plus
@@ -522,6 +528,7 @@ throughout
 thru
 thus
 till
+time
 to
 together
 too
@@ -621,6 +628,7 @@ wonder
 won't
 would
 wouldn't
+year
 yes
 yet
 you

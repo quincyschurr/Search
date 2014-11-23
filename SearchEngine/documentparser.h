@@ -6,12 +6,13 @@
 #include "stopword.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
-#include "Stemmer.h"
 #include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <cctype>
+#include <algorithm>
 #include <cstdlib>
 #include <map>
 
@@ -28,7 +29,6 @@ public:
     DocumentParser();
     ~DocumentParser();
 
-    bool checkForPage(int page, Word*& x);
     bool checkForWord(string& temp);
     void getInput();
     void makeLowerCase(string&);

@@ -9,7 +9,7 @@ StopWord::StopWord()
 void StopWord::createArray()
 {
     ifstream fin("stopWords.txt");
-    for(int i = 0; i < 635; i++)
+    for(int i = 0; i < 643; i++)
     {
         fin >> inputWord;
         stWordArray.push_back(inputWord);

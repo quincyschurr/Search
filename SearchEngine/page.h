@@ -7,16 +7,14 @@ using namespace std;
 class Page
 {
 private:
-    string text;
     int id;
     string title;
 public:
     int getId();
     string getTitle();
-    string getText();
 
     Page();
-    Page(string title, int id, string text);
+    Page(string title, int id);
     ~Page();
 };
 

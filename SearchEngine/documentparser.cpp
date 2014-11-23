@@ -1,5 +1,6 @@
 #include "documentparser.h"
 #include <sstream>
+#include <./porterstem.h>
 
 using namespace std;
 using namespace rapidxml;
@@ -9,18 +10,9 @@ DocumentParser::DocumentParser()
 
 }
 
-bool DocumentParser::checkForPage(int page, Word*& x)
-{
-    if(x->lookForPage(page) == true)
-        return true;
-    else
-        return false;
-
-}
-
 bool DocumentParser::checkForWord(string& temp)
 {
-   //string compString = find(words.begin().getWord(), words.end().getWord(), temp);
+   //I think we can optimize this but I don't know how becuase find doesn't work
     for(int b = 0; b < words.size(); b++)
     {
         if(words[b]->getWord() == temp)
@@ -47,8 +39,8 @@ void DocumentParser::getInput() {
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -101,10 +93,10 @@ void DocumentParser::getInput() {
     }
 
 
-    //vector<char*> test;
-    //test.push_back("this is apples another test apples string with apples");
-    //test.push_back("why won't this apples function apples work?");
-    //test.push_back("between apples able why becuase apples zero work?");
+    vector<char*> test;
+    test.push_back("this is running apples anot/her te?sting apples string with apples");
+    test.push_back("why w\on't this apples. !functioning apples work?");
+    test.push_back("between apples ab%l*e why becuase apples zero work?");
 
     StopWord* sw = new StopWord();
     //add hashTable
@@ -137,23 +129,25 @@ void DocumentParser::getInput() {
             else
             {
 
-                //to test the stemming
-                //size = temp.size();
-                //char* arr = new char[size];
-                //strcpy(arr, temp.c_str());
-                //arr[stem(arr, 0, strlen(arr) - 1)] = '\0';
-                //delete [] arr;
-                //cout << "Now the word is " << temp << endl;*/
+                char* arr = (char*)temp.c_str();
+                int x = stem(arr, 0, strlen(arr)-1);
+                arr[x+1] = '\0';
+                temp = arr;
 
 
-                if(checkForWord(temp) == true)
+                //attempt to remove punctuation
+                temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
+
+                if(temp == "")
+                {
+
+                }
+                else if(checkForWord(temp) == true)
                 {
                     //cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = returnWordObject(temp);//This returns the correct Word object
-                    if(checkForPage(ids[j], x) == true)
-                    {
+                    if(x->lookForPage(page) == true)
                         x->increaseFrequency(ids[j]);
-                    }
                     else
                     {
                         x->addPages(ids[j]);
@@ -172,14 +166,14 @@ void DocumentParser::getInput() {
             }
         }
 
-        Page* p = new Page(titles[j], ids[j], texts[j]);
+        Page* p = new Page(titles[j], ids[j]);
         pages.push_back(p);
     }
 
 }
 
 void DocumentParser::makeLowerCase(string& word)
-{//maybe also use islower to save time
+{//islower would take longer, more comparisons
     //tolower(word[0]);
     //transform(word.begin(), word.end(), word.begin(), ::tolower);
 }

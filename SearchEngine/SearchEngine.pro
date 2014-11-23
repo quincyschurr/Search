@@ -35,5 +35,5 @@ HEADERS += \
     rapidxml_utils.hpp \
     rapidxml.hpp \
     indexhandler.h \
-    Stemmer.h \
-    hashtable.h
+    hashtable.h \
+    porterstem.h
