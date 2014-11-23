@@ -55,12 +55,26 @@ void DocumentParser::getInput() {
     std::ifstream file("smallwiki.xml");
     //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
+    //chrono::time_point<chrono::system_clock> start, end;
+    //start = chrono::system_clock::now();
+
     std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
     std::string content(buffer.str());
     //cout << content << endl;
-    doc.parse<0>(&content[0]);
+    doc.parse<0>(&content[0]); //parse_fastest
+
+
+    //rapidxml::file<> xmlFile("enwikibooks-20141026-pages-meta-current.xml"); //maybe faster
+    //doc.parse<0>(xmlFile.data());
+
+    //end = chrono::system_clock::now();
+    //chrono::duration<double> elapsed_seconds = end - start;
+    //time_t end_time = chrono::system_clock::to_time_t(end);
+
+    //cout << "Finished computation at " << ctime(&end_time) << endl;
+    //cout << "Elapsed time: " << elapsed_seconds.count() << "s\n";
 
     /*ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
     vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
@@ -183,7 +197,7 @@ void DocumentParser::getInput() {
 
                 /*else if(checkForWord(temp) == true)
                 {
-                    cout << temp << endl;
+                    //cout << temp << endl;
                     //cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = returnWordObject(temp);//This returns the correct Word object
                     if(x->lookForPage(page) == true)

@@ -9,6 +9,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+#include "word.h"
 using namespace std;
 
 //good website for the traversal
@@ -84,19 +85,20 @@ private:
 
     T& returnWord(string& test, AVLNode*& root)
     {
-        if(root == NULL)
+        if(root == NULL) //COMMENT
         {
             throw(strerror);
         }
-        else if(test == root->element)
+        //else if(test == root->element->getWord())
+        else if(std::strcmp(test.c_str(), root->element->getWord().c_str()))
         {
             return root->element;//this should be returning a Word object
         }
-        else if(test < root->element)
+        //else if(test < root->element.getWord())
         {
             return returnWord(test, root->left);
         }
-        else if(test > root->element)
+        //else if(test > root->element)
         {
             return returnWord(test, root->right);
         }
@@ -212,9 +214,12 @@ public:
         delete root;
     }
 
-    friend bool operator> (const string& lhs, const string& rhs)
+    //friend bool operator> (const string& lhs, const string& rhs)
+    //{
+        //if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
+    friend bool operator> (const string& lhs, const Word& rhs)
     {
-        if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
+        if(strcmp(lhs.c_str(), rhs.getWord().c_str()) > 0)
         {
             return true;
         }
@@ -223,9 +228,9 @@ public:
 
     }
 
-    friend bool operator< (const string& lhs, const string& rhs)
+    friend bool operator< (const string& lhs, const Word& rhs)
     {
-        if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
+        if(strcmp(lhs.c_str(), rhs.getWord().c_str()) < 0)
         {
             return true;
         }
@@ -233,9 +238,9 @@ public:
             return false;
     }
 
-    friend bool operator==(const string& lhs, const string& rhs)
+    friend bool operator==(const string& lhs, const Word& rhs)
     {
-        if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
+        if(strcmp(lhs.c_str(), rhs.getWord().c_str()) == 0)
         {
             return true;
         }
