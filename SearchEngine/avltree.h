@@ -85,20 +85,19 @@ private:
 
     T& returnWord(string& test, AVLNode*& root)
     {
-        if(root == NULL) //COMMENT
+        if(root == NULL)
         {
             throw(strerror);
         }
-        //else if(test == root->element->getWord())
-        else if(std::strcmp(test.c_str(), root->element->getWord().c_str()))
+        else if(test == root->element->getWord())
         {
             return root->element;//this should be returning a Word object
         }
-        //else if(test < root->element.getWord())
+        else if(test < root->element.getWord())
         {
             return returnWord(test, root->left);
         }
-        //else if(test > root->element)
+        else if(test > root->element)
         {
             return returnWord(test, root->right);
         }
