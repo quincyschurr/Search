@@ -473,7 +473,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SearchEngine1.0.0 || mkdir -p .tmp/SearchEngine1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h ../SearchEngine/page.h ../SearchEngine/stopword.h ../SearchEngine/rapidxml_utils.hpp ../SearchEngine/rapidxml.hpp ../SearchEngine/indexhandler.h ../SearchEngine/hashtable.h ../SearchEngine/porterstem.h ../SearchEngine/avl2.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp ../SearchEngine/page.cpp ../SearchEngine/stopword.cpp ../SearchEngine/indexhandler.cpp ../SearchEngine/hashtable.cpp ../SearchEngine/avl2.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h ../SearchEngine/page.h ../SearchEngine/stopword.h ../SearchEngine/rapidxml_utils.hpp ../SearchEngine/rapidxml.hpp ../SearchEngine/indexhandler.h ../SearchEngine/hashtable.h ../SearchEngine/porterstem.h ../SearchEngine/avl2.h ../SearchEngine/AVLNODE.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp ../SearchEngine/page.cpp ../SearchEngine/stopword.cpp ../SearchEngine/indexhandler.cpp ../SearchEngine/hashtable.cpp ../SearchEngine/avl2.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
 
 
 clean:compiler_clean 
@@ -520,6 +520,8 @@ main.o: ../SearchEngine/main.cpp ../SearchEngine/avltree.h \
 		../SearchEngine/userinterface.h \
 		../SearchEngine/documentparser.h \
 		../SearchEngine/page.h \
+		../SearchEngine/avl2.h \
+		../SearchEngine/AVLNODE.h \
 		../SearchEngine/rapidxml_utils.hpp \
 		../SearchEngine/rapidxml.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SearchEngine/main.cpp
@@ -530,6 +532,8 @@ userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface
 		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
 		../SearchEngine/stopword.h \
+		../SearchEngine/avl2.h \
+		../SearchEngine/AVLNODE.h \
 		../SearchEngine/rapidxml_utils.hpp \
 		../SearchEngine/rapidxml.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userinterface.o ../SearchEngine/userinterface.cpp
@@ -539,6 +543,8 @@ documentparser.o: ../SearchEngine/documentparser.cpp ../SearchEngine/documentpar
 		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
 		../SearchEngine/stopword.h \
+		../SearchEngine/avl2.h \
+		../SearchEngine/AVLNODE.h \
 		../SearchEngine/rapidxml_utils.hpp \
 		../SearchEngine/rapidxml.hpp \
 		../SearchEngine/porterstem.h
@@ -566,7 +572,8 @@ hashtable.o: ../SearchEngine/hashtable.cpp ../SearchEngine/hashtable.h \
 
 avl2.o: ../SearchEngine/avl2.cpp ../SearchEngine/avl2.h \
 		../SearchEngine/word.h \
-		../SearchEngine/avltree.h
+		../SearchEngine/avltree.h \
+		../SearchEngine/AVLNODE.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o avl2.o ../SearchEngine/avl2.cpp
 
 ####### Install

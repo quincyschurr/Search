@@ -38,4 +38,5 @@ HEADERS += \
     indexhandler.h \
     hashtable.h \
     porterstem.h \
-    avl2.h
+    avl2.h \
+    AVLNODE.h

@@ -12,7 +12,8 @@ DocumentParser::DocumentParser()
 
 bool DocumentParser::checkForWord(Word*& temp)
 {
-    if(wordAVL.searchFor(temp, wordAVL.getRoot()) == true)
+    AVLNODE* temp2 = wordAVL.getRoot();
+    if(wordAVL.searchFor(temp, temp2) == true)
         return true;
     else
         return false;
