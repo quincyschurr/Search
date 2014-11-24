@@ -6,7 +6,7 @@ HashTable::HashTable()
     trees = new AVL2[count]; //might seg fault
     //for(int i = 0; i < count; i++)
     //{
-        //trees[i] = new AVLTree<Word>;
+        //trees[i] = AVL2();
     //}
 }
 
@@ -21,10 +21,13 @@ void HashTable::addWord(Word*& w) {
 }
 
 unsigned HashTable::hashKey(const char* word) {
-        unsigned h = 1;
+        /*unsigned h = 1;
         while (*word)
             h = h * 101 + (unsigned) *word++;
-        return h;
+        return h;*/
+    unsigned h = 1;
+    h = h * 101 + (unsigned) *word;
+    return h;
 }
 
 Word* HashTable::searchTrees(string test) {
