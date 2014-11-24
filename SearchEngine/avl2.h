@@ -34,6 +34,7 @@ private:
     Word*& returnWord(string& test, AVLNODE*& root);
 
 public:
+    AVLNODE* getRoot();
     int height(AVLNODE*& n);
     void insert(Word*& x);
     bool isEmpty() const;

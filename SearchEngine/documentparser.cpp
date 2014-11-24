@@ -12,7 +12,7 @@ DocumentParser::DocumentParser()
 
 bool DocumentParser::checkForWord(Word*& temp)
 {
-    if(wordAVL.search(temp, wordAVL.getRoot()) == true)
+    if(wordAVL.searchFor(temp, wordAVL.getRoot()) == true)
         return true;
     else
         return false;
@@ -119,10 +119,10 @@ void DocumentParser::getInput() {
     }
 
 
-    /*vector<char*> test;
+    vector<char*> test;
     test.push_back("this is running apples anot/her te?sting apples string with apples");
     test.push_back("why w\on't this apples. !functioning apples work?");
-    test.push_back("between apples ab%l*e why becuase apples zero work?");*/
+    test.push_back("between apples ab%l*e why becuase apples zero work?");
 
     StopWord* sw = new StopWord();
     //add hashTable
@@ -131,15 +131,15 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < texts.size(); j++)
+    for(int j = 0; j < test.size(); j++)
     {
         //need to make sure that it just doesn't add frequency to one page
         //but checks for words all over pages
         //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
-        testBuffer = texts[j];
+        testBuffer = test[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
@@ -167,9 +167,9 @@ void DocumentParser::getInput() {
 
                 }
 
-                /*else
+                else
                 {
-                    Word* x = wordAVL.returnWord1(temp);
+                    Word* x = wordAVL.returnWord(temp);
                     if(checkForWord(x) == true)
                     {
                         cout << temp << endl;
@@ -191,10 +191,10 @@ void DocumentParser::getInput() {
                         x->addToMap(ids[j]);
                         wordAVL.insert(x);
                     }
-                }*/
+                }
 
 
-                else if(checkForWord(temp) == true)
+                /*else if(checkForWord(temp) == true)
                 {
                     cout << temp << endl;
                     //cout << "WORD ALREADY EXISTS" << endl;
@@ -215,7 +215,7 @@ void DocumentParser::getInput() {
                     w->addToMap(ids[j]);
                     words.push_back(w);
                     //wordAVL.insert(w);
-                }
+                }*/
 
             }
         }

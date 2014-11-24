@@ -26,7 +26,7 @@ class DocumentParser
 private:
     vector <Page*> pages;
     vector <Word*> words;
-    AVLTree <Word*> wordAVL;
+    AVL2 wordAVL;
 
 public:
     DocumentParser();
