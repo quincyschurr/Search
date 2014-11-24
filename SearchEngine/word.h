@@ -6,6 +6,7 @@
 #include <iostream>
 #include <cstring>
 #include <algorithm>
+#include "avltree.h"
 
 using namespace std;
 
@@ -14,8 +15,8 @@ class Word
 private:
     string word;
     int pageId;
-    //AVLTree <int> pages;
-    vector <int> pages;
+    AVLTree <int> pages;
+    //vector <int> pages;
     //vector <int> pageIds;
     int frequency;
     map <int, int> info;
@@ -31,7 +32,6 @@ public:
     friend bool operator>(const string& lhs, const Word& rhs);
     friend bool operator<(const string& lhs, const Word& rhs);
     friend bool operator==(const string& lhs, const Word& rhs);
-
 
     Word();
     Word(string word, int pageId);
