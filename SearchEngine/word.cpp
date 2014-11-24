@@ -90,29 +90,7 @@ bool operator==(const Word& lhs, const Word& rhs)
         return false;
 }
 
-/*bool operator>(const Word& lhs, const Word& rhs)
-{
-    if(strcmp(lhs.getWord(), rhs.getWord()) > 0)
-        return true;
-    else
-        return false;
-}
 
-bool operator<(const Word& lhs, const Word& rhs)
-{
-    if(strcmp(lhs.getWord(), rhs.getWord()) < 0)
-        return true;
-    else
-        return false;
-}
-
-bool operator==(const Word& lhs, const Word& rhs)
-{
-    if(strcmp(lhs.getWord(), rhs.getWord()) == 0)
-        return true;
-    else
-        return false;
-}*/
 
 
 Word::~Word()

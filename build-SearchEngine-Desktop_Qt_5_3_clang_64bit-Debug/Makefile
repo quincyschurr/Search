@@ -567,7 +567,9 @@ indexhandler.o: ../SearchEngine/indexhandler.cpp ../SearchEngine/indexhandler.h 
 
 hashtable.o: ../SearchEngine/hashtable.cpp ../SearchEngine/hashtable.h \
 		../SearchEngine/word.h \
-		../SearchEngine/avltree.h
+		../SearchEngine/avltree.h \
+		../SearchEngine/avl2.h \
+		../SearchEngine/AVLNODE.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hashtable.o ../SearchEngine/hashtable.cpp
 
 avl2.o: ../SearchEngine/avl2.cpp ../SearchEngine/avl2.h \
