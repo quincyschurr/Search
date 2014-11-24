@@ -46,8 +46,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     //chrono::time_point<chrono::system_clock> start, end;
     //start = chrono::system_clock::now();
@@ -108,6 +108,7 @@ void DocumentParser::getInput()
         texts.push_back(curText->value());
         //cout << curText->value() << endl << endl;
         curPage = curPage->next_sibling(); //maybe faster
+        //transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
         page++;
     }
 
@@ -215,7 +216,8 @@ void DocumentParser::getInput()
         pages.push_back(p);
       }
 
-    }//end main for
+    }
+        //end main for
 }//end getInput
 
 Word* DocumentParser::returnWordObject(string& temp)
