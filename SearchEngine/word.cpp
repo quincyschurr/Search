@@ -95,5 +95,5 @@ bool operator==(const Word& lhs, const Word& rhs)
 
 Word::~Word()
 {
-
+    cout << "WORD destructor called" << endl;
 }

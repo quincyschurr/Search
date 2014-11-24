@@ -8,6 +8,7 @@ AVL2::AVL2()
 
 AVL2::~AVL2()
 {
+    cout << "deconstructor called" << endl;
     delete root;
 }
 
