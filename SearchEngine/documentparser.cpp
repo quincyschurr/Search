@@ -21,9 +21,9 @@ DocumentParser::DocumentParser()
 
 bool DocumentParser::checkForWord(string& temp)
 {
-    AVLNODE* temp2 = wordAVL.getRoot();
+    AVLNODE* temp2 = wordAVL->getRoot();
     //AVLNODE* temp2 = table.getRoot(temp);
-    if(wordAVL.searchFor(temp, temp2) == true)
+    if(wordAVL->searchFor(temp, temp2) == true)
     //if(table.searchFor(temp, temp2) == true)
         return true;
     else
@@ -33,9 +33,8 @@ bool DocumentParser::checkForWord(string& temp)
 void DocumentParser::getInput()
 {
     //unordered hash map
+    wordAVL = new AVL2[9999999];
 
-
-    //might be faster
 
       /*xml_document<> doc;
         xml_node<> * root_node;
@@ -167,7 +166,7 @@ void DocumentParser::getInput()
                     if(checkForWord(temp) == true)
                     {//if it exists
 
-                        Word* x = wordAVL.returnWord(temp);
+                        Word* x = wordAVL->returnWord(temp);
                         //Word* x = table.returnWord(temp);
                         if(x->lookForPage(page) == true)
                         {
@@ -186,6 +185,7 @@ void DocumentParser::getInput()
                         Word* w = new Word(temp, ids[j]);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j]);
+<<<<<<< HEAD
                         if(wordAVL.isEmpty() == true)
                         {
                             cout << "TREE IS EMPTY" << endl;
@@ -199,6 +199,9 @@ void DocumentParser::getInput()
                             //cout << endl << "Printing Tree" << endl;
                             //wordAVL.print(cout);
                         }
+=======
+                        wordAVL->insert(w);
+>>>>>>> 24af8799a97685723773fe4ac411c40d5c094fc0
                         //table.addWord(w);
                     }
 
@@ -236,14 +239,18 @@ void DocumentParser::getInput()
         //pages.push_back(p);
 
     }
+<<<<<<< HEAD
 
     cout << "Done parsing and adding to tree " << endl;
     cout << endl << "Printing Tree" << endl;
     wordAVL.print(cout);
+=======
+    cout << "done" << endl;
+>>>>>>> 24af8799a97685723773fe4ac411c40d5c094fc0
         //end main for
 }//end getInput
 
-AVL2 DocumentParser::getwordAVL()
+AVL2* DocumentParser::getwordAVL()
 {
     return wordAVL;
 }
