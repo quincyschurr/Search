@@ -3,7 +3,7 @@
 HashTable::HashTable()
 {
     count = 104729;
-    trees = new AVLTree<Word>[count]; //might seg fault
+    trees = new AVL2[count]; //might seg fault
     //for(int i = 0; i < count; i++)
     //{
         //trees[i] = new AVLTree<Word>;
@@ -27,9 +27,9 @@ unsigned HashTable::hashKey(const char* word) {
         return h;
 }
 
-Word HashTable::searchTrees(string test) {
+Word* HashTable::searchTrees(string test) {
     int key = hashKey(test.c_str()) % count;
-    return trees[key].returnWord1(test);
+    return trees[key].returnWord(test);
     //AVLNode* root = trees[key].getRoot();
     //string temp2 = trees[key].find(test);
 
