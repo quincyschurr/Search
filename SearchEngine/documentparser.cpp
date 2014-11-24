@@ -168,9 +168,9 @@ void DocumentParser::getInput() {
 
                 }
 
-                else
+                /*else
                 {
-                    Word* x = returnWordObject(temp);
+                    Word* x = wordAVL.returnWord1(temp);
                     if(checkForWord(x) == true)
                     {
                         cout << temp << endl;
@@ -192,12 +192,12 @@ void DocumentParser::getInput() {
                         x->addToMap(ids[j]);
                         wordAVL.insert(x);
                     }
-                }
+                }*/
 
 
-                /*else if(checkForWord(temp) == true)
+                else if(checkForWord(temp) == true)
                 {
-                    //cout << temp << endl;
+                    cout << temp << endl;
                     //cout << "WORD ALREADY EXISTS" << endl;
                     Word* x = returnWordObject(temp);//This returns the correct Word object
                     if(x->lookForPage(page) == true)
@@ -216,7 +216,7 @@ void DocumentParser::getInput() {
                     w->addToMap(ids[j]);
                     words.push_back(w);
                     //wordAVL.insert(w);
-                }*/
+                }
 
             }
         }
@@ -236,14 +236,11 @@ void DocumentParser::makeLowerCase(string& word)
 Word* DocumentParser::returnWordObject(string& temp)
 {
 
-    Word* v = wordAVL.returnWord1(temp);
-    return v;
-
-    /*for(int m = 0; m < words.size(); m++)
+    for(int m = 0; m < words.size(); m++)
     {
         if(words[m]->getWord() == temp)
             return words[m];
-    }*/
+    }
 
 }
 

@@ -9,7 +9,6 @@
 #include <string>
 #include <cstring>
 #include <iostream>
-#include "word.h"
 using namespace std;
 
 //good website for the traversal
@@ -90,7 +89,7 @@ private:
             throw(strerror);
         }
         //else if(test == root->element->getWord())
-        else if(std::strcmp(test.c_str(), root->element->getWord().c_str()))
+        else if(strcmp(test.c_str(), root->element) = 0)
         {
             return root->element;//this should be returning a Word object
         }
@@ -132,7 +131,7 @@ public:
 
     T& returnWord1(string test)
     {
-        return returnWord(test, root);
+        //return returnWord(test, root);
     }
 
 
@@ -217,9 +216,9 @@ public:
     //friend bool operator> (const string& lhs, const string& rhs)
     //{
         //if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
-    friend bool operator> (const string& lhs, const Word& rhs)
+    friend bool operator> (const string& lhs, const string& rhs)
     {
-        if(strcmp(lhs.c_str(), rhs.getWord().c_str()) > 0)
+        if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
         {
             return true;
         }
@@ -228,9 +227,9 @@ public:
 
     }
 
-    friend bool operator< (const string& lhs, const Word& rhs)
+    friend bool operator< (const string& lhs, const string& rhs)
     {
-        if(strcmp(lhs.c_str(), rhs.getWord().c_str()) < 0)
+        if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
         {
             return true;
         }
@@ -238,9 +237,9 @@ public:
             return false;
     }
 
-    friend bool operator==(const string& lhs, const Word& rhs)
+    friend bool operator==(const string& lhs, const string& rhs)
     {
-        if(strcmp(lhs.c_str(), rhs.getWord().c_str()) == 0)
+        if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
         {
             return true;
         }
