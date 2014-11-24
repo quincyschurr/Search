@@ -15,6 +15,36 @@ void AVL2::insert(const Word*& x)
     insert(x, root);
 }
 
+void AVL2::insert(Word*& x, AVLNODE*& root)
+{
+    if(root == NULL)
+        root = new AVLNODE(x, NULL, NULL);
+    else if(x < root->element)
+    {
+        insert(x, root->left);
+        if(height(root->left) - height(root->right) == 2)
+        {
+            if(x > root->right->element)
+                rotateWithLeftChild(root);
+            else
+                doubleWithLeftChild(root);
+        }
+    }
+    else if(x > root->element)
+    {
+        insert(x, root->right);
+        if(height(root->right) - height(root->left) == 2)
+        {
+            if(x > root->right->element)
+                rotateWithRightChild(root);
+            else
+                doubleWithRightChild(root);
+        }
+    }
+
+    root->height = max(height(root->left), height(root->right)) +1;
+}
+
 bool AVL2::isEmpty() const
 {
     if(root == NULL)
@@ -34,6 +64,27 @@ int AVL2::height(AVLNODE*& n)
 Word*& AVL2::returnWord(string& test)
 {
     return returnWord(test, root);
+}
+
+Word*& AVL2::returnWord(string& test, AVLNODE*& root)
+{
+    if(root == NULL)
+    {
+        throw(strerror);
+    }
+    else if(test == root->element->getWord())
+    {
+        return root->element;
+    }
+    else if(test < root->element->getWord())
+    {
+        return returnWord(test, root->left);
+    }
+    else if(test > root->element->getWord())
+    {
+        return returnWord(test, root->right);
+    }
+
 }
 
 void AVL2::rotateWithLeftChild(AVLNODE* al)
@@ -72,6 +123,16 @@ void AVL2::print(ostream& out) const
 {
     out << "ROOT " << root->element << endl;
     print(out, root);
+}
+
+void AVL2::print(ostream& out, AVLNODE* p) const
+{
+    if(p != NULL)
+    {
+        print(out, p->left);
+        out << p->element << endl;
+        print(out, p->right);
+    }
 }
 
 bool AVL2::searchFor(Word*& x, AVLNODE*& root)
