@@ -29,13 +29,13 @@ private:
     vector <Page*> pages;
     //AVLTree <Page*> pages2;
     vector <Word*> words;
-    AVL2 wordAVL;
     HashTable table;
 
 public:
     DocumentParser();
     ~DocumentParser();
 
+    AVL2 wordAVL;
     AVL2 getwordAVL();
     bool checkForWord(string& temp);
     //bool checkForWord(Word*& temp);

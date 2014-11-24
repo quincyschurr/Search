@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <fstream>
 #include <cstring>
 #include <algorithm>
 #include "avltree.h"
@@ -26,6 +27,7 @@ public:
     void addToMap(int pageId);
     string getWord() const;
     int getPageId() const;
+    ostream& getPageTree(ostream&);
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
 

@@ -9,9 +9,10 @@ struct AVLNODE
     AVLNODE* right;
 
 
-    AVLNODE(Word*& element, AVLNODE *l, AVLNODE *r, int h = 0) : element(element), left(l), right(r), height(h) {}
+    AVLNODE(Word* elementp, AVLNODE *l, AVLNODE *r, int h = 0) : element(elementp), left(l), right(r), height(h) {}
     ~AVLNODE()
     {
+        cout << "nodes are destructed" << endl;
         delete left;
         delete right;
     }
