@@ -140,7 +140,7 @@ void AVL2::print(ostream& out, AVLNODE* p) const
     }
 }
 
-bool AVL2::searchFor(Word*& x, AVLNODE*& root)
+bool AVL2::searchFor(Word*& x, AVLNODE* root)
 {
    if(root == NULL)
        return false;
