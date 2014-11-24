@@ -20,7 +20,7 @@ private:
         AVLNODE* left;
         AVLNODE* right;
 
-        AVLNODE(const Word*& element,AVLNODE *l, AVLNODE *r, int h) : element(element), left(l), right(r), height(h) {}
+        AVLNODE(Word*& element,AVLNODE *l, AVLNODE *r, int h) : element(element), left(l), right(r), height(h) {}
         ~AVLNODE()
         {
             delete left;
