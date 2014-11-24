@@ -10,7 +10,12 @@ AVL2::~AVL2()
     delete root;
 }
 
-void AVL2::insert(const Word*& x)
+AVLNODE* AVL2::getRoot()
+{
+    return root;
+}
+
+void AVL2::insert(Word*& x)
 {
     insert(x, root);
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 3.2.0, 2014-11-23T20:08:35. -->
+=======
+<!-- Written by QtCreator 3.1.2, 2014-11-23T20:10:06. -->
+>>>>>>> 0f5cb85caf0354f02d77df900d17fd34ddc32ff2
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -235,8 +239,13 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">SearchEngine</value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">SearchEngine2</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/Jake/Desktop/search/SearchEngine/SearchEngine.pro</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/quincyschurr/Documents/SMUsophomore/Search/SearchEngine/SearchEngine.pro</value>
+>>>>>>> 0f5cb85caf0354f02d77df900d17fd34ddc32ff2
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments">output.txt</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">SearchEngine.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>

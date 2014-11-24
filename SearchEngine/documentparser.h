@@ -5,6 +5,7 @@
 #include "page.h"
 #include "stopword.h"
 #include "avltree.h"
+#include "avl2.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
 #include <vector>
@@ -25,7 +26,7 @@ class DocumentParser
 private:
     vector <Page*> pages;
     vector <Word*> words;
-    AVLTree <Word*> wordAVL;
+    AVL2 wordAVL;
 
 public:
     DocumentParser();

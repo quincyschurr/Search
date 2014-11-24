@@ -20,7 +20,11 @@ private:
         AVLNODE* left;
         AVLNODE* right;
 
+<<<<<<< HEAD
         AVLNODE(Word*& element,AVLNODE *l, AVLNODE *r, int h) : element(element), left(l), right(r), height(h) {}
+=======
+        AVLNODE(Word*& element, AVLNODE *l, AVLNODE *r, int h = 0) : element(element), left(l), right(r), height(h) {}
+>>>>>>> 0f5cb85caf0354f02d77df900d17fd34ddc32ff2
         ~AVLNODE()
         {
             delete left;
@@ -34,8 +38,9 @@ private:
     Word*& returnWord(string& test, AVLNODE*& root);
 
 public:
+    AVLNODE* getRoot();
     int height(AVLNODE*& n);
-    void insert(const Word*& x);
+    void insert(Word*& x);
     bool isEmpty() const;
     Word*& returnWord(string& test);
     void rotateWithLeftChild(AVLNODE* al);
