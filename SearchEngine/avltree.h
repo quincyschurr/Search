@@ -88,12 +88,7 @@ private:
         {
             throw(strerror);
         }
-<<<<<<< HEAD
         else if(test == root->element->getWord())
-=======
-        //else if(test == root->element->getWord())
-        else if(strcmp(test.c_str(), root->element) = 0)
->>>>>>> c11bd6b30218a3cd8155daceecd129d2a22806df
         {
             return root->element;//this should be returning a Word object
         }
