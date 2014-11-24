@@ -5,18 +5,20 @@
 #include <cstring>
 #include <iostream>
 #include "word.h"
+#include "AVLNODE.h"
 
 using namespace std;
 
 class AVL2
 {
 private:
-    struct AVLNODE
+    /*struct AVLNODE
     {
         Word* element;
         int height;
         AVLNODE* left;
         AVLNODE* right;
+
 
         AVLNODE(Word*& element, AVLNODE *l, AVLNODE *r, int h = 0) : element(element), left(l), right(r), height(h) {}
         ~AVLNODE()
@@ -24,7 +26,7 @@ private:
             delete left;
             delete right;
         }
-    };
+    };*/
 
     AVLNODE* root;
     void insert(Word*& x, AVLNODE*& root);

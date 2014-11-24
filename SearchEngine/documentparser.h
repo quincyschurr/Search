@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <map>
+#include "AVLNODE.h"
 
 using namespace std;
 using namespace rapidxml;
