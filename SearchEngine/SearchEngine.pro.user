@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< HEAD
-<!-- Written by QtCreator 3.2.0, 2014-11-23T21:47:30. -->
-=======
-<!-- Written by QtCreator 3.1.2, 2014-11-23T21:45:10. -->
->>>>>>> 668cd3f8fe60bfe98d14510360656c100e25a0d5
+<!-- Written by QtCreator 3.2.0, 2014-11-23T22:02:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -245,7 +241,7 @@
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">SearchEngine.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">true</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory">/Users/quincyschurr/Desktop/WikiBook-SE</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
