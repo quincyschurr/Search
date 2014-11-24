@@ -93,7 +93,8 @@ void DocumentParser::getInput()
     int page = 1;
     string sTemp;
     int iTemp;
-    while(curPage != 0)
+    //while(curPage != 0)
+    for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -112,6 +113,7 @@ void DocumentParser::getInput()
         curPage = curPage->next_sibling(); //maybe faster
         page++;
     }
+    cout << page << endl;
 
 
     vector<char*> test;
