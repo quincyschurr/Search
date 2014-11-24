@@ -29,25 +29,33 @@ private:
     };*/
 
     AVLNODE* root;
-    void insert(Word*& x, AVLNODE*& root);
+    void insert(Word* x, AVLNODE*& root);
     void print(ostream& out, AVLNODE* p) const;
-    Word*& returnWord(string& test, AVLNODE*& root);
+    Word*& returnWord(string& test, AVLNODE* root);
+    void makeEmpty(AVLNODE*&);
 
 public:
     AVLNODE* getRoot();
     int height(AVLNODE*& n);
-    void insert(Word*& x);
+    void insert(Word* x);
     bool isEmpty() const;
     Word*& returnWord(string& test);
-    void rotateWithLeftChild(AVLNODE* al);
-    void rotateWithRightChild(AVLNODE* ar);
+    void rotateWithLeftChild(AVLNODE*& al);
+    void rotateWithRightChild(AVLNODE*& ar);
     void doubleWithLeftChild(AVLNODE*& k3);
     void doubleWithRightChild(AVLNODE*& k2);
     void print(ostream& out) const;
     bool searchFor(string& x, AVLNODE* root);
     bool searchFor(Word*& x, AVLNODE* root);
+    void makeEmpty();
     AVL2();
     ~AVL2();
+    AVL2(const AVL2&);
+
+    friend bool operator>(const string& lhs, const string& rhs);
+    friend bool operator<(const string& lhs, const string& rhs);
+    friend bool operator==(const string& lhs, const string& rhs);
+    //friend AVL2& operator==(const AVL2&);
 };
 
 

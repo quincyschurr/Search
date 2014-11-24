@@ -71,6 +71,16 @@ private:
     }
 
 
+    void print2(ostream &out, AVLNode* p) const
+    {
+        if(p != NULL)
+        {
+            print(out, p->left);
+            out << p->element << ", ";
+            print(out, p->right);
+
+        }
+    }
 
     void print(ostream& out, AVLNode* p) const
     {
@@ -185,6 +195,10 @@ public:
         rotateWithRightChild(k2);
     }
 
+    ostream& print2(ostream &out) const
+    {
+        print2(out, root);
+    }
 
     void print(ostream& out) const
     {

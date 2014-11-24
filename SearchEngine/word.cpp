@@ -36,6 +36,12 @@ int Word::getPageId() const
     return pageId;
 }
 
+ostream& Word::getPageTree(ostream& fout)
+{
+    //ofstream fout("output2.txt");
+    return pages.print2(fout);
+}
+
 void Word::increaseFrequency(int pageId)
 {
     info[pageId]++;

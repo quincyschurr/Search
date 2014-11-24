@@ -17,12 +17,12 @@ void UserInterface::startProgram()
     cout << "Please press 'P' to parse the data," << endl;
     cin >> input;
 
-    DocumentParser* dp = new DocumentParser();
-    //IndexHandler* h = new IndexHandler();
+    //DocumentParser* dp = new DocumentParser();
+    IndexHandler* h = new IndexHandler();
     chrono::time_point<chrono::system_clock> start, end;
     start = chrono::system_clock::now();
-    dp->getInput();
-        //h->print();
+    //dp->getInput();
+    h->print();
     end = chrono::system_clock::now();
     chrono::duration<double> elapsed_seconds = end - start;
     time_t end_time = chrono::system_clock::to_time_t(end);

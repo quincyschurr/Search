@@ -47,8 +47,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     //chrono::time_point<chrono::system_clock> start, end;
     //start = chrono::system_clock::now();
@@ -92,8 +92,8 @@ void DocumentParser::getInput()
     int page = 1;
     string sTemp;
     int iTemp;
-    //while(curPage != 0)
-    for(int i = 0; i < 80000; i++)
+    while(curPage != 0)
+    //for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -145,7 +145,10 @@ void DocumentParser::getInput()
             }
             else
             {//if it isn't a stop word go to stemmer
-                char* arr = (char*)temp.c_str();
+                //char* arr = (char*)temp.c_str();
+                char* arr = new char[temp.length() + 1];
+                strcpy(arr, temp.c_str());
+
                 int x = stem(arr, 0, strlen(arr)-1);
                 arr[x+1] = '\0';
                 temp = arr;
@@ -182,7 +185,23 @@ void DocumentParser::getInput()
                         Word* w = new Word(temp, ids[j]);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j]);
+<<<<<<< HEAD
+                        if(wordAVL.isEmpty() == true)
+                        {
+                            cout << "TREE IS EMPTY" << endl;
+                            wordAVL.insert(w);
+                            //cout << endl << "Printing Tree" << endl;
+                            //wordAVL.print(cout);
+                        }
+                        else
+                        {
+                            wordAVL.insert(w);
+                            //cout << endl << "Printing Tree" << endl;
+                            //wordAVL.print(cout);
+                        }
+=======
                         wordAVL->insert(w);
+>>>>>>> 24af8799a97685723773fe4ac411c40d5c094fc0
                         //table.addWord(w);
                     }
 
@@ -211,15 +230,23 @@ void DocumentParser::getInput()
                     //wordAVL.insert(w);
                 }*/
 
-            }
+                }
+            }//else
+
         }
 
-        Page* p = new Page(titles[j], ids[j]);
-        pages.push_back(p);
-      }
+        //Page* p = new Page(titles[j], ids[j]);
+        //pages.push_back(p);
 
     }
+<<<<<<< HEAD
+
+    cout << "Done parsing and adding to tree " << endl;
+    cout << endl << "Printing Tree" << endl;
+    wordAVL.print(cout);
+=======
     cout << "done" << endl;
+>>>>>>> 24af8799a97685723773fe4ac411c40d5c094fc0
         //end main for
 }//end getInput
 

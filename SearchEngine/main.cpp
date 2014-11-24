@@ -24,28 +24,28 @@ int main(int argc, char *argv[])
     //use prime number as table size for hash table
 
     /*ofstream fout(argv[1]);
-    AVLTree<int> test;
-    test.insert(6);
-    test.insert(34);
-    test.insert(29);
-    test.insert(52);
-    test.insert(79);
-    test.insert(12);
-    test.insert(7);
-    test.insert(45);
-    test.insert(67);
-    test.insert(100);
-    test.insert(6);
-    test.insert(99);
-    test.insert(80);
-    test.insert(78);
-    test.insert(82);
-    test.insert(83);
-    test.insert(41);
-    test.insert(94);
+    AVLTree<string> test;
+    test.insert("hello");
+    test.insert("world");
+    test.insert("data");
+    test.insert("structures");
+    test.insert("zoo");
+    test.insert("apples");
+    test.insert("oranges");
+    test.insert("pineapples");
+    test.insert("later");
+    test.insert("work");
+    test.insert("sum");
+    test.insert("break");
+    test.insert("weekend");
+    test.insert("search");
+    test.insert("find");
+    test.insert("get");
+    test.insert("zero");
+    test.insert("look");
 
     int searchString = 53;
-    if(test.search(searchString, test.getRoot()) == true)
+    /*if(test.search(searchString, test.getRoot()) == true)
     {
         cout << "The item was found" << endl;
     }
