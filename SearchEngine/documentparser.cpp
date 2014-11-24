@@ -10,7 +10,16 @@ DocumentParser::DocumentParser()
 
 }
 
-bool DocumentParser::checkForWord(Word*& temp)
+/*bool DocumentParser::checkForWord(Word*& temp)
+{
+    AVLNODE* temp2 = wordAVL.getRoot();
+    if(wordAVL.searchFor(temp, temp2) == true)
+        return true;
+    else
+        return false;
+}*/
+
+bool DocumentParser::checkForWord(string& temp)
 {
     AVLNODE* temp2 = wordAVL.getRoot();
     if(wordAVL.searchFor(temp, temp2) == true)
@@ -19,24 +28,8 @@ bool DocumentParser::checkForWord(Word*& temp)
         return false;
 }
 
-bool DocumentParser::checkForWord(string& temp)
+void DocumentParser::getInput()
 {
-    /*if(wordAVL.search(temp, wordAVL.getRoot()) == true)
-        return true;
-    else
-        return false;*/
-
-   //I think we can optimize this but I don't know how becuase find doesn't work
-    for(int b = 0; b < words.size(); b++)
-    {
-        if(words[b]->getWord() == temp)
-            return true;
-    }
-
-    return false;
-}
-
-void DocumentParser::getInput() {
     //unordered hash map
 
 
@@ -115,7 +108,6 @@ void DocumentParser::getInput() {
         texts.push_back(curText->value());
         //cout << curText->value() << endl << endl;
         curPage = curPage->next_sibling(); //maybe faster
-        makeLowerCase(texts[page-1]);
         page++;
     }
 
@@ -132,48 +124,45 @@ void DocumentParser::getInput() {
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < test.size(); j++)
-    {
+    for(int j = 0; j < texts.size(); j++)
+    {//start overall for
         //need to make sure that it just doesn't add frequency to one page
         //but checks for words all over pages
         //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-        //testBuffer = texts[j];
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-
-            //cout << "word = " << temp << endl;
+            //makes everything lowercase
             transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
             if(sw->isStopWord(temp) == true)
             {
                 //don't need to do anything
             }
             else
-            {
-
+            {//if it isn't a stop word go to stemmer
                 char* arr = (char*)temp.c_str();
                 int x = stem(arr, 0, strlen(arr)-1);
                 arr[x+1] = '\0';
                 temp = arr;
 
-
-                //attempt to remove punctuation
+                //remove punctuation
                 temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
-
                 if(temp == "" || temp == "•" || temp.size() == 1)
                 {
-
+                    //don't do anything if one letter or null;
                 }
-
-                else
+                else                    
                 {
-                    Word* x = wordAVL.returnWord(temp);
-                    if(checkForWord(x) == true)
-                    {
-                        cout << temp << endl;
+                    //cout << temp << endl;
+                    //check for word
+                    if(checkForWord(temp) == true)
+                    {//if it exists
+
+                        Word* x = wordAVL.returnWord(temp);
                         if(x->lookForPage(page) == true)
                         {
                             x->increaseFrequency(ids[j]);
@@ -188,11 +177,12 @@ void DocumentParser::getInput() {
 
                     else
                     {
-                        x->addPages(ids[j]);
-                        x->addToMap(ids[j]);
-                        wordAVL.insert(x);
+                        Word* w = new Word(temp, ids[j]);
+                        w->addPages(ids[j]);
+                        w->addToMap(ids[j]);
+                        wordAVL.insert(w);
                     }
-                }
+
 
 
                 /*else if(checkForWord(temp) == true)
@@ -223,15 +213,10 @@ void DocumentParser::getInput() {
 
         Page* p = new Page(titles[j], ids[j]);
         pages.push_back(p);
-    }
+      }
 
-}
-
-void DocumentParser::makeLowerCase(string& word)
-{//islower would take longer, more comparisons
-    //tolower(word[0]);
-    transform(word.begin(), word.end(), word.begin(), ::tolower);
-}
+    }//end main for
+}//end getInput
 
 Word* DocumentParser::returnWordObject(string& temp)
 {

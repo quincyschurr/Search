@@ -1,4 +1,5 @@
 #include "avl2.h"
+#include "AVLNODE.h"
 
 AVL2::AVL2()
 {
@@ -13,7 +14,6 @@ AVL2::~AVL2()
 AVLNODE* AVL2::getRoot()
 {
     return root;
-
 }
 
 void AVL2::insert(Word*& x)
@@ -141,7 +141,22 @@ void AVL2::print(ostream& out, AVLNODE* p) const
     }
 }
 
-bool AVL2::searchFor(Word*& x, AVLNODE* root)
+bool AVL2::searchFor(string &x, AVLNODE *root)
+{
+    if(root == NULL)
+        return false;
+    else if(x == root->element->getWord())
+        return true;
+    else if(x < root->element->getWord())
+        return searchFor(x, root->left);
+    else if(x > root->element->getWord())
+        return searchFor(x, root->right);
+    else
+        return false;
+}
+
+
+/*bool AVL2::searchFor(Word*& x, AVLNODE* root)
 {
    if(root == NULL)
        return false;
@@ -153,4 +168,4 @@ bool AVL2::searchFor(Word*& x, AVLNODE* root)
        return searchFor(x, root->right);
    else
        return false;
-}
+}*/

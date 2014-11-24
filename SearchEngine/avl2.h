@@ -44,6 +44,7 @@ public:
     void doubleWithLeftChild(AVLNODE*& k3);
     void doubleWithRightChild(AVLNODE*& k2);
     void print(ostream& out) const;
+    bool searchFor(string& x, AVLNODE* root);
     bool searchFor(Word*& x, AVLNODE* root);
     AVL2();
     ~AVL2();

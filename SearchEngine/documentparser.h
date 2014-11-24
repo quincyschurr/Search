@@ -34,9 +34,8 @@ public:
     ~DocumentParser();
 
     bool checkForWord(string& temp);
-    bool checkForWord(Word*& temp);
+    //bool checkForWord(Word*& temp);
     void getInput();
-    void makeLowerCase(string&);
     Word* returnWordObject(string&);
 };
 
