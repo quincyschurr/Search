@@ -2,6 +2,7 @@
 #define HASHTABLE_H
 #include "word.h"
 #include "avl2.h"
+#include "AVLNODE.h"
 
 class HashTable
 {
@@ -11,10 +12,13 @@ private:
 public:
     HashTable();
     ~HashTable();
-    void addWord(Word&);
+    void addWord(Word*&);
     unsigned hashKey(const char*);
     Word* searchTrees(string);
     bool containsKey(char*);
+    AVLNODE* getRoot(string);
+    bool searchFor(string& x, AVLNODE* root);
+    Word*& returnWord(string& test);
 };
 
 #endif // HASHTABLE_H

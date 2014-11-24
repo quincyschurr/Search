@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <map>
 #include "AVLNODE.h"
+#include "hashtable.h"
 
 using namespace std;
 using namespace rapidxml;
@@ -28,6 +29,7 @@ private:
     vector <Page*> pages;
     vector <Word*> words;
     AVL2 wordAVL;
+    HashTable table;
 
 public:
     DocumentParser();
