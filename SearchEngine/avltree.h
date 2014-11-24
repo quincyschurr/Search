@@ -212,9 +212,6 @@ public:
         delete root;
     }
 
-    //friend bool operator> (const string& lhs, const string& rhs)
-    //{
-        //if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
     friend bool operator> (const string& lhs, const string& rhs)
     {
         if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
