@@ -46,8 +46,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     //chrono::time_point<chrono::system_clock> start, end;
     //start = chrono::system_clock::now();
