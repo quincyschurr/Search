@@ -27,6 +27,7 @@ class DocumentParser
 {
 private:
     vector <Page*> pages;
+    //AVLTree <Page*> pages2;
     vector <Word*> words;
     AVL2 wordAVL;
     HashTable table;
