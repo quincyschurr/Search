@@ -113,7 +113,7 @@ void DocumentParser::getInput()
         curPage = curPage->next_sibling(); //maybe faster
         page++;
     }
-    cout << page << endl;
+    //cout << page << endl;
 
 
     vector<char*> test;
@@ -122,8 +122,6 @@ void DocumentParser::getInput()
     test.push_back("between apples ab%l*e why becuase apples zero work?");
 
     StopWord* sw = new StopWord();
-    //add hashTable
-
     sw->createArray();
     string testBuffer = "";
     string temp = "";
@@ -224,6 +222,11 @@ void DocumentParser::getInput()
     }
         //end main for
 }//end getInput
+
+AVL2 DocumentParser::getwordAVL()
+{
+    return wordAVL;
+}
 
 Word* DocumentParser::returnWordObject(string& temp)
 {

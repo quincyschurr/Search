@@ -188,7 +188,7 @@ public:
 
     void print(ostream& out) const
     {
-        out << "ROOT " << root->element << endl;
+        //out << "ROOT " << root->element << endl;
         print(out, root);
     }
 

@@ -1,6 +1,7 @@
 #ifndef USERINTERFACE_H
 #define USERINTERFACE_H
 #include "documentparser.h"
+#include "indexhandler.h"
 #include <cstdlib>
 #include <chrono>
 #include <ctime>
