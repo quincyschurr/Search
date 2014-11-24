@@ -5,6 +5,7 @@
 #include "page.h"
 #include "stopword.h"
 #include "avltree.h"
+#include "avl2.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
 #include <vector>
