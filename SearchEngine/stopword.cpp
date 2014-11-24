@@ -23,10 +23,6 @@ bool StopWord::isStopWord(const string& testWord)
     else
         return false;
 
-    /*if(find(stWordArray.begin(), stWordArray.end(), testWord) == stWordArray.end())
-        return false;//means that the word wasn't found
-    else
-        return true;*/
 }
 
 
