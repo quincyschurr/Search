@@ -2,7 +2,8 @@
 
 HashTable::HashTable()
 {
-    count = 104729;
+    count = 1299827;
+    //count = 104729;
     trees = new AVL2[count]; //might seg fault
     //for(int i = 0; i < count; i++)
     //{
@@ -14,7 +15,7 @@ HashTable::~HashTable() {
 
 }
 
-void HashTable::addWord(Word*& w) {
+void HashTable::addWord(Word* w) {
     string test = w->getWord();
     int key = hashKey(test.c_str()) % count;
     trees[key].insert(w);
@@ -49,7 +50,7 @@ bool HashTable::searchFor(string& x, AVLNODE* root) {
     return trees[key].searchFor(x, root);
 }
 
-Word*& HashTable::returnWord(string& test) {
+Word* HashTable::returnWord(string& test) {
     int key = hashKey(test.c_str()) % count;
     return trees[key].returnWord(test);
 }

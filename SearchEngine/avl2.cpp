@@ -1,5 +1,7 @@
 #include "avl2.h"
 #include "AVLNODE.h"
+#include <iostream>
+using namespace std;
 
 AVL2::AVL2()
 {
@@ -15,14 +17,9 @@ AVL2::AVL2(const AVL2 & c)
 
 AVL2::~AVL2()
 {
-<<<<<<< HEAD
-    cout << "deconstructor called" << endl;
-    delete root;
-=======
     cout << "Destructor is called!! " << endl;
     makeEmpty();
     //delete root;
->>>>>>> c1e47c0d6da9cd54173d3c39ad8865241c6039c4
 }
 
 AVLNODE* AVL2::getRoot()
@@ -32,6 +29,7 @@ AVLNODE* AVL2::getRoot()
 
 void AVL2::insert(Word* x)
 {
+    //cout << "Inserting word " << x->getWord() << endl;
     insert(x, root);
 }
 
@@ -41,10 +39,13 @@ void AVL2::insert(Word* x, AVLNODE*& root)
         root = new AVLNODE(x, NULL, NULL);
     else if(x->getWord() < root->element->getWord())
     {
+        //cout << "   Inserting " << x ->getWord() << " to left of " <<
+        //        root -> element -> getWord() << endl;
         insert(x, root->left);
         if(height(root->left) - height(root->right) == 2)
         {
-            if(x < root->left->element)
+            //cout << "     Imbalance at word " << root -> element -> getWord() << endl;
+            if(x->getWord() < root->left->element->getWord())
                 rotateWithLeftChild(root);
             else
                 doubleWithLeftChild(root);
@@ -52,10 +53,13 @@ void AVL2::insert(Word* x, AVLNODE*& root)
     }
     else if(x->getWord() > root->element->getWord())
     {
+        //cout << "   Inserting " << x ->getWord() << " to right of " <<
+        //        root -> element -> getWord() << endl;
         insert(x, root->right);
         if(height(root->right) - height(root->left) == 2)
         {
-            if(x > root->right->element)
+            //cout << "      Imbalance at word " << root -> element -> getWord() << endl;
+            if(x->getWord() > root->right->element->getWord())
                 rotateWithRightChild(root);
             else
                 doubleWithRightChild(root);
@@ -97,12 +101,12 @@ void AVL2::makeEmpty(AVLNODE *& c)
     c = NULL;
 }
 
-Word*& AVL2::returnWord(string& test)
+Word* AVL2::returnWord(string& test)
 {
     return returnWord(test, root);
 }
 
-Word*& AVL2::returnWord(string& test, AVLNODE* root)
+Word* AVL2::returnWord(string& test, AVLNODE* root)
 {
     if(root == NULL)
     {
@@ -188,30 +192,30 @@ bool AVL2::searchFor(string &x, AVLNODE *root)
         return false;
 }
 
-bool operator>(const string& lhs, const string& rhs)
-{
-    if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
-        return true;
-    else
-        return false;
-}
+//bool operator>(const string& lhs, const string& rhs)
+//{
+//    if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
+//        return true;
+//    else
+//        return false;
+//}
 
 
-bool operator<(const string& lhs, const string& rhs)
-{
-    if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
-        return true;
-    else
-        return false;
-}
+//bool operator<(const string& lhs, const string& rhs)
+//{
+//    if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
+//        return true;
+//    else
+//        return false;
+//}
 
-bool operator==(const string& lhs, const string& rhs)
-{
-    if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
-        return true;
-    else
-        return false;
-}
+//bool operator==(const string& lhs, const string& rhs)
+//{
+//    if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
+//        return true;
+//    else
+//        return false;
+//}
 
 /*AVL2& operator==(const AVL2& tree)
 {
