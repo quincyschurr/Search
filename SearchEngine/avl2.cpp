@@ -30,7 +30,7 @@ void AVL2::insert(Word*& x, AVLNODE*& root)
         insert(x, root->left);
         if(height(root->left) - height(root->right) == 2)
         {
-            if(x > root->left->element)
+            if(x < root->left->element)
                 rotateWithLeftChild(root);
             else
                 doubleWithLeftChild(root);
