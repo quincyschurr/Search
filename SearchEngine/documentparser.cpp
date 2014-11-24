@@ -21,10 +21,10 @@ DocumentParser::DocumentParser()
 
 bool DocumentParser::checkForWord(string& temp)
 {
-    //AVLNODE* temp2 = wordAVL.getRoot();
-    AVLNODE* temp2 = table.getRoot(temp);
-    //if(wordAVL.searchFor(temp, temp2) == true)
-    if(table.searchFor(temp, temp2) == true)
+    AVLNODE* temp2 = wordAVL.getRoot();
+    //AVLNODE* temp2 = table.getRoot(temp);
+    if(wordAVL.searchFor(temp, temp2) == true)
+    //if(table.searchFor(temp, temp2) == true)
         return true;
     else
         return false;
@@ -113,7 +113,7 @@ void DocumentParser::getInput()
         curPage = curPage->next_sibling(); //maybe faster
         page++;
     }
-    cout << page << endl;
+    //cout << page << endl;
 
 
     vector<char*> test;
@@ -122,8 +122,6 @@ void DocumentParser::getInput()
     test.push_back("between apples ab%l*e why becuase apples zero work?");
 
     StopWord* sw = new StopWord();
-    //add hashTable
-
     sw->createArray();
     string testBuffer = "";
     string temp = "";
@@ -166,8 +164,8 @@ void DocumentParser::getInput()
                     if(checkForWord(temp) == true)
                     {//if it exists
 
-                        //Word* x = wordAVL.returnWord(temp);
-                        Word* x = table.returnWord(temp);
+                        Word* x = wordAVL.returnWord(temp);
+                        //Word* x = table.returnWord(temp);
                         if(x->lookForPage(page) == true)
                         {
                             x->increaseFrequency(ids[j]);
@@ -185,8 +183,8 @@ void DocumentParser::getInput()
                         Word* w = new Word(temp, ids[j]);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j]);
-                        //wordAVL.insert(w);
-                        table.addWord(w);
+                        wordAVL.insert(w);
+                        //table.addWord(w);
                     }
 
 
@@ -224,6 +222,11 @@ void DocumentParser::getInput()
     }
         //end main for
 }//end getInput
+
+AVL2 DocumentParser::getwordAVL()
+{
+    return wordAVL;
+}
 
 Word* DocumentParser::returnWordObject(string& temp)
 {
