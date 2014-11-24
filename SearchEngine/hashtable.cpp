@@ -26,7 +26,8 @@ unsigned HashTable::hashKey(const char* word) {
             h = h * 101 + (unsigned) *word++;
         return h;*/
     unsigned h = 1;
-    h = h * 101 + (unsigned) *word;
+    for(int i = 0; i < 2; i++)
+        h = h * 101 + (unsigned) *word++;
     return h;
 }
 
