@@ -22,14 +22,14 @@ void HashTable::addWord(Word* w) {
 }
 
 unsigned HashTable::hashKey(const char* word) {
-        /*unsigned h = 1;
+        unsigned h = 1;
         while (*word)
             h = h * 101 + (unsigned) *word++;
-        return h;*/
-    unsigned h = 1;
+        return h;
+    /*unsigned h = 1;
     for(int i = 0; i < 2; i++)
         h = h * 101 + (unsigned) *word++;
-    return h;
+    return h;*/
 }
 
 Word* HashTable::searchTrees(string test) {
@@ -53,6 +53,12 @@ bool HashTable::searchFor(string& x, AVLNODE* root) {
 Word* HashTable::returnWord(string& test) {
     int key = hashKey(test.c_str()) % count;
     return trees[key].returnWord(test);
+}
+
+void HashTable::printTrees() {
+    for(int i = 0; i < count; i++) {
+        trees[i].print(cout);
+    }
 }
 
 
