@@ -236,8 +236,8 @@ void DocumentParser::getInput()
 
     }
 
-    cout << "Done parsing and adding to tree " << endl;
-    cout << endl << "Printing Tree" << endl;
+    //cout << "Done parsing and adding to tree " << endl;
+    //cout << endl << "Printing Tree" << endl;
     //wordAVL.print(cout);
     table.printTrees();
 
