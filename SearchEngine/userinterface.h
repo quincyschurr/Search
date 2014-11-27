@@ -16,7 +16,6 @@ private:
     string input;
 public:
     void startProgram();
-    void getDocumentParser();
 
     UserInterface();
     ~UserInterface();

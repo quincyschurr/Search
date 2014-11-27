@@ -48,14 +48,11 @@ public:
     bool searchFor(string& x, AVLNODE* root);
     bool searchFor(Word*& x, AVLNODE* root);
     void makeEmpty();
+
     AVL2();
     ~AVL2();
     AVL2(const AVL2&);
 
-//    friend bool operator>(const string& lhs, const string& rhs);
-//    friend bool operator<(const string& lhs, const string& rhs);
-//    friend bool operator==(const string& lhs, const string& rhs);
-    //friend AVL2& operator==(const AVL2&);
 };
 
 

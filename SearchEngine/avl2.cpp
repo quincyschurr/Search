@@ -10,16 +10,13 @@ AVL2::AVL2()
 
 AVL2::AVL2(const AVL2 & c)
 {
-    cout << "Copy constructor getting called!" << endl;
     this->root = NULL;
     *this = c;
 }
 
 AVL2::~AVL2()
 {
-    cout << "Destructor is called!! " << endl;
     makeEmpty();
-    //delete root;
 }
 
 AVLNODE* AVL2::getRoot()
@@ -170,7 +167,6 @@ void AVL2::print(ostream& out, AVLNODE* p) const
     if(p != NULL)
     {
         print(out, p->left);
-        //out << endl << "Printing Tree: " << endl;
         out << p->element->getWord() << ": ";
         p->element->getPageTree(out);
         out << endl;
@@ -191,51 +187,3 @@ bool AVL2::searchFor(string &x, AVLNODE *root)
     else
         return false;
 }
-
-//bool operator>(const string& lhs, const string& rhs)
-//{
-//    if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
-//        return true;
-//    else
-//        return false;
-//}
-
-
-//bool operator<(const string& lhs, const string& rhs)
-//{
-//    if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
-//        return true;
-//    else
-//        return false;
-//}
-
-//bool operator==(const string& lhs, const string& rhs)
-//{
-//    if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
-//        return true;
-//    else
-//        return false;
-//}
-
-/*AVL2& operator==(const AVL2& tree)
-{
-    if(this == &tree)
-        return *this;
-    //clearTrr()
-    copyTree(tree);
-    return *this;
-}*/
-
-/*bool AVL2::searchFor(Word*& x, AVLNODE* root)
-{
-   if(root == NULL)
-       return false;
-   else if(x == root->element)
-       return true;
-   else if(x < root->element)
-       return searchFor(x, root->left);
-   else if(x > root->element)
-       return searchFor(x, root->right);
-   else
-       return false;
-}*/

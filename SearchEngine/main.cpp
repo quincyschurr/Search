@@ -7,12 +7,12 @@
 
 #include <iostream>
 #include <fstream>
-#include "avltree.h"
-#include "word.h"
-#include "stopword.h"
+//#include "avltree.h"
+//#include "word.h"
+//#include "stopword.h"
 #include "userinterface.h"
 //user interface is the only .h we will need.
-#include "documentparser.h"
+//#include "documentparser.h"
 
 using namespace std;
 

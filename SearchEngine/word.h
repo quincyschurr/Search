@@ -17,8 +17,6 @@ private:
     string word;
     int pageId;
     AVLTree <int> pages;
-    //vector <int> pages;
-    //vector <int> pageIds;
     int frequency;
     map <int, int> info;
 

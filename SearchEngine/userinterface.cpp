@@ -4,12 +4,6 @@ UserInterface::UserInterface()
 
 }
 
-
-void UserInterface::getDocumentParser()
-{
-    //DocumentParser* p = new DocumentParser;
-}
-
 void UserInterface::startProgram()
 {
     cout << "Welcome to MustangWiki" << endl;

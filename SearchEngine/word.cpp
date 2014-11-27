@@ -14,8 +14,6 @@ Word::Word(string word, int pageId)
 void Word::addPages(int pageId)
 {
     pages.insert(pageId);
-    //pageIds.push_back(pageId);
-    //pages.push_back(pageId);
 }
 
 void Word::addToMap(int pageId)
@@ -38,7 +36,6 @@ int Word::getPageId() const
 
 ostream& Word::getPageTree(ostream& fout)
 {
-    //ofstream fout("output2.txt");
     return pages.print2(fout);
 }
 
@@ -53,22 +50,6 @@ bool Word::lookForPage(int page)
         return true;
     else
         return false;
-
-    /*if(binary_search(pages.begin(), pages.end(), page)) //might have to return false
-        return true;
-    else
-        return false;*/
-
-    /*for(int k = 0; k < pageIds.size(); k++)
-    {
-        if(page == pageIds[k])
-        {
-            return true;
-        }
-
-    }
-
-    return false;*/
 }
 
 bool operator>(const Word& lhs, const Word& rhs)
@@ -101,5 +82,5 @@ bool operator==(const Word& lhs, const Word& rhs)
 
 Word::~Word()
 {
-    cout << "WORD destructor called" << endl;
+
 }

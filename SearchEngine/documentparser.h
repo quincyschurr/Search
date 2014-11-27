@@ -26,10 +26,7 @@ using namespace rapidxml;
 class DocumentParser
 {
 private:
-    vector <Page*> pages;
     //AVLTree <Page*> pages2;
-    vector <Word*> words;
-
     HashTable table;
 
 public:
@@ -39,11 +36,8 @@ public:
     AVL2 wordAVL;
     AVL2 getwordAVL();
 
-
     bool checkForWord(string& temp);
-    //bool checkForWord(Word*& temp);
     void getInput();
-    Word* returnWordObject(string&);
 };
 
 #endif // DOCUMENTPARSER_H

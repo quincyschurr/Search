@@ -10,15 +10,6 @@ DocumentParser::DocumentParser()
 
 }
 
-/*bool DocumentParser::checkForWord(Word*& temp)
-{
-    AVLNODE* temp2 = wordAVL.getRoot();
-    if(wordAVL.searchFor(temp, temp2) == true)
-        return true;
-    else
-        return false;
-}*/
-
 bool DocumentParser::checkForWord(string& temp)
 {
     //AVLNODE* temp2 = wordAVL.getRoot();
@@ -46,11 +37,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
-
-    //chrono::time_point<chrono::system_clock> start, end;
-    //start = chrono::system_clock::now();
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -61,13 +49,6 @@ void DocumentParser::getInput()
 
     //rapidxml::file<> xmlFile("enwikibooks-20141026-pages-meta-current.xml"); //maybe faster
     //doc.parse<0>(xmlFile.data());
-
-    //end = chrono::system_clock::now();
-    //chrono::duration<double> elapsed_seconds = end - start;
-    //time_t end_time = chrono::system_clock::to_time_t(end);
-
-    //cout << "Finished computation at " << ctime(&end_time) << endl;
-    //cout << "Elapsed time: " << elapsed_seconds.count() << "s\n";
 
     /*ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
     vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
@@ -91,8 +72,8 @@ void DocumentParser::getInput()
     int page = 1;
     string sTemp;
     int iTemp;
-    //while(curPage != 0)
-    for(int i = 0; i < 80000; i++)
+    while(curPage != 0)
+    //for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -111,8 +92,6 @@ void DocumentParser::getInput()
         curPage = curPage->next_sibling(); //maybe faster
         page++;
     }
-    //cout << page << endl;
-
 
     vector<char*> test;
     test.push_back("this is running apples anot/her te?sting apples string with apples");
@@ -124,15 +103,12 @@ void DocumentParser::getInput()
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < texts.size(); j++)
+    for(int j = 0; j < test.size(); j++)
     {//start overall for
-        //need to make sure that it just doesn't add frequency to one page
-        //but checks for words all over pages
-        //cout << "THIS IS PAGE " << j+1 << endl;
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
-        testBuffer = texts[j];
+        testBuffer = test[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
@@ -144,10 +120,8 @@ void DocumentParser::getInput()
             }
             else
             {//if it isn't a stop word go to stemmer
-                //char* arr = (char*)temp.c_str();
                 char* arr = new char[temp.length() + 1];
                 strcpy(arr, temp.c_str());
-
                 int x = stem(arr, 0, strlen(arr)-1);
                 arr[x+1] = '\0';
                 temp = arr;
@@ -160,8 +134,7 @@ void DocumentParser::getInput()
                 }
                 else                    
                 {
-                    //cout << temp << endl;
-                    //check for word
+                    //check if word exists already
                     if(checkForWord(temp) == true)
                     {//if it exists
 
@@ -184,47 +157,9 @@ void DocumentParser::getInput()
                         Word* w = new Word(temp, ids[j]);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j]);
-                        //if(wordAVL.isEmpty() == true)
-                        //{
-                            //cout << "TREE IS EMPTY" << endl;
-                            //wordAVL.insert(w);
-                            //cout << endl << "Printing Tree" << endl;
-                            //wordAVL.print(cout);
-                        //}
-                        //else
-                        //{
-                            //wordAVL.insert(w);
-                            //cout << endl << "Printing Tree" << endl;
-                            //wordAVL.print(cout);
-                        //}
-
+                        //wordAVL.insert(w);
                         table.addWord(w);
                     }
-
-
-
-                /*else if(checkForWord(temp) == true)
-                {
-                    cout << temp << endl;
-                    //cout << "WORD ALREADY EXISTS" << endl;
-                    Word* x = returnWordObject(temp);//This returns the correct Word object
-                    if(x->lookForPage(page) == true)
-                        x->increaseFrequency(ids[j]);
-                    else
-                    {
-                        x->addPages(ids[j]);
-                        x->addToMap(ids[j]);
-                    }
-
-                }
-                else
-                {
-                    Word* w = new Word(temp, ids[j]);
-                    w->addPages(ids[j]);
-                    w->addToMap(ids[j]);
-                    words.push_back(w);
-                    //wordAVL.insert(w);
-                }*/
 
                 }
             }//else
@@ -236,8 +171,6 @@ void DocumentParser::getInput()
 
     }
 
-    //cout << "Done parsing and adding to tree " << endl;
-    //cout << endl << "Printing Tree" << endl;
     //wordAVL.print(cout);
     table.printTrees();
 
@@ -247,17 +180,6 @@ void DocumentParser::getInput()
 AVL2 DocumentParser::getwordAVL()
 {
     return wordAVL;
-}
-
-Word* DocumentParser::returnWordObject(string& temp)
-{
-
-    for(int m = 0; m < words.size(); m++)
-    {
-        if(words[m]->getWord() == temp)
-            return words[m];
-    }
-
 }
 
 DocumentParser::~DocumentParser()
