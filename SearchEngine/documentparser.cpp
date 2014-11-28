@@ -12,10 +12,10 @@ DocumentParser::DocumentParser()
 
 bool DocumentParser::checkForWord(string& temp)
 {
-    //AVLNODE* temp2 = wordAVL.getRoot();
-    AVLNODE* temp2 = table.getRoot(temp);
-    //if(wordAVL.searchFor(temp, temp2) == true)
-    if(table.searchFor(temp, temp2) == true)
+    AVLNODE* temp2 = wordAVL.getRoot();
+    //AVLNODE* temp2 = table.getRoot(temp);
+    if(wordAVL.searchFor(temp, temp2) == true)
+    //if(table.searchFor(temp, temp2) == true)
         return true;
     else
         return false;
@@ -37,8 +37,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -72,8 +72,8 @@ void DocumentParser::getInput()
     int page = 1;
     string sTemp;
     int iTemp;
-    while(curPage != 0)
-    //for(int i = 0; i < 80000; i++)
+    //while(curPage != 0)
+    for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -93,53 +93,56 @@ void DocumentParser::getInput()
         page++;
     }
 
-    vector<char*> test;
+    /*vector<char*> test;
     test.push_back("this is running apples anot/her te?sting apples string with apples");
     test.push_back("why w\on't this apples. !functioning apples work?");
-    test.push_back("between apples ab%l*e why becuase apples zero work?");
+    test.push_back("between apples ab%l*e why becuase apples zero work?");*/
 
     StopWord* sw = new StopWord();
     sw->createArray();
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < test.size(); j++)
+    for(int j = 0; j < texts.size(); j++)
     {//start overall for
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-        //testBuffer = texts[j];
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
-            //makes everything lowercase
-            transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
-            if(sw->isStopWord(temp) == true)
+            //first step is to remove punctuation
+            temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
+            temp.erase(remove_if(temp.begin(), temp.end(), ::isdigit), temp.end());
+            if(temp == "" || temp == "•" || temp.size() == 1)
             {
-                //don't need to do anything
+                //do nothing
             }
-            else
-            {//if it isn't a stop word go to stemmer
-                char* arr = new char[temp.length() + 1];
-                strcpy(arr, temp.c_str());
-                int x = stem(arr, 0, strlen(arr)-1);
-                arr[x+1] = '\0';
-                temp = arr;
 
-                //remove punctuation
-                temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
-                if(temp == "" || temp == "•" || temp.size() == 1)
+            else
+            {
+                //makes everything lowercase
+                transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
+                if(sw->isStopWord(temp) == true)
                 {
-                    //don't do anything if one letter or null;
+                    //don't need to do anything
                 }
-                else                    
+
+                else
                 {
+                    char* arr = new char[temp.length() + 1];
+                    strcpy(arr, temp.c_str());
+                    int x = stem(arr, 0, strlen(arr)-1);
+                    arr[x+1] = '\0';
+                    temp = arr;
+
                     //check if word exists already
                     if(checkForWord(temp) == true)
                     {//if it exists
 
-                        //Word* x = wordAVL.returnWord(temp);
-                        Word* x = table.returnWord(temp);
+                        Word* x = wordAVL.returnWord(temp);
+                        //Word* x = table.returnWord(temp);
                         if(x->lookForPage(page) == true)
                         {
                             x->increaseFrequency(ids[j]);
@@ -157,24 +160,21 @@ void DocumentParser::getInput()
                         Word* w = new Word(temp, ids[j]);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j]);
-                        //wordAVL.insert(w);
-                        table.addWord(w);
+                        wordAVL.insert(w);
+                        //table.addWord(w);
                     }
-
                 }
-            }//else
-
-        }
+            }
+         }//overall while
 
         //Page* p = new Page(titles[j], ids[j]);
         //pages.push_back(p);
 
-    }
+     }//overall for
 
-    //wordAVL.print(cout);
-    table.printTrees();
+    wordAVL.print(cout);
+    //table.printTrees();
 
-        //end main for
 }//end getInput
 
 AVL2 DocumentParser::getwordAVL()
