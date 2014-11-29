@@ -42,7 +42,6 @@ ostream& Word::getPageTree(ostream& fout)
 void Word::increaseFrequency(int pageId)
 {
     info[pageId]++;
-    cout << info[pageId] << endl;
 }
 
 bool Word::lookForPage(int page)

@@ -76,7 +76,7 @@ private:
         if(p != NULL)
         {
             print(out, p->left);
-            out << p->element << ", ";
+            out << p->element << ",";
             print(out, p->right);
 
         }

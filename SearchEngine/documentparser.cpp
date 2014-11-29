@@ -72,8 +72,8 @@ void DocumentParser::getInput()
     int page = 1;
     string sTemp;
     int iTemp;
-    //while(curPage != 0)
-    for(int i = 0; i < 80000; i++)
+    while(curPage != 0)
+    //for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -93,10 +93,11 @@ void DocumentParser::getInput()
         page++;
     }
 
-    /*vector<char*> test;
+    vector<char*> test;
     test.push_back("this is running apples anot/her te?sting apples string with apples");
     test.push_back("why w\on't this apples. !functioning apples work?");
-    test.push_back("between apples ab%l*e why becuase apples zero work?");*/
+    test.push_back("between apples ab%l*e why becuase apples zero work?");
+    test.push_back("apples are necessary for survival and work");
 
     StopWord* sw = new StopWord();
     sw->createArray();
@@ -116,7 +117,7 @@ void DocumentParser::getInput()
             temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
             temp.erase(remove_if(temp.begin(), temp.end(), ::isdigit), temp.end());
             stripUnicode(temp);
-            if(temp == "" || temp == "•" || temp.size() == 1)
+            if(temp == "" || temp.length() == 1 || temp.length() > 50)
             {
                 //do nothing
             }
@@ -144,7 +145,7 @@ void DocumentParser::getInput()
 
                         Word* x = wordAVL.returnWord(temp);
                         //Word* x = table.returnWord(temp);
-                        if(x->lookForPage(page) == true)
+                        if(x->lookForPage(ids[j]) == true)
                         {
                             x->increaseFrequency(ids[j]);
                         }

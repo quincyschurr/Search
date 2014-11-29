@@ -6,13 +6,23 @@ UserInterface::UserInterface()
 
 void UserInterface::startProgram()
 {
+    IndexHandler* h = new IndexHandler();
     cout << "Welcome to MustangWiki" << endl;
     cout << "What would you like to do?" << endl;
     cout << "Please press 'P' to parse the data," << endl;
     cin >> input;
 
+    if(input == "p" || input == "P")
+    {
+        DocumentParser* b = new DocumentParser();
+    }
+    else
+    {
+        cout << "Please choose a valid option" << endl;
+        exit(1);
+    }
+
     //DocumentParser* dp = new DocumentParser();
-    IndexHandler* h = new IndexHandler();
     chrono::time_point<chrono::system_clock> start, end;
     start = chrono::system_clock::now();
     //dp->getInput();
@@ -24,10 +34,6 @@ void UserInterface::startProgram()
     cout << "Finished computation at " << ctime(&end_time) << endl;
     cout << "Elapsed time: " << elapsed_seconds.count() << "s\n";
 
-    /*if(input = 'p' || input = 'P')
-    {
-        DocumentParser* b = new DocumentParser();
-    }*/
 
 }
 
