@@ -115,6 +115,7 @@ void DocumentParser::getInput()
             //first step is to remove punctuation
             temp.erase(remove_if(temp.begin(), temp.end(), ::ispunct), temp.end());
             temp.erase(remove_if(temp.begin(), temp.end(), ::isdigit), temp.end());
+            stripUnicode(temp);
             if(temp == "" || temp == "•" || temp.size() == 1)
             {
                 //do nothing
@@ -180,6 +181,12 @@ void DocumentParser::getInput()
 AVL2 DocumentParser::getwordAVL()
 {
     return wordAVL;
+}
+
+
+void DocumentParser::stripUnicode(string& temp)
+{
+    temp.erase(remove_if(temp.begin(), temp.end(), InvalidChar()), temp.end());
 }
 
 DocumentParser::~DocumentParser()

@@ -38,6 +38,16 @@ public:
 
     bool checkForWord(string& temp);
     void getInput();
+    //http://stackoverflow.com/questions/10178700/c-strip-non-ascii-characters-from-string
+    void stripUnicode(string& temp);
+
+    struct InvalidChar
+    {
+        bool operator()(char c) const
+        {
+            return !isprint((unsigned) c);
+        }
+    };
 };
 
 #endif // DOCUMENTPARSER_H
