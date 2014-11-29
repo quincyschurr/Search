@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     stopword.cpp \
     indexhandler.cpp \
     hashtable.cpp \
-    avl2.cpp
+    avl2.cpp \
+    query.cpp
 
 HEADERS += \
     avltree.h \
@@ -39,4 +40,5 @@ HEADERS += \
     hashtable.h \
     porterstem.h \
     avl2.h \
-    AVLNODE.h
+    AVLNODE.h \
+    query.h
