@@ -53,7 +53,8 @@ SOURCES       = ../SearchEngine/main.cpp \
 		../SearchEngine/stopword.cpp \
 		../SearchEngine/indexhandler.cpp \
 		../SearchEngine/hashtable.cpp \
-		../SearchEngine/avl2.cpp 
+		../SearchEngine/avl2.cpp \
+		../SearchEngine/query.cpp 
 OBJECTS       = main.o \
 		userinterface.o \
 		documentparser.o \
@@ -62,7 +63,8 @@ OBJECTS       = main.o \
 		stopword.o \
 		indexhandler.o \
 		hashtable.o \
-		avl2.o
+		avl2.o \
+		query.o
 DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.3/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.3/clang_64/mkspecs/features/device_config.prf \
@@ -186,7 +188,8 @@ DIST          = ../../../../Qt/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		../SearchEngine/stopword.cpp \
 		../SearchEngine/indexhandler.cpp \
 		../SearchEngine/hashtable.cpp \
-		../SearchEngine/avl2.cpp
+		../SearchEngine/avl2.cpp \
+		../SearchEngine/query.cpp
 QMAKE_TARGET  = SearchEngine
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = SearchEngine
@@ -473,7 +476,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/SearchEngine1.0.0 || mkdir -p .tmp/SearchEngine1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h ../SearchEngine/page.h ../SearchEngine/stopword.h ../SearchEngine/rapidxml_utils.hpp ../SearchEngine/rapidxml.hpp ../SearchEngine/indexhandler.h ../SearchEngine/hashtable.h ../SearchEngine/porterstem.h ../SearchEngine/avl2.h ../SearchEngine/AVLNODE.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp ../SearchEngine/page.cpp ../SearchEngine/stopword.cpp ../SearchEngine/indexhandler.cpp ../SearchEngine/hashtable.cpp ../SearchEngine/avl2.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/avltree.h ../SearchEngine/userinterface.h ../SearchEngine/documentparser.h ../SearchEngine/word.h ../SearchEngine/page.h ../SearchEngine/stopword.h ../SearchEngine/rapidxml_utils.hpp ../SearchEngine/rapidxml.hpp ../SearchEngine/indexhandler.h ../SearchEngine/hashtable.h ../SearchEngine/porterstem.h ../SearchEngine/avl2.h ../SearchEngine/AVLNODE.h ../SearchEngine/query.h .tmp/SearchEngine1.0.0/ && $(COPY_FILE) --parents ../SearchEngine/main.cpp ../SearchEngine/userinterface.cpp ../SearchEngine/documentparser.cpp ../SearchEngine/word.cpp ../SearchEngine/page.cpp ../SearchEngine/stopword.cpp ../SearchEngine/indexhandler.cpp ../SearchEngine/hashtable.cpp ../SearchEngine/avl2.cpp ../SearchEngine/query.cpp .tmp/SearchEngine1.0.0/ && (cd `dirname .tmp/SearchEngine1.0.0` && $(TAR) SearchEngine1.0.0.tar SearchEngine1.0.0 && $(COMPRESS) SearchEngine1.0.0.tar) && $(MOVE) `dirname .tmp/SearchEngine1.0.0`/SearchEngine1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/SearchEngine1.0.0
 
 
 clean:compiler_clean 
@@ -514,12 +517,12 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../SearchEngine/main.cpp ../SearchEngine/avltree.h \
-		../SearchEngine/word.h \
-		../SearchEngine/stopword.h \
-		../SearchEngine/userinterface.h \
+main.o: ../SearchEngine/main.cpp ../SearchEngine/userinterface.h \
 		../SearchEngine/documentparser.h \
+		../SearchEngine/word.h \
+		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
+		../SearchEngine/stopword.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h \
 		../SearchEngine/rapidxml_utils.hpp \
@@ -590,6 +593,9 @@ avl2.o: ../SearchEngine/avl2.cpp ../SearchEngine/avl2.h \
 		../SearchEngine/avltree.h \
 		../SearchEngine/AVLNODE.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o avl2.o ../SearchEngine/avl2.cpp
+
+query.o: ../SearchEngine/query.cpp ../SearchEngine/query.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o query.o ../SearchEngine/query.cpp
 
 ####### Install
 

@@ -37,8 +37,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -174,7 +174,7 @@ void DocumentParser::getInput()
 
      }//overall for
 
-    wordAVL.print(cout);
+    //wordAVL.print(cout);
     //table.printTrees();
 
 }//end getInput
