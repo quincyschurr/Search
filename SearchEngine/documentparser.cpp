@@ -37,8 +37,8 @@ void DocumentParser::getInput()
         // Find our root node
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -72,8 +72,8 @@ void DocumentParser::getInput()
     int page = 1;
     string sTemp;
     int iTemp;
-    while(curPage != 0)
-    //for(int i = 0; i < 80000; i++)
+    //while(curPage != 0)
+    for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -104,12 +104,12 @@ void DocumentParser::getInput()
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < test.size(); j++)
+    for(int j = 0; j < texts.size(); j++)
     {//start overall for
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-        //testBuffer = texts[j];
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
