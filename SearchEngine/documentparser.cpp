@@ -152,7 +152,7 @@ void DocumentParser::getInput()
                         else
                         {
                             x->addPages(ids[j]);
-                            x->addToMap(ids[j]);
+                            x->addToMap(ids[j], 1);
                         }
 
                     }
@@ -161,7 +161,7 @@ void DocumentParser::getInput()
                     {
                         Word* w = new Word(temp, ids[j]);
                         w->addPages(ids[j]);
-                        w->addToMap(ids[j]);
+                        w->addToMap(ids[j], 1);
                         wordAVL.insert(w);
                         //table.addWord(w);
                     }
@@ -174,7 +174,7 @@ void DocumentParser::getInput()
 
      }//overall for
 
-    //wordAVL.print(cout);
+    wordAVL.print(cout);
     //table.printTrees();
 
 }//end getInput

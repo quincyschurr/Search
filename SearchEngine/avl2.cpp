@@ -167,7 +167,7 @@ void AVL2::print(ostream& out, AVLNODE* p) const
     if(p != NULL)
     {
         print(out, p->left);
-        out << p->element->getWord() << ": ";
+        out << p->element->getWord() << " : ";
         p->element->getPageTree(out);
         out << endl;
         print(out, p->right);

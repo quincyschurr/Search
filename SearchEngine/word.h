@@ -17,15 +17,14 @@ private:
     string word;
     int pageId;
     AVLTree <int> pages;
-    int frequency;
     map <int, int> info;
 
 public:
     void addPages(int pageId);
-    void addToMap(int pageId);
+    void addToMap(int pageId, int occurance);
     string getWord() const;
     int getPageId() const;
-    ostream& getPageTree(ostream&);
+    void getPageTree(ostream&);
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
 

@@ -2,6 +2,7 @@
 
 Word::Word()
 {
+
 }
 
 
@@ -16,10 +17,10 @@ void Word::addPages(int pageId)
     pages.insert(pageId);
 }
 
-void Word::addToMap(int pageId)
+void Word::addToMap(int pageId, int o)
 {
     int page = pageId;
-    int occurance = 1;
+    int occurance = o;
     info[page] = occurance;
 }
 
@@ -34,9 +35,13 @@ int Word::getPageId() const
     return pageId;
 }
 
-ostream& Word::getPageTree(ostream& fout)
+void Word::getPageTree(ostream& fout)
 {
-    return pages.print2(fout);
+    //return pages.print2(fout);
+    for(map<int, int>::iterator it = info.begin(); it!=info.end(); ++it)
+    {
+        fout << it->first << "(" << it->second << "), ";
+    }
 }
 
 void Word::increaseFrequency(int pageId)
