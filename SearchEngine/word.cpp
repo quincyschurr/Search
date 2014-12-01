@@ -5,7 +5,6 @@ Word::Word()
 
 }
 
-
 Word::Word(string word, int pageId)
 {
     this->word = word;
@@ -14,6 +13,7 @@ Word::Word(string word, int pageId)
 
 void Word::addPages(int pageId)
 {
+    vPages.push_back(pageId);
     pages.insert(pageId);
 }
 
@@ -33,6 +33,10 @@ string Word::getWord() const
 int Word::getPageId() const
 {
     return pageId;
+}
+
+vector<int> Word::getPages() {
+    return vPages;
 }
 
 void Word::getPageTree(ostream& fout)
@@ -81,9 +85,6 @@ bool operator==(const Word& lhs, const Word& rhs)
     else
         return false;
 }
-
-
-
 
 Word::~Word()
 {

@@ -18,6 +18,7 @@ private:
     int pageId;
     AVLTree <int> pages;
     map <int, int> info;
+    vector<int> vPages;
 
 public:
     void addPages(int pageId);
@@ -27,6 +28,7 @@ public:
     void getPageTree(ostream&);
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
+    vector<int> getPages();
 
     friend bool operator>(const string& lhs, const Word& rhs);
     friend bool operator<(const string& lhs, const Word& rhs);

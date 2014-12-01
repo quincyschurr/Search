@@ -26,6 +26,7 @@ void Query::buildIndex()
 
 void Query::startQuery()
 {
+    int count = 0;
 
     //before starting query we have to get the index
     buildIndex();
@@ -41,6 +42,10 @@ void Query::startQuery()
     {
         searchWords.push_back(temp);
         //try to separate the string into vector or array
+        count++;
+    }
+    vector<int> pageResults;
+    if(searchWords[0] == "AND") {
 
     }
 
@@ -48,6 +53,24 @@ void Query::startQuery()
 
     //the stl has container classes. Iterators allow algoritms to operate on containers
     //there is a class set, Put the pages in separate set objects, could be vectors of Pages
+}
+
+vector<int> Query::qAND(vector<int> a, vector<int> b) {
+    vector<int> uni;
+    set_union(a.begin(), a.end(), b.begin(), b.end(), uni.begin());
+    return uni;
+}
+
+vector<int> Query::qOR(vector<int> a, vector<int> b) {
+    vector<int> inter;
+    set_intersection(a.begin(), a.end(), b.begin(), b.end(), inter.begin());
+    return inter;
+}
+
+vector<int> Query::qNOT(vector<int> a, vector<int> b) {
+    vector<int> diff;
+    set_difference(a.begin(), a.end(), b.begin(), b.end(), diff.begin());
+    return diff;
 }
 
 Query::~Query()
