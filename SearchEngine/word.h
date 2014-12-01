@@ -17,12 +17,11 @@ private:
     string word;
     int pageId;
     AVLTree <int> pages;
-    int frequency;
     map <int, int> info;
 
 public:
     void addPages(int pageId);
-    void addToMap(int pageId);
+    void addToMap(int pageId, int occurance);
     string getWord() const;
     int getPageId() const;
     void getPageTree(ostream&);

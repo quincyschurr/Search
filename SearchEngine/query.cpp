@@ -5,9 +5,30 @@ Query::Query()
 
 }
 
+void Query::buildIndex()
+{
+    ifstream fin("output2.txt");
+    string word = "";
+    int pageNum = 0;
+    int frequency = 0;
+
+        fin >> word;
+        fin.ignore(2);
+        fin >> pageNum;
+        fin.ignore();
+        fin >> frequency;
+        fin.ignore(3);
+        cout << word << ": " << pageNum << "(" << frequency << ")" << endl;
+        //how to loop through getting word and frequency for each word?
+        //and how to loop through entire index..eof
+
+}
 
 void Query::startQuery()
 {
+
+    //before starting query we have to get the index
+    buildIndex();
     string input;
     string temp = "";
 //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
