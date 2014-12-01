@@ -104,12 +104,12 @@ void DocumentParser::getInput()
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < texts.size(); j++)
+    for(int j = 0; j < test.size(); j++)
     {//start overall for
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
-        testBuffer = texts[j];
+        testBuffer = test[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
@@ -174,7 +174,7 @@ void DocumentParser::getInput()
 
      }//overall for
 
-    //wordAVL.print(cout);
+    wordAVL.print(cout);
     //table.printTrees();
 
 }//end getInput

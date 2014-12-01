@@ -25,7 +25,7 @@ public:
     void addToMap(int pageId);
     string getWord() const;
     int getPageId() const;
-    ostream& getPageTree(ostream&);
+    void getPageTree(ostream&);
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
 

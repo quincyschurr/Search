@@ -2,6 +2,7 @@
 
 Word::Word()
 {
+
 }
 
 
@@ -34,9 +35,13 @@ int Word::getPageId() const
     return pageId;
 }
 
-ostream& Word::getPageTree(ostream& fout)
+void Word::getPageTree(ostream& fout)
 {
-    return pages.print2(fout);
+    //return pages.print2(fout);
+    for(map<int, int>::iterator it = info.begin(); it!=info.end(); ++it)
+    {
+        fout << it->first << "(" << it->second << "), ";
+    }
 }
 
 void Word::increaseFrequency(int pageId)

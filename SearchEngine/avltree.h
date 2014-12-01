@@ -75,9 +75,9 @@ private:
     {
         if(p != NULL)
         {
-            print(out, p->left);
+            print2(out, p->left);
             out << p->element << ",";
-            print(out, p->right);
+            print2(out, p->right);
 
         }
     }
