@@ -16,6 +16,7 @@ class Word
 private:
     string word;
     int pageId;
+    int numOfPages;
     AVLTree <int> pages;
     map <int, int> info;
     vector<int> vPages;
@@ -23,6 +24,7 @@ private:
 public:
     void addPages(int pageId);
     void addToMap(int pageId, int occurance);
+    int getNumPages() const;
     string getWord() const;
     int getPageId() const;
     void getPageTree(ostream&);
@@ -35,7 +37,8 @@ public:
     friend bool operator==(const string& lhs, const Word& rhs);
 
     Word();
-    Word(string word, int pageId);
+    Word(string word);
+   // Word(string word, int pageId);
     ~Word();
 };
 

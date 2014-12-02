@@ -5,15 +5,16 @@ Word::Word()
 
 }
 
-Word::Word(string word, int pageId)
+Word::Word(string word)
 {
     this->word = word;
-    this->pageId = pageId;
+    numOfPages = 0;
 }
 
 void Word::addPages(int pageId)
 {
     vPages.push_back(pageId);
+    numOfPages++;
     pages.insert(pageId);
 }
 
@@ -24,6 +25,10 @@ void Word::addToMap(int pageId, int o)
     info[page] = occurance;
 }
 
+int Word::getNumPages() const
+{
+    return numOfPages;
+}
 
 string Word::getWord() const
 {

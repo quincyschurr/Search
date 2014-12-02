@@ -12,22 +12,31 @@ void Query::buildIndex()
 
     ifstream fin("output2.txt");
     string word = "";
+    int numOfPages = 0;
     int pageNum = 0;
     int frequency = 0;
 
     while(!fin.eof())
     {
         fin >> word;
+        fin.ignore(4);
+        fin >> numOfPages;
         fin.ignore(2);
-        //while(fin != "\0")
-        //{
+        Word* w = new Word(word);
+        cout << word << ": " << "[" << numOfPages << "] ";
+        for(int b = 0; b < numOfPages; b++)
+        {
             fin >> pageNum;
             fin.ignore();
             fin >> frequency;
             fin.ignore(3);
-        //}
+            w->addPages(pageNum);
+            w->addToMap(pageNum, frequency);
+            tree.insert(w);
+            cout << pageNum << "(" << frequency << "), ";
+        }
+        cout << endl;
 
-        cout << word << ": " << pageNum << "(" << frequency << ")" << endl;
     }
         //how to loop through getting word and frequency for each word?
         //and how to loop through entire index..eof

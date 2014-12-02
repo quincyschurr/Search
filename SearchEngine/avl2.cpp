@@ -168,6 +168,7 @@ void AVL2::print(ostream& out, AVLNODE* p) const
     {
         print(out, p->left);
         out << p->element->getWord() << " : ";
+        out << "[" << p->element->getNumPages() << "] ";
         p->element->getPageTree(out);
         out << endl;
         print(out, p->right);

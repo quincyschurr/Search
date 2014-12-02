@@ -159,7 +159,7 @@ void DocumentParser::getInput()
 
                     else
                     {
-                        Word* w = new Word(temp, ids[j]);
+                        Word* w = new Word(temp);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j], 1);
                         wordAVL.insert(w);
