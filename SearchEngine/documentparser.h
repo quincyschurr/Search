@@ -34,7 +34,9 @@ public:
     ~DocumentParser();
 
     AVL2 wordAVL;
+
     AVL2 getwordAVL();
+    HashTable getTable();
 
     bool checkForWord(string& temp);
     void getInput();

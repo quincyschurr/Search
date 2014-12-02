@@ -7,6 +7,9 @@ Query::Query()
 
 void Query::buildIndex()
 {
+    table = dp.getTable();
+    //tree = dp.getwordAVL();
+
     ifstream fin("output2.txt");
     string word = "";
     int pageNum = 0;
@@ -31,6 +34,7 @@ void Query::startQuery()
 
     //before starting query we have to get the index
     buildIndex();
+
     string input;
     string temp = "";
 //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
@@ -45,9 +49,43 @@ void Query::startQuery()
         //try to separate the string into vector or array
         count++;
     }
+    Word * word1;
+    Word * word2;
+    Word * word3;
+    vector<int> word1Pages;
     vector<int> pageResults;
-    if(searchWords[0] == "AND") {
-
+    if(count  == 1) {
+        word1 = table.returnWord(searchWords[0]);
+        pageResults = word1->getPages();
+    }
+    else if(searchWords[0] == "AND") {
+        word1 = table.returnWord(searchWords[1]);
+        word2 = table.returnWord(searchWords[2]);
+        word1Pages = word1->getPages();
+        vector<int> word2Pages = word2->getPages();
+        pageResults = qAND(word1Pages, word2Pages);
+        if(count == 5) {
+            word3 = table.returnWord(searchWords[4]);
+            vector<int> word3Pages = word3->getPages();
+            pageResults = qNOT(pageResults, word3Pages);
+        }
+    }
+    else if(searchWords[0] == "OR") {
+        word1 = table.returnWord(searchWords[1]);
+        word2 = table.returnWord(searchWords[2]);
+        word1Pages = word1->getPages();
+        vector<int> word2Pages = word2->getPages();
+        pageResults = qOR(word1Pages, word2Pages);
+        if(count == 5) {
+            word3 = table.returnWord(searchWords[4]);
+            vector<int> word3Pages = word3->getPages();
+            pageResults = qNOT(pageResults, word3Pages);
+        }
+    }
+    else {
+        word1 = table.returnWord(searchWords[0]);
+        word2 = table.returnWord(searchWords[2]);
+        pageResults =  qNOT(word1, word2);
     }
 
 

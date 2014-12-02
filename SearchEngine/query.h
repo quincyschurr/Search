@@ -8,12 +8,19 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
+#include "documentparser.h"
+#include "avl2.h"
+#include "hashtable.h"
+#include "word.h"
 
 using namespace std;
 
 class Query
 {
 private:
+    AVL2 tree;
+    HashTable table;
+    DocumentParser dp;
     vector <string> searchWords;
 public:
     //pass avl and hash table by reference to query
