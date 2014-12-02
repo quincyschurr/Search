@@ -184,6 +184,9 @@ AVL2 DocumentParser::getwordAVL()
     return wordAVL;
 }
 
+HashTable DocumentParser::getTable() {
+    return table;
+}
 
 void DocumentParser::stripUnicode(string& temp)
 {
