@@ -38,8 +38,10 @@ public:
     AVL2 getwordAVL();
     HashTable getTable();
 
-    bool checkForWord(string& temp);
-    void getInput();
+    bool checkForWordAVL(string& temp);
+    bool checkForWordHash(string& temp);
+    void getInputAVL();
+    void getInputHash();
     //http://stackoverflow.com/questions/10178700/c-strip-non-ascii-characters-from-string
     void stripUnicode(string& temp);
 
