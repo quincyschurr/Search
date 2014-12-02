@@ -15,14 +15,20 @@ void Query::buildIndex()
     int pageNum = 0;
     int frequency = 0;
 
+    while(!fin.eof())
+    {
         fin >> word;
         fin.ignore(2);
-        fin >> pageNum;
-        fin.ignore();
-        fin >> frequency;
-        fin.ignore(3);
+        //while(fin != "\0")
+        //{
+            fin >> pageNum;
+            fin.ignore();
+            fin >> frequency;
+            fin.ignore(3);
+        //}
 
         cout << word << ": " << pageNum << "(" << frequency << ")" << endl;
+    }
         //how to loop through getting word and frequency for each word?
         //and how to loop through entire index..eof
 
@@ -85,7 +91,7 @@ void Query::startQuery()
     else {
         word1 = table.returnWord(searchWords[0]);
         word2 = table.returnWord(searchWords[2]);
-        pageResults =  qNOT(word1, word2);
+        //pageResults =  qNOT(word1, word2);
     }
 
 
