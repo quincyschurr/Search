@@ -7,40 +7,78 @@ Query::Query()
 
 void Query::buildIndex()
 {
-    table = dp.getTable();
+    //we don't need these
+    //table = dp.getTable();
     //tree = dp.getwordAVL();
+    string indexType = "";
+    cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
+    cin >> indexType;
 
-    ifstream fin("output2.txt");
-    string word = "";
-    int numOfPages = 0;
-    int pageNum = 0;
-    int frequency = 0;
-
-    while(!fin.eof())
+    if(indexType == "A" || indexType == "a")
     {
-        fin >> word;
-        fin.ignore(4);
-        fin >> numOfPages;
-        fin.ignore(2);
-        Word* w = new Word(word);
-        cout << word << ": " << "[" << numOfPages << "] ";
-        for(int b = 0; b < numOfPages; b++)
-        {
-            fin >> pageNum;
-            fin.ignore();
-            fin >> frequency;
-            fin.ignore(3);
-            w->addPages(pageNum);
-            w->addToMap(pageNum, frequency);
-            tree.insert(w);
-            cout << pageNum << "(" << frequency << "), ";
-        }
-        cout << endl;
+        ifstream fin("output2.txt");
+        string word = "";
+        int numOfPages = 0;
+        int pageNum = 0;
+        int frequency = 0;
 
+        while(!fin.eof())
+        {
+            fin >> word;
+            fin.ignore(4);
+            fin >> numOfPages;
+            fin.ignore(2);
+            Word* w = new Word(word);
+            cout << word << ": " << "[" << numOfPages << "] ";
+            for(int b = 0; b < numOfPages; b++)
+            {
+                fin >> pageNum;
+                fin.ignore();
+                fin >> frequency;
+                fin.ignore(3);
+                w->addPages(pageNum);
+                w->addToMap(pageNum, frequency);
+                tree.insert(w);
+                cout << pageNum << "(" << frequency << "), ";
+            }
+            cout << endl;
+
+        }
     }
+    else if(indexType == "H" || indexType == "h")
+    {
+        ifstream fin("output2.txt");
+        string word = "";
+        int numOfPages = 0;
+        int pageNum = 0;
+        int frequency = 0;
+
+        while(!fin.eof())
+        {
+            fin >> word;
+            fin.ignore(4);
+            fin >> numOfPages;
+            fin.ignore(2);
+            Word* w = new Word(word);
+            cout << word << ": " << "[" << numOfPages << "] ";
+            for(int b = 0; b < numOfPages; b++)
+            {
+                fin >> pageNum;
+                fin.ignore();
+                fin >> frequency;
+                fin.ignore(3);
+                w->addPages(pageNum);
+                w->addToMap(pageNum, frequency);
+                table.addWord(w);
+                cout << pageNum << "(" << frequency << "), ";
+            }
+            cout << endl;
+    }
+
         //how to loop through getting word and frequency for each word?
         //and how to loop through entire index..eof
 
+    }
 }
 
 void Query::startQuery()
