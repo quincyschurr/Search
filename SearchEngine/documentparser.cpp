@@ -150,8 +150,8 @@ void DocumentParser::getInputAVL()
                     if(checkForWordAVL(temp) == true)
                     {//if it exists
 
-                        Word* x = wordAVL.returnWord(temp);
-                        //Word* x = table.returnWord(temp);
+                        //Word* x = wordAVL.returnWord(temp);
+                        Word* x = table.returnWord(temp);
                         if(x->lookForPage(ids[j]) == true)
                         {
                             x->increaseFrequency(ids[j]);
@@ -169,8 +169,8 @@ void DocumentParser::getInputAVL()
                         Word* w = new Word(temp);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j], 1);
-                        wordAVL.insert(w);
-                        //table.addWord(w);
+                        //wordAVL.insert(w);
+                        table.addWord(w);
                     }
                 }
             }
@@ -181,7 +181,7 @@ void DocumentParser::getInputAVL()
 
      }//overall for
 
-    wordAVL.print(cout);
+    //wordAVL.print(cout);
     //table.printTrees();
 
 }//end getInput
@@ -337,7 +337,7 @@ void DocumentParser::getInputHash()
 
      }//overall for
 
-    table.printTrees();
+    //table.printTrees();
 }
 
 AVL2 DocumentParser::getwordAVL()

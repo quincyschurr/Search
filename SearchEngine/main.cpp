@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 
 
     test.print(fout);*/
+    cout << "END" << endl;
 
     return 0;
 }

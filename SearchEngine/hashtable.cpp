@@ -51,9 +51,9 @@ Word* HashTable::returnWord(string& test) {
     return trees[key].returnWord(test);
 }
 
-void HashTable::printTrees() {
+void HashTable::printTrees(ostream& out) {
     for(int i = 0; i < count; i++) {
-        trees[i].print(cout);
+        trees[i].print(out);
     }
 }
 

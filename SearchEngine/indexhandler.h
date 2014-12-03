@@ -7,13 +7,14 @@
 #include "avl2.h"
 #include <iostream>
 #include <fstream>
+#include "hashtable.h"
 
 using namespace std;
 class IndexHandler
 {
 private:
     AVLTree <Word> avlindex;
-    //hashtable
+    HashTable table;
 public:
 
     void print();

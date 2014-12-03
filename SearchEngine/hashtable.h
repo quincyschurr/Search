@@ -19,7 +19,7 @@ public:
     AVLNODE* getRoot(string);
     bool searchFor(string& x, AVLNODE* root);
     Word* returnWord(string& test);
-    void printTrees();
+    void printTrees(ostream&);
 };
 
 #endif // HASHTABLE_H

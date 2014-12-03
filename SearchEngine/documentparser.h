@@ -27,13 +27,14 @@ class DocumentParser
 {
 private:
     //AVLTree <Page*> pages2;
-    HashTable table;
+
 
 public:
     DocumentParser();
     ~DocumentParser();
 
-    AVL2 wordAVL;
+    AVL2 wordAVL; //probably need to be private
+    HashTable table; //probably need ot be private
 
     AVL2 getwordAVL();
     HashTable getTable();

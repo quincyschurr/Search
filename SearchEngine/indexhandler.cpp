@@ -21,6 +21,7 @@ void IndexHandler::print()
     else if(parseType == "H" || parseType == "h")
     {
         d->getInputHash();
+        d->table.printTrees(indexPrint);
     }
 
 }
