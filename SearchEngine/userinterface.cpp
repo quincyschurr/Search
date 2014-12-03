@@ -11,6 +11,7 @@ void UserInterface::startProgram()
     cout << "What would you like to do?" << endl;
     cout << "Please press 'P' to parse the data," << endl;
     cout << "'Q' to start a query," << endl;
+    cout << "'C' to clear the index" << endl;
     cin >> input;
 
     if(input == "p" || input == "P")
@@ -34,13 +35,20 @@ void UserInterface::startProgram()
         q->startQuery();
 
     }
+    else if(input == "C" || input == "c") {
+        clearIndex();
+        cout << "index is now clear" << endl;
+    }
     else
     {
         cout << "Please choose a valid option" << endl;
         exit(1);
     }
 
+}
 
+void UserInterface::clearIndex() {
+    ofstream("output2.txt", ios::out);
 }
 
 UserInterface::~UserInterface()

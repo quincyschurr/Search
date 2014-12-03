@@ -107,6 +107,9 @@ Word* AVL2::returnWord(string& test, AVLNODE* root)
 {
     if(root == NULL)
     {
+        return NULL;
+        //cout << test << " does not exist" << endl;
+        //exit(11);
         throw(strerror);
     }
     else if(test == root->element->getWord())

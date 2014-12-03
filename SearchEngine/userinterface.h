@@ -17,7 +17,7 @@ private:
     string input;
 public:
     void startProgram();
-
+    void clearIndex();
     UserInterface();
     ~UserInterface();
 };
