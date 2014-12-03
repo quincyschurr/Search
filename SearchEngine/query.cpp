@@ -198,6 +198,7 @@ void Query::startQuery()
 
     //the stl has container classes. Iterators allow algoritms to operate on containers
     //there is a class set, Put the pages in separate set objects, could be vectors of Pages
+    searchWords.clear();
     }//end main while loop
 }
 
