@@ -26,8 +26,6 @@ using namespace rapidxml;
 class DocumentParser
 {
 private:
-    AVLTree <Page*> pages;
-
 
 public:
     DocumentParser();
@@ -35,6 +33,7 @@ public:
 
     AVL2 wordAVL; //probably need to be private
     HashTable table; //probably need ot be private
+    AVLTree <Page*> pages;//make private and use getter/setters
 
     AVL2 getwordAVL();
     HashTable getTable();

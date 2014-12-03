@@ -135,17 +135,21 @@ void Query::startQuery()
         if(word1 == NULL || word2 == NULL) {
             cout << "word does not exist" << endl;
         }
-        else {
+        else
+        {
         word1Pages = word1->getPages();
         vector<int> word2Pages = word2->getPages();
         pageResults = qAND(word1Pages, word2Pages);
         //set_union(word1Pages.begin(), word1Pages.end(), word2Pages.begin(), word2Pages.end(), pageResults.begin());
-        if(count == 5) {
+        if(count == 5)
+        {
             word3 = table.returnWord(searchWords[4]);
-            if(word3 == NULL) {
+            if(word3 == NULL)
+            {
                 cout << "word does not exist" << endl;
             }
-            else {
+            else
+            {
             vector<int> word3Pages = word3->getPages();
             pageResults = qNOT(pageResults, word3Pages);
             } //end else
