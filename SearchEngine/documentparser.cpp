@@ -100,8 +100,8 @@ void DocumentParser::getInputAVL()
         page++;
     }
 
-    vector<char*> test;
-    test.push_back("AND OR NOT");
+    //vector<char*> test;
+    //test.push_back("AND OR NOT");
     //test.push_back("this is running apples anot/her te?sting apples string with apples");
     //test.push_back("why w\on't this apples. !functioning apples work?");
     //test.push_back("between apples ab%l*e why becuase apples zero work?");
@@ -112,12 +112,12 @@ void DocumentParser::getInputAVL()
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < test.size(); j++)
+    for(int j = 0; j < texts.size(); j++)
     {//start overall for
         temp = "";
         testBuffer = "";
-        testBuffer = test[j];
-        //testBuffer = texts[j];
+        //testBuffer = test[j];
+        testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
@@ -151,8 +151,7 @@ void DocumentParser::getInputAVL()
                     if(checkForWordAVL(temp) == true)
                     {//if it exists
 
-                        //Word* x = wordAVL.returnWord(temp);
-                        Word* x = table.returnWord(temp);
+                        Word* x = wordAVL.returnWord(temp);
                         if(x->lookForPage(ids[j]) == true)
                         {
                             x->increaseFrequency(ids[j]);
@@ -170,8 +169,7 @@ void DocumentParser::getInputAVL()
                         Word* w = new Word(temp);
                         w->addPages(ids[j]);
                         w->addToMap(ids[j], 1);
-                        //wordAVL.insert(w);
-                        table.addWord(w);
+                        wordAVL.insert(w);
                     }
                 }
             }
@@ -182,8 +180,7 @@ void DocumentParser::getInputAVL()
 
      }//overall for
 
-    wordAVL.print(cout);
-    //table.printTrees();
+    //wordAVL.print(cout);
 
 }//end getInput
 

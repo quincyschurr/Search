@@ -161,7 +161,6 @@ void AVL2::doubleWithRightChild(AVLNODE*& k2)
 
 void AVL2::print(ostream& out) const
 {
-    //out << "ROOT " << (root->element->getWord()) << endl;
     print(out, root);
 }
 
