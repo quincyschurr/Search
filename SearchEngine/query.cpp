@@ -73,10 +73,7 @@ void Query::buildIndex()
                 cout << pageNum << "(" << frequency << "), ";
             }
             cout << endl;
-    }
-
-        //how to loop through getting word and frequency for each word?
-        //and how to loop through entire index..eof
+        }
 
     }
 }

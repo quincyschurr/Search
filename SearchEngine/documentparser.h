@@ -26,7 +26,7 @@ using namespace rapidxml;
 class DocumentParser
 {
 private:
-    //AVLTree <Page*> pages2;
+    AVLTree <Page*> pages;
 
 
 public:

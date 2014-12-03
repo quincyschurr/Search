@@ -175,12 +175,14 @@ void DocumentParser::getInputAVL()
             }
          }//overall while
 
-        //Page* p = new Page(titles[j], ids[j]);
-        //pages.push_back(p);
+        Page* p = new Page(titles[j], ids[j]);
+        pages.insert(p);
 
      }//overall for
 
     //wordAVL.print(cout);
+    pages.print3(cout);
+
 
 }//end getInput
 
@@ -330,11 +332,12 @@ void DocumentParser::getInputHash()
             }
          }//overall while
 
-        //Page* p = new Page(titles[j], ids[j]);
-        //pages.push_back(p);
+        Page* p = new Page(titles[j], ids[j]);
+        pages.insert(p);
 
      }//overall for
 
+    pages.print3(cout);
     //table.printTrees();
 }
 
