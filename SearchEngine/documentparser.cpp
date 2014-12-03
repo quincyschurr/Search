@@ -101,22 +101,23 @@ void DocumentParser::getInputAVL()
     }
 
     vector<char*> test;
-    test.push_back("this is running apples anot/her te?sting apples string with apples");
-    test.push_back("why w\on't this apples. !functioning apples work?");
-    test.push_back("between apples ab%l*e why becuase apples zero work?");
-    test.push_back("apples are necessary for survival and work");
+    test.push_back("AND OR NOT");
+    //test.push_back("this is running apples anot/her te?sting apples string with apples");
+    //test.push_back("why w\on't this apples. !functioning apples work?");
+    //test.push_back("between apples ab%l*e why becuase apples zero work?");
+    //test.push_back("apples are necessary for survival and work");
 
     StopWord* sw = new StopWord();
     sw->createArray();
     string testBuffer = "";
     string temp = "";
     int size = 0;
-    for(int j = 0; j < texts.size(); j++)
+    for(int j = 0; j < test.size(); j++)
     {//start overall for
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
-        testBuffer = texts[j];
+        testBuffer = test[j];
+        //testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
         {
@@ -181,7 +182,7 @@ void DocumentParser::getInputAVL()
 
      }//overall for
 
-    //wordAVL.print(cout);
+    wordAVL.print(cout);
     //table.printTrees();
 
 }//end getInput

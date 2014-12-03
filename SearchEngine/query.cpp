@@ -100,6 +100,12 @@ void Query::startQuery()
 
     while(ss >> temp)
     {
+         transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
+        char* arr = new char[temp.length() + 1];
+        strcpy(arr, temp.c_str());
+        int x = stem(arr, 0, strlen(arr)-1);
+        arr[x+1] = '\0';
+        temp = arr;
         searchWords.push_back(temp);
         //try to separate the string into vector or array
         count++;
@@ -113,7 +119,8 @@ void Query::startQuery()
         word1 = table.returnWord(searchWords[0]);
         pageResults = word1->getPages();
     }
-    else if(searchWords[0] == "AND") {
+    else if(searchWords[0] == "AND")
+    {
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
         word1Pages = word1->getPages();
