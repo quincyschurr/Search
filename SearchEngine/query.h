@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <sstream>
 #include "documentparser.h"
+#include <./porterstem.h>
 #include "avl2.h"
 #include "hashtable.h"
 #include "word.h"
