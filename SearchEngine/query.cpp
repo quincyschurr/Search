@@ -100,7 +100,8 @@ void Query::startQuery()
 
     while(ss >> temp)
     {
-         transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
+        if(temp != "AND" && temp != "OR" && temp != "NOT")
+            transform(temp.begin(), temp.end(), temp.begin(), ::tolower);
         char* arr = new char[temp.length() + 1];
         strcpy(arr, temp.c_str());
         int x = stem(arr, 0, strlen(arr)-1);
@@ -126,6 +127,7 @@ void Query::startQuery()
         word1Pages = word1->getPages();
         vector<int> word2Pages = word2->getPages();
         pageResults = qAND(word1Pages, word2Pages);
+        //set_union(word1Pages.begin(), word1Pages.end(), word2Pages.begin(), word2Pages.end(), pageResults.begin());
         if(count == 5) {
             word3 = table.returnWord(searchWords[4]);
             vector<int> word3Pages = word3->getPages();
@@ -147,10 +149,14 @@ void Query::startQuery()
     else {
         word1 = table.returnWord(searchWords[0]);
         word2 = table.returnWord(searchWords[2]);
-        //pageResults =  qNOT(word1, word2);
+        word1Pages = word1->getPages();
+        vector<int> word2Pages = word2->getPages();
+        pageResults =  qNOT(word1Pages, word2Pages);
     }
 
     for(int i = 0; i < pageResults.size(); i++) {
+        if(pageResults[i] == 0)
+            break;
         cout << pageResults[i] << endl;
     }
 
@@ -158,22 +164,22 @@ void Query::startQuery()
     //there is a class set, Put the pages in separate set objects, could be vectors of Pages
 }
 
-vector<int> Query::qAND(vector<int> a, vector<int> b) {
-    vector<int> uni;
-    set_union(a.begin(), a.end(), b.begin(), b.end(), uni.begin());
-    return uni;
+vector<int> Query::qOR(vector<int> a, vector<int> b) {
+    vector<int> result(a.size()+b.size());
+    set_union(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+    return result;
 }
 
-vector<int> Query::qOR(vector<int> a, vector<int> b) {
-    vector<int> inter;
-    set_intersection(a.begin(), a.end(), b.begin(), b.end(), inter.begin());
-    return inter;
+vector<int> Query::qAND(vector<int> a, vector<int> b) {
+    vector<int> result(a.size()+b.size());
+    set_intersection(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+    return result;
 }
 
 vector<int> Query::qNOT(vector<int> a, vector<int> b) {
-    vector<int> diff;
-    set_difference(a.begin(), a.end(), b.begin(), b.end(), diff.begin());
-    return diff;
+    vector<int> result(a.size()+b.size());
+    set_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+    return result;
 }
 
 Query::~Query()
