@@ -107,8 +107,8 @@ private:
         if(r != NULL)
         {
             print3(out, r->left);
-            out << r->element->getId() << endl;
-            //out << r->element->getTitle() << " : " << r->element->getId() << endl;
+            //out << r->element->getId() << endl;
+            out << r->element->getTitle() << " : " << r->element->getId() << endl;
             print3(out, r->right);
         }
     }
