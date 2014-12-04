@@ -70,6 +70,15 @@ private:
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 
+    void print3(ostream &out, AVLNode* r) const
+    {
+        if(r != NULL)
+        {
+            print3(out, r->left);
+            out << r->element->getTitle() << " : " << r->element->getId() << endl;
+            print3(out, r->right);
+        }
+    }
 
     void print2(ostream &out, AVLNode* p) const
     {
@@ -92,7 +101,7 @@ private:
         }
     }
 
-    T& returnWord(string& test, AVLNode*& root)
+    T& returnObject(string& test, AVLNode*& root)
     {
         if(root == NULL)
         {
@@ -138,9 +147,9 @@ public:
         }
     }
 
-    T& returnWord1(string test)
+    T& returnObject(string test)
     {
-        //return returnWord(test, root);
+        return returnObject(test, root);
     }
 
 
@@ -193,6 +202,11 @@ public:
     {
         rotateWithLeftChild(k2->right);
         rotateWithRightChild(k2);
+    }
+
+    void print3(ostream& out) const
+    {
+        print3(out, root);
     }
 
     ostream& print2(ostream &out) const
