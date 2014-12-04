@@ -107,17 +107,17 @@ private:
         {
             throw(strerror);
         }
-        else if(test == root->element->getWord())
+        else if(test == root->element->getId())
         {
             return root->element;//this should be returning a Word object
         }
-        else if(test < root->element.getWord())
+        else if(test < root->element->getId())
         {
-            return returnWord(test, root->left);
+            return returnObject(test, root->left);
         }
-        else if(test > root->element)
+        else if(test > root->element->getId())
         {
-            return returnWord(test, root->right);
+            return returnObject(test, root->right);
         }
     }
 

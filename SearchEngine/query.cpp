@@ -230,9 +230,11 @@ void Query::startQuery()
     {
         if(pageResults[i] == 0)
             break;
-        cout << pageResults[i] << endl;
+        //cout << pageResults[i] << endl;
         x = pageIndex.returnObject(pageResults[i]);
         pageTitleResults.insert(x);
+        cout << "Pages on which your search appears:" << endl;
+        pageTitleResults.print3(cout);
     }
 
     //the stl has container classes. Iterators allow algoritms to operate on containers
