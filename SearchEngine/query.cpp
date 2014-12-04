@@ -57,7 +57,6 @@ void Query::buildIndex()
             Page* p = new Page(pageTitle, pageId);
             pageIndex.insert2(p);
         }
-        pageIndex.print3(cout);
     }
     else if(indexType == "H" || indexType == "h")
     {
@@ -242,9 +241,9 @@ void Query::startQuery()
         //cout << pageResults[i] << endl;
         x = pageIndex.returnObject(pageResults[i]);
         pageTitleResults.insert(x);
+    }
         cout << "Pages on which your search appears:" << endl;
         pageTitleResults.print3(cout);
-    }
 
     //the stl has container classes. Iterators allow algoritms to operate on containers
     //there is a class set, Put the pages in separate set objects, could be vectors of Pages
