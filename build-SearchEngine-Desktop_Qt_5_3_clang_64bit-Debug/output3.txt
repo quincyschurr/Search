@@ -1,7 +1,7 @@
-Main Page : 1
-User:Toby Bartels : 3
+MainPage : 1
+User:TobyBartels : 3
 User:Schewek : 4
-Organic Chemistry/Cover : 5
-Organic Chemistry/Foundational concepts of organic chemistry : 7
-Organic Chemistry/Introduction to reactions : 9
-Organic Chemistry/Alkenes : 10
+OrganicChemistry/Cover : 5
+OrganicChemistry/Foundationalconceptsoforganicchemistry : 7
+OrganicChemistry/Introductiontoreactions : 9
+OrganicChemistry/Alkenes : 10

@@ -12,6 +12,8 @@
 #include <./porterstem.h>
 #include "avl2.h"
 #include "hashtable.h"
+#include "avltree.h"
+#include "page.h"
 #include "word.h"
 
 using namespace std;
@@ -21,7 +23,7 @@ class Query
 private:
     AVL2 tree;
     HashTable table;
-    DocumentParser dp;
+    AVLTree <Page*> pageIndex;
     vector <string> searchWords;
 public:
     //pass avl and hash table by reference to query

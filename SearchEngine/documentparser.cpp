@@ -175,7 +175,9 @@ void DocumentParser::getInputAVL()
             }
          }//overall while
 
-        Page* p = new Page(titles[j], ids[j]);
+        string pageTitle = titles[j];
+        pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::isspace), pageTitle.end());
+        Page* p = new Page(pageTitle, ids[j]);
         pages.insert(p);
 
      }//overall for
@@ -202,8 +204,8 @@ void DocumentParser::getInputHash()
         // Find our root node
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -237,8 +239,8 @@ void DocumentParser::getInputHash()
     int page = 1;
     string sTemp;
     int iTemp;
-    //while(curPage != 0)
-    for(int i = 0; i < 80000; i++)
+    while(curPage != 0)
+    //for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -333,7 +335,7 @@ void DocumentParser::getInputHash()
          }//overall while
 
         string pageTitle = titles[j];
-        pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::ispunct), pageTitle.end());
+        pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::isspace), pageTitle.end());
         Page* p = new Page(pageTitle, ids[j]);
         pages.insert(p);
 

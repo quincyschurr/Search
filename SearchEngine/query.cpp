@@ -17,7 +17,10 @@ void Query::buildIndex()
     if(indexType == "A" || indexType == "a")
     {
         ifstream fin("output2.txt");
+        ifstream fin2("output3.txt");
         string word = "";
+        string pageTitle = "";
+        int pageId = 0;
         int numOfPages = 0;
         int pageNum = 0;
         int frequency = 0;
@@ -44,11 +47,25 @@ void Query::buildIndex()
             cout << endl;
 
         }
+
+        while(!fin2.eof())
+        {
+            fin2 >> pageTitle;
+            fin2.ignore(3);
+            fin2 >> pageId;
+            cout << pageTitle << " " << pageId << endl;
+            Page* p = new Page(pageTitle, pageId);
+            pageIndex.insert(p);
+
+        }
     }
     else if(indexType == "H" || indexType == "h")
     {
         ifstream fin("output2.txt");
+        ifstream fin2("output3.txt");
         string word = "";
+        string pageTitle = "";
+        int pageId = 0;
         int numOfPages = 0;
         int pageNum = 0;
         int frequency = 0;
@@ -73,6 +90,17 @@ void Query::buildIndex()
                 cout << pageNum << "(" << frequency << "), ";
             }
             cout << endl;
+        }
+
+        while(!fin2.eof())
+        {
+            fin2 >> pageTitle;
+            fin2.ignore(3);
+            fin2 >> pageId;
+            cout << pageTitle << " " << pageId << endl;
+            Page* p = new Page(pageTitle, pageId);
+            pageIndex.insert(p);
+
         }
 
     }
@@ -119,10 +147,12 @@ void Query::startQuery()
     Word * word2;
     Word * word3;
     vector<int> word1Pages;
+    AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
     if(count  == 1) {
         word1 = table.returnWord(searchWords[0]);
-        if(word1 == NULL) {
+        if(word1 == NULL)
+        {
             cout << "word does not exist" << endl;
         }
         else
@@ -132,7 +162,8 @@ void Query::startQuery()
     {
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
-        if(word1 == NULL || word2 == NULL) {
+        if(word1 == NULL || word2 == NULL)
+        {
             cout << "word does not exist" << endl;
         }
         else
@@ -162,16 +193,19 @@ void Query::startQuery()
         if(word1 == NULL || word2 == NULL) {
             cout << "word does not exist" << endl;
         }
-        else {
+        else
+        {
         word1Pages = word1->getPages();
         vector<int> word2Pages = word2->getPages();
         pageResults = qOR(word1Pages, word2Pages);
-        if(count == 5) {
+        if(count == 5)
+        {
             word3 = table.returnWord(searchWords[4]);
             if(word3 == NULL) {
                 cout << "word does not exist" << endl;
             }
-            else {
+            else
+            {
             vector<int> word3Pages = word3->getPages();
             pageResults = qNOT(pageResults, word3Pages);
             }//end else
@@ -191,7 +225,8 @@ void Query::startQuery()
         }//end else
     }
 
-    for(int i = 0; i < pageResults.size(); i++) {
+    for(int i = 0; i < pageResults.size(); i++)
+    {
         if(pageResults[i] == 0)
             break;
         cout << pageResults[i] << endl;

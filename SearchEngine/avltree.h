@@ -101,7 +101,7 @@ private:
         }
     }
 
-    T& returnWord(string& test, AVLNode*& root)
+    T& returnObject(string& test, AVLNode*& root)
     {
         if(root == NULL)
         {
@@ -147,9 +147,9 @@ public:
         }
     }
 
-    T& returnWord1(string test)
+    T& returnObject(string test)
     {
-        //return returnWord(test, root);
+        return returnObject(test, root);
     }
 
 
