@@ -225,11 +225,14 @@ void Query::startQuery()
         }//end else
     }
 
+    Page * x;
     for(int i = 0; i < pageResults.size(); i++)
     {
         if(pageResults[i] == 0)
             break;
         cout << pageResults[i] << endl;
+        x = pageIndex.returnObject(pageResults[i]);
+        pageTitleResults.insert(x);
     }
 
     //the stl has container classes. Iterators allow algoritms to operate on containers
