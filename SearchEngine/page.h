@@ -9,12 +9,14 @@ class Page
 private:
     int id;
     string title;
+    string text;
 public:
     int getId();
     string getTitle();
+    string getText();
 
     Page();
-    Page(string title, int id);
+    Page(string title, int id, string text);
     ~Page();
 };
 

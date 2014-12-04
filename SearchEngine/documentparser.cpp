@@ -30,9 +30,6 @@ bool DocumentParser::checkForWordHash(string& temp)
 
 void DocumentParser::getInputAVL()
 {
-    //unordered hash map
-
-
     xml_document<> doc;
 
     std::ifstream file("smallwiki.xml");
@@ -54,9 +51,9 @@ void DocumentParser::getInputAVL()
     xml_node<> * curTitle;
     xml_node<> * curText;
     xml_node<> * curID;
-    vector<string> titles(0); //probably need to dynamically allocate
-    vector<int> ids(0); //probably need to dynamically allocate
-    vector<string> texts(0); //probably need to dynamically allocate
+    vector<string> titles;
+    vector<int> ids;
+    vector<string> texts;
     int page = 1;
     string sTemp;
     int iTemp;
@@ -80,13 +77,6 @@ void DocumentParser::getInputAVL()
         curPage = curPage->next_sibling(); //maybe faster
         page++;
     }
-
-    //vector<char*> test;
-    //test.push_back("AND OR NOT");
-    //test.push_back("this is running apples anot/her te?sting apples string with apples");
-    //test.push_back("why w\on't this apples. !functioning apples work?");
-    //test.push_back("between apples ab%l*e why becuase apples zero work?");
-    //test.push_back("apples are necessary for survival and work");
 
     StopWord* sw = new StopWord();
     sw->createArray();
@@ -158,12 +148,12 @@ void DocumentParser::getInputAVL()
 
         string pageTitle = titles[j];
         pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::isspace), pageTitle.end());
-        Page* p = new Page(pageTitle, ids[j]);
+        Page* p = new Page(pageTitle, ids[j], texts[j]);
         pages.insert(p);
 
      }//overall for
 
-    wordAVL.print(cout);
+   // wordAVL.print(cout);
     pages.print3(cout);
 
 
@@ -171,18 +161,6 @@ void DocumentParser::getInputAVL()
 
 void DocumentParser::getInputHash()
 {
-    //unordered hash map
-
-
-      /*xml_document<> doc;
-        xml_node<> * root_node;
-        // Read the xml file into a vector
-        ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
-        vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
-        buffer.push_back('\0');
-        // Parse the buffer using the xml file parsing library into doc
-        doc.parse<0>(&buffer[0]); */
-        // Find our root node
     xml_document<> doc;
 
     std::ifstream file("smallwiki.xml");
@@ -214,9 +192,9 @@ void DocumentParser::getInputHash()
     xml_node<> * curTitle;
     xml_node<> * curText;
     xml_node<> * curID;
-    vector<string> titles(0); //probably need to dynamically allocate
-    vector<int> ids(0); //probably need to dynamically allocate
-    vector<string> texts(0); //probably need to dynamically allocate
+    vector<string> titles;
+    vector<int> ids;
+    vector<string> texts;
     int page = 1;
     string sTemp;
     int iTemp;
@@ -317,12 +295,13 @@ void DocumentParser::getInputHash()
 
         string pageTitle = titles[j];
         pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::isspace), pageTitle.end());
-        Page* p = new Page(pageTitle, ids[j]);
+        Page* p = new Page(pageTitle, ids[j], texts[j]);
         pages.insert(p);
 
      }//overall for
 
-    //pages.print3(cout);
+
+    pages.print3(cout);
     //table.printTrees();
 }
 
