@@ -55,9 +55,9 @@ void Query::buildIndex()
             fin2 >> pageId;
             //cout << pageTitle << " " << pageId << endl;
             Page* p = new Page(pageTitle, pageId);
-            pageIndex.insert(p);
-
+            pageIndex.insert2(p, pageId);
         }
+        pageIndex.print3(cout);
     }
     else if(indexType == "H" || indexType == "h")
     {
@@ -99,7 +99,7 @@ void Query::buildIndex()
             fin2 >> pageId;
             //cout << pageTitle << " " << pageId << endl;
             Page* p = new Page(pageTitle, pageId);
-            pageIndex.insert(p);
+            pageIndex.insert2(p, pageId);
 
         }
 

@@ -70,12 +70,45 @@ private:
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 
+
+    void insert2(T x, int& y, AVLNode*& t)
+    {
+        if(t == NULL)
+            t = new AVLNode(x, NULL, NULL);
+        else if(y < t->element->getId())
+        {
+            insert(x, t->left);
+            if(height(t->left) - height(t->right) == 2)
+            {
+                if(y < t->left->element->getId())
+                    rotateWithLeftChild(t);
+                else
+                    doubleWithLeftChild(t);
+            }
+        }
+
+        else if(y > t->element->getId())
+        {
+            insert(x, t->right);
+            if(height(t->right) - height(t->left) == 2)
+            {
+                if(y > t->right->element->getId())
+                    rotateWithRightChild(t);
+                else
+                    doubleWithRightChild(t);
+            }
+        }
+
+        t->height = max(height(t->left), height(t->right)) + 1;
+    }
+
     void print3(ostream &out, AVLNode* r) const
     {
         if(r != NULL)
         {
             print3(out, r->left);
-            out << r->element->getTitle() << " : " << r->element->getId() << endl;
+            out << r->element->getId() << endl;
+            //out << r->element->getTitle() << " : " << r->element->getId() << endl;
             print3(out, r->right);
         }
     }
@@ -165,6 +198,11 @@ public:
     void insert(const T& x)
     {
         insert(x, root);
+    }
+
+    void insert2(const T& x, int& y)
+    {
+        insert2(x, y, root);
     }
 
     bool isEmpty() const
@@ -270,6 +308,37 @@ public:
         else
             return false;
     }
+
+    /*friend bool operator> (const string& lhs, const string& rhs)
+    {
+        if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
+        {
+            return true;
+        }
+        else
+            return false;
+
+    }
+
+    friend bool operator< (const string& lhs, const string& rhs)
+    {
+        if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    friend bool operator==(const string& lhs, const string& rhs)
+    {
+        if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
+        {
+            return true;
+        }
+        else
+            return false;
+    }*/
 
     AVLNode* getRoot()
     {
