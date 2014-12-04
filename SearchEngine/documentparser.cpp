@@ -33,15 +33,6 @@ void DocumentParser::getInputAVL()
     //unordered hash map
 
 
-      /*xml_document<> doc;
-        xml_node<> * root_node;
-        // Read the xml file into a vector
-        ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
-        vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
-        buffer.push_back('\0');
-        // Parse the buffer using the xml file parsing library into doc
-        doc.parse<0>(&buffer[0]); */
-        // Find our root node
     xml_document<> doc;
 
     std::ifstream file("smallwiki.xml");
@@ -51,17 +42,7 @@ void DocumentParser::getInputAVL()
     buffer << file.rdbuf();
     file.close();
     std::string content(buffer.str());
-    //cout << content << endl;
     doc.parse<0>(&content[0]); //parse_fastest */
-
-    //rapidxml::file<> xmlFile("enwikibooks-20141026-pages-meta-current.xml"); //maybe faster
-    //doc.parse<0>(xmlFile.data());
-
-    /*ifstream theFile ("enwikibooks-20141026-pages-meta-current.xml");
-    vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
-    buffer.push_back('\0');
-    // Parse the buffer using the xml file parsing library into doc
-    doc.parse<0>(&buffer[0]);*/
 
     xml_node<> * root_node;
     root_node = doc.first_node("mediawiki");
