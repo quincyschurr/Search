@@ -101,7 +101,7 @@ private:
         }
     }
 
-    T& returnObject(string& test, AVLNode*& root)
+    T& returnObject(int& test, AVLNode*& root)
     {
         if(root == NULL)
         {
@@ -147,7 +147,7 @@ public:
         }
     }
 
-    T& returnObject(string test)
+    T& returnObject(int test)
     {
         return returnObject(test, root);
     }
