@@ -32,7 +32,7 @@ void Query::buildIndex()
             fin >> numOfPages;
             fin.ignore(2);
             Word* w = new Word(word);
-            cout << word << ": " << "[" << numOfPages << "] ";
+            //cout << word << ": " << "[" << numOfPages << "] ";
             for(int b = 0; b < numOfPages; b++)
             {
                 fin >> pageNum;
@@ -42,9 +42,9 @@ void Query::buildIndex()
                 w->addPages(pageNum);
                 w->addToMap(pageNum, frequency);
                 tree.insert(w);
-                cout << pageNum << "(" << frequency << "), ";
+                //cout << pageNum << "(" << frequency << "), ";
             }
-            cout << endl;
+            //cout << endl;
 
         }
 
@@ -53,7 +53,7 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            cout << pageTitle << " " << pageId << endl;
+            //cout << pageTitle << " " << pageId << endl;
             Page* p = new Page(pageTitle, pageId);
             pageIndex.insert(p);
 
@@ -77,7 +77,7 @@ void Query::buildIndex()
             fin >> numOfPages;
             fin.ignore(2);
             Word* w = new Word(word);
-            cout << word << ": " << "[" << numOfPages << "] ";
+            //cout << word << ": " << "[" << numOfPages << "] ";
             for(int b = 0; b < numOfPages; b++)
             {
                 fin >> pageNum;
@@ -87,9 +87,9 @@ void Query::buildIndex()
                 w->addPages(pageNum);
                 w->addToMap(pageNum, frequency);
                 table.addWord(w);
-                cout << pageNum << "(" << frequency << "), ";
+                //cout << pageNum << "(" << frequency << "), ";
             }
-            cout << endl;
+            //cout << endl;
         }
 
         while(!fin2.eof())
@@ -97,7 +97,7 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            cout << pageTitle << " " << pageId << endl;
+            //cout << pageTitle << " " << pageId << endl;
             Page* p = new Page(pageTitle, pageId);
             pageIndex.insert(p);
 
@@ -150,7 +150,8 @@ void Query::startQuery()
     AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
     if(count  == 1) {
-        word1 = table.returnWord(searchWords[0]);
+        //word1 = table.returnWord(searchWords[0]);
+        word1 = tree.returnWord(searchWords[0]);
         if(word1 == NULL)
         {
             cout << "word does not exist" << endl;
@@ -160,8 +161,10 @@ void Query::startQuery()
     }
     else if(searchWords[0] == "AND")
     {
-        word1 = table.returnWord(searchWords[1]);
-        word2 = table.returnWord(searchWords[2]);
+        //word1 = table.returnWord(searchWords[1]);
+        //word2 = table.returnWord(searchWords[2]);
+        word1 = tree.returnWord(searchWords[1]);
+        word2 = tree.returnWord(searchWords[2]);
         if(word1 == NULL || word2 == NULL)
         {
             cout << "word does not exist" << endl;
@@ -174,7 +177,8 @@ void Query::startQuery()
         //set_union(word1Pages.begin(), word1Pages.end(), word2Pages.begin(), word2Pages.end(), pageResults.begin());
         if(count == 5)
         {
-            word3 = table.returnWord(searchWords[4]);
+            //word3 = table.returnWord(searchWords[4]);
+            word3 = tree.returnWord(searchWords[4]);
             if(word3 == NULL)
             {
                 cout << "word does not exist" << endl;
@@ -188,8 +192,10 @@ void Query::startQuery()
         }//end else
     }
     else if(searchWords[0] == "OR") {
-        word1 = table.returnWord(searchWords[1]);
-        word2 = table.returnWord(searchWords[2]);
+        //word1 = table.returnWord(searchWords[1]);
+        //word2 = table.returnWord(searchWords[2]);
+        word1 = tree.returnWord(searchWords[1]);
+        word2 = tree.returnWord(searchWords[2]);
         if(word1 == NULL || word2 == NULL) {
             cout << "word does not exist" << endl;
         }
@@ -200,7 +206,8 @@ void Query::startQuery()
         pageResults = qOR(word1Pages, word2Pages);
         if(count == 5)
         {
-            word3 = table.returnWord(searchWords[4]);
+            //word3 = table.returnWord(searchWords[4]);
+            word3 = tree.returnWord(searchWords[4]);
             if(word3 == NULL) {
                 cout << "word does not exist" << endl;
             }
@@ -213,8 +220,10 @@ void Query::startQuery()
         }//end else
     }
     else {
-        word1 = table.returnWord(searchWords[0]);
-        word2 = table.returnWord(searchWords[2]);
+        //word1 = table.returnWord(searchWords[0]);
+        //word2 = table.returnWord(searchWords[2]);
+        word1 = tree.returnWord(searchWords[0]);
+        word2 = tree.returnWord(searchWords[2]);
         if(word1 == NULL || word2 == NULL) {
             cout << "word does not exist" << endl;
         }

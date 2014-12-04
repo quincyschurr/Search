@@ -147,7 +147,7 @@ public:
         }
     }
 
-    T& returnObject(int test)
+    T& returnObject(int& test)
     {
         return returnObject(test, root);
     }
