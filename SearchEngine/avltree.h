@@ -9,6 +9,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+#include "page.h"
 using namespace std;
 
 //good website for the traversal
@@ -71,28 +72,28 @@ private:
     }
 
 
-    void insert2(T x, int& y, AVLNode*& t)
+    void insert2(T x, AVLNode*& t)
     {
         if(t == NULL)
             t = new AVLNode(x, NULL, NULL);
-        else if(y < t->element->getId())
+        else if(x->getId() < t->element->getId())
         {
             insert(x, t->left);
             if(height(t->left) - height(t->right) == 2)
             {
-                if(y < t->left->element->getId())
+                if(x->getId() < t->left->element->getId())
                     rotateWithLeftChild(t);
                 else
                     doubleWithLeftChild(t);
             }
         }
 
-        else if(y > t->element->getId())
+        else if(x->getId() > t->element->getId())
         {
             insert(x, t->right);
             if(height(t->right) - height(t->left) == 2)
             {
-                if(y > t->right->element->getId())
+                if(x->getId() > t->right->element->getId())
                     rotateWithRightChild(t);
                 else
                     doubleWithRightChild(t);
@@ -200,9 +201,9 @@ public:
         insert(x, root);
     }
 
-    void insert2(const T& x, int& y)
+    void insert2(const T& x)
     {
-        insert2(x, y, root);
+        insert2(x, root);
     }
 
     bool isEmpty() const
@@ -308,37 +309,6 @@ public:
         else
             return false;
     }
-
-    /*friend bool operator> (const string& lhs, const string& rhs)
-    {
-        if(strcmp(lhs.c_str(), rhs.c_str()) > 0)
-        {
-            return true;
-        }
-        else
-            return false;
-
-    }
-
-    friend bool operator< (const string& lhs, const string& rhs)
-    {
-        if(strcmp(lhs.c_str(), rhs.c_str()) < 0)
-        {
-            return true;
-        }
-        else
-            return false;
-    }
-
-    friend bool operator==(const string& lhs, const string& rhs)
-    {
-        if(strcmp(lhs.c_str(), rhs.c_str()) == 0)
-        {
-            return true;
-        }
-        else
-            return false;
-    }*/
 
     AVLNode* getRoot()
     {
