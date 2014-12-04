@@ -78,7 +78,7 @@ private:
             t = new AVLNode(x, NULL, NULL);
         else if(x->getId() < t->element->getId())
         {
-            insert(x, t->left);
+            insert2(x, t->left);
             if(height(t->left) - height(t->right) == 2)
             {
                 if(x->getId() < t->left->element->getId())
@@ -90,7 +90,7 @@ private:
 
         else if(x->getId() > t->element->getId())
         {
-            insert(x, t->right);
+            insert2(x, t->right);
             if(height(t->right) - height(t->left) == 2)
             {
                 if(x->getId() > t->right->element->getId())
