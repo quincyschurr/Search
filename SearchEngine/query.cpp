@@ -260,6 +260,7 @@ void Query::startQuery()
         }
         }//end else
     }
+
     else if(searchWords[0] == "OR")
     {
         word1 = table.returnWord(searchWords[1]);
