@@ -26,7 +26,6 @@ private:
     AVLTree <Page*> pageIndex;
     vector <string> searchWords;
 public:
-    //pass avl and hash table by reference to query
     void buildIndex();
     void startQuery();
     Query();

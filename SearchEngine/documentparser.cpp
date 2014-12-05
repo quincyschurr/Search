@@ -26,14 +26,14 @@ void DocumentParser::getInputAVL()
 {
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
     std::string content(buffer.str());
-    doc.parse<0>(&content[0]); //parse_fastest */
+    doc.parse<0>(&content[0]); //parse_fastest
 
     xml_node<> * root_node;
     root_node = doc.first_node("mediawiki");
@@ -51,8 +51,8 @@ void DocumentParser::getInputAVL()
     int page = 1;
     string sTemp;
     int iTemp;
-    while(curPage != 0)
-    //for(int i = 0; i < 80000; i++)
+    //while(curPage != 0)
+    for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -80,7 +80,6 @@ void DocumentParser::getInputAVL()
     {//start overall for
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
         testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
@@ -155,14 +154,13 @@ void DocumentParser::getInputHash()
 {
     xml_document<> doc;
 
-    std::ifstream file("smallwiki.xml");
-    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    //std::ifstream file("smallwiki.xml");
+    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
     std::string content(buffer.str());
-    //cout << content << endl;
     doc.parse<0>(&content[0]); //parse_fastest */
 
     //rapidxml::file<> xmlFile("enwikibooks-20141026-pages-meta-current.xml"); //maybe faster
@@ -190,8 +188,8 @@ void DocumentParser::getInputHash()
     int page = 1;
     string sTemp;
     int iTemp;
-    while(curPage != 0)
-    //for(int i = 0; i < 80000; i++)
+    //while(curPage != 0)
+    for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -211,6 +209,8 @@ void DocumentParser::getInputHash()
         page++;
     }
 
+    //use these for outputting to different txt files
+
     StopWord* sw = new StopWord();
     sw->createArray();
     string testBuffer = "";
@@ -219,7 +219,6 @@ void DocumentParser::getInputHash()
     {//start overall for
         temp = "";
         testBuffer = "";
-        //testBuffer = test[j];
         testBuffer = texts[j];
         stringstream ss(testBuffer);
         while(ss >> temp)
@@ -279,19 +278,30 @@ void DocumentParser::getInputHash()
          }//overall while
 
         string pageTitle = titles[j];
+        int page = ids[j];
         pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::isspace), pageTitle.end());
         Page* p = new Page(pageTitle, ids[j], texts[j]);
         pages.insert(p);
+        string name;
+        stringstream s2;
+        int fileNum = page % 100;
+        s2 << fileNum;
+        s2 << ".txt";
+        s2 >> name;
+        ofstream fout(name, ios::app);
+        p->print(fout);
+
 
      }//overall for
+
 
 
     //pages.print3(cout);
 }
 
-AVL2 DocumentParser::getwordAVL()
+AVLTree <Page*> DocumentParser::getPageAVL()
 {
-    return wordAVL;
+    return pages;
 }
 
 HashTable DocumentParser::getTable()
@@ -299,9 +309,9 @@ HashTable DocumentParser::getTable()
     return table;
 }
 
-AVLTree <Page*> DocumentParser::getPageAVL()
+AVL2 DocumentParser::getwordAVL()
 {
-    return pages;
+    return wordAVL;
 }
 
 void DocumentParser::stripUnicode(string& temp)

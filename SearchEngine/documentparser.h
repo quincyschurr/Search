@@ -30,15 +30,15 @@ class DocumentParser
 private:
     AVL2 wordAVL;
     HashTable table;
-    AVLTree <Page*> pages;//make private and use getter/setters
+    AVLTree <Page*> pages;
 
 public:
     DocumentParser();
     ~DocumentParser();
 
-    AVL2 getwordAVL();
-    HashTable getTable();
     AVLTree <Page*> getPageAVL();
+    HashTable getTable();
+    AVL2 getwordAVL();
 
     bool checkForWordAVL(string& temp);
     bool checkForWordHash(string& temp);

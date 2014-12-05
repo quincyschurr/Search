@@ -55,7 +55,7 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            getline(fin2, text, '$');
+            /*getline(fin2, text, '$');
             getline(fin2, text1, '#');
             if(text1 == "$")
             {
@@ -134,8 +134,7 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            //while (!getline(fin2,text, '$')
-            getline(fin2, text, '$');
+            /*getline(fin2, text, '$');
             getline(fin2, text1, '#');
             if(text1 == "$")
             {
@@ -162,7 +161,7 @@ void Query::buildIndex()
             else
                 text = text + text1;
 
-            getline(fin2, text4, '%');
+            getline(fin2, text4, '%');*/
 
             /*cout << "PAGE TITLE: " << pageTitle << endl;
             cout << "PAGE NUMBER:" << pageId << endl;
@@ -260,12 +259,14 @@ void Query::startQuery()
         }
         }//end else
     }
-    else if(searchWords[0] == "OR") {
+    else if(searchWords[0] == "OR")
+    {
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[1]);
         //word2 = tree.returnWord(searchWords[2]);
-        if(word1 == NULL || word2 == NULL) {
+        if(word1 == NULL || word2 == NULL)
+        {
             cout << "word does not exist" << endl;
         }
         else
@@ -277,7 +278,8 @@ void Query::startQuery()
         {
             word3 = table.returnWord(searchWords[4]);
             //word3 = tree.returnWord(searchWords[4]);
-            if(word3 == NULL) {
+            if(word3 == NULL)
+            {
                 cout << "word does not exist" << endl;
             }
             else
@@ -288,7 +290,8 @@ void Query::startQuery()
         }
         }//end else
     }
-    else {
+    else
+    {
         word1 = table.returnWord(searchWords[0]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[0]);
@@ -318,26 +321,26 @@ void Query::startQuery()
     }
         cout << "Pages on which your search appears:" << endl;
         pageTitleResults.print4(cout);
-
-    //the stl has container classes. Iterators allow algoritms to operate on containers
-    //there is a class set, Put the pages in separate set objects, could be vectors of Pages
     searchWords.clear();
     }//end main while loop
 }
 
-vector<int> Query::qOR(vector<int> a, vector<int> b) {
+vector<int> Query::qOR(vector<int> a, vector<int> b)
+{
     vector<int> result(a.size()+b.size());
     set_union(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;
 }
 
-vector<int> Query::qAND(vector<int> a, vector<int> b) {
+vector<int> Query::qAND(vector<int> a, vector<int> b)
+{
     vector<int> result(a.size()+b.size());
     set_intersection(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;
 }
 
-vector<int> Query::qNOT(vector<int> a, vector<int> b) {
+vector<int> Query::qNOT(vector<int> a, vector<int> b)
+{
     vector<int> result(a.size()+b.size());
     set_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;

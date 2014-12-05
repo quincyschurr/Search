@@ -25,14 +25,19 @@ void Word::addToMap(int pageId, int o)
     info[page] = occurance;
 }
 
+map<int,int> Word::getInfo()
+{
+    return info;
+}
+
 int Word::getNumPages() const
 {
     return numOfPages;
 }
 
-string Word::getWord() const
+vector<int> Word::getPages()
 {
-    return word;
+    return vPages;
 }
 
 int Word::getPageId() const
@@ -40,22 +45,17 @@ int Word::getPageId() const
     return pageId;
 }
 
-map<int,int> Word::getInfo()
-{
-    return info;
-}
-
-vector<int> Word::getPages() {
-    return vPages;
-}
-
 void Word::getPageTree(ostream& fout)
 {
-    //return pages.print2(fout);
     for(map<int, int>::iterator it = info.begin(); it!=info.end(); ++it)
     {
         fout << it->first << "(" << it->second << "), ";
     }
+}
+
+string Word::getWord() const
+{
+    return word;
 }
 
 void Word::increaseFrequency(int pageId)

@@ -8,6 +8,7 @@ StopWord::StopWord()
 
 void StopWord::createArray()
 {
+    string inputWord = "";
     ifstream fin("stopWords.txt");
     for(int i = 0; i < 643; i++)
     {

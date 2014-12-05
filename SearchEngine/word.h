@@ -24,14 +24,14 @@ private:
 public:
     void addPages(int pageId);
     void addToMap(int pageId, int occurance);
-    int getNumPages() const;
-    string getWord() const;
-    int getPageId() const;
     map<int,int> getInfo();
+    int getNumPages() const;
+    vector<int> getPages();
+    int getPageId() const;
     void getPageTree(ostream&);
+    string getWord() const;
     void increaseFrequency(int pageId);
     bool lookForPage(int page);
-    vector<int> getPages();
 
     friend bool operator>(const string& lhs, const Word& rhs);
     friend bool operator<(const string& lhs, const Word& rhs);
@@ -39,7 +39,6 @@ public:
 
     Word();
     Word(string word);
-   // Word(string word, int pageId);
     ~Word();
 };
 

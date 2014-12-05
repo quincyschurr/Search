@@ -1,6 +1,9 @@
 #ifndef PAGE_H
 #define PAGE_H
 #include <string>
+#include <iostream>
+#include <ostream>
+#include <fstream>
 
 using namespace std;
 
@@ -14,8 +17,10 @@ public:
     int getId();
     string getTitle();
     string getText();
+    void print(ostream&);
 
     Page();
+    Page(string title, int id);
     Page(string title, int id, string text);
     ~Page();
 };
