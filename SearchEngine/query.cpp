@@ -332,6 +332,7 @@ void Query::startQuery()
                 totalWordFrequency.push_back(totalFrequency);
                 cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
             }
+        }
 
         }//end else
     }
