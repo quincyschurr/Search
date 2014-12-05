@@ -103,6 +103,16 @@ private:
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 
+    void print4(ostream &out, AVLNode* r) const
+    {
+        if(r != NULL)
+        {
+            print4(out, r->left);
+            out << r->element->getTitle() << ": " << r->element->getId() <<  endl;
+            print4(out, r->right);
+        }
+    }
+
     void print3(ostream &out, AVLNode* r) const
     {
         if(r != NULL)
@@ -240,6 +250,11 @@ public:
     {
         rotateWithLeftChild(k2->right);
         rotateWithRightChild(k2);
+    }
+
+    void print4(ostream& out) const
+    {
+        print4(out, root);
     }
 
     void print3(ostream& out) const

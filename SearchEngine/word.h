@@ -27,6 +27,7 @@ public:
     int getNumPages() const;
     string getWord() const;
     int getPageId() const;
+    map<int,int> getInfo();
     void getPageTree(ostream&);
     void increaseFrequency(int pageId);
     bool lookForPage(int page);

@@ -40,6 +40,11 @@ int Word::getPageId() const
     return pageId;
 }
 
+map<int,int> Word::getInfo()
+{
+    return info;
+}
+
 vector<int> Word::getPages() {
     return vPages;
 }
