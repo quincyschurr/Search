@@ -7,6 +7,7 @@ UserInterface::UserInterface()
 void UserInterface::clearIndex()
 {
     ofstream("output2.txt", ios::out);
+    ofstream("output3.txt", ios::out);
     stringstream ss;
     string oFile;
     for(int i = 0; i < 100; i++)

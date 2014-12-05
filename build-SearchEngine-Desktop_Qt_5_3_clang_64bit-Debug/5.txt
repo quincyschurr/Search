@@ -1,0 +1,23 @@
+OrganicChemistry/Cover : 5 <center>Welcome to the world's foremost open content<br><big><big><big>'''Organic Chemistry Textbook'''</big></big></big><br>on the web!</center>
+
+{| cellpadding="5"
+|-
+| <noinclude><big>'''[[Organic Chemistry|Go&nbsp;to&nbsp;contents&nbsp;>>]]'''</big> </noinclude>
+| [[Image:Ethane3D.png]]
+| This '''free''' online text is intended to become a ''complete replacement'' for your printed book.
+|}
+
+== The Study of Organic Chemistry ==
+Organic chemistry is primarily devoted to the unique properties of the carbon atom and its compounds.  These compounds play a critical role in biology and ecology, Earth sciences and geology, physics, industry, medicine and &mdash; of course &mdash; chemistry.  At first glance, the new material that organic chemistry brings to the table may seem complicated and daunting, but all it takes is concentration and perseverance.  Millions of students before you have successfully passed this course and you can too!
+
+This field of chemistry is based less on formulas and more on reactions between various molecules under different conditions. Whereas a typical general chemistry question may ask a student to compute an answer with an equation from the chapter that they memorized, a more typical organic chemistry question is along the lines of "what product will form when substance X is treated with solution Y and bombarded by light". The key to learning organic chemistry is to ''understand'' it rather than cram it in the night before a test.  It is all well and good to memorize the mechanism of Michael addition, but a superior accomplishment would be the ability to explain ''why'' such a reaction would take place.
+
+As in all things, it is easier to build up a body of new knowledge on a foundation of solid prior knowledge.  Students will be well served by much of the knowledge brought to this subject from the subject of [[General Chemistry]].  Concepts with particular importance to organic chemists are covalent bonding, Molecular Orbit theory, VSEPR Modeling, understanding acid/base chemistry vis-a-vis pKa values, and even trends of the periodic table.  This is by no means a comprehensive list of the knowledge you should have gained already in order to fully understand the subject of organic chemistry, but it should give you some idea of the things you need to know to succeed in an organic chemistry test or course.
+
+Organic Chemistry is one of the subjects which are varying useful and close to our daily life. We always try to figure out some of the unknown mysteries of our daily life through our factious  thinking habit, which generates superstitions. Through the help of chemistry we can help ourselves to get out of this kind of superstition.							
+We always try to find the ultimate truth through our own convenience. In the ancient past we had struggled to make things to go as per our need. In that context we have found fire, house, food, transportation, etc…
+
+Now the burning question is: "how can chemistry help our daily life?"  To find the answer of this questions, we have to know the subject thoroughly.  Let us start it from now.
+
+{{BookCat}}
+$#**%
