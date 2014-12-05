@@ -220,13 +220,9 @@ void Query::startQuery()
     vector<int> totalWordFrequency;
     AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
-<<<<<<< HEAD
     int testCount = 0;
-    if(count  == 1) {
-=======
     if(count  == 1)
     {
->>>>>>> ade98f11115da0820f2aaf38f981c4d61da481cf
         word1 = table.returnWord(searchWords[0]);
         //word1 = tree.returnWord(searchWords[0]);
         if(word1 == NULL)
@@ -244,31 +240,16 @@ void Query::startQuery()
                 totalWordFrequency.push_back(totalFrequency);
                 cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
             }
+            cout << endl;
+            frequencySort(totalWordFrequency, pageResults);
+            for(int i = 0; i < pageResults.size(); i++) {
+                cout << "FREQUENCY: " << totalWordFrequency[i] << " PAGE: " << pageResults[i] <<endl;
+            }
         }
 
     }
     else if(searchWords[0] == "AND")
     {
-        /*//for(int i = 1; i < count; i++)
-        while(testCount < count) {
-            word1 = table.returnWord(searchWords[testCount]);
-            if(word1 == NULL) {
-                cout << searchWords[testCount] << " does not exist" << endl;
-                break;
-            }
-            else {
-                word1Pages = word1->getPages();
-            }
-            testCount++;
-            if(testCount >= count) {
-                break;
-            }
-            word2 = table.returnWord(searchWords[testCount]);
-            if(word2 == NULL) {
-                cout <<
-            }
-        }*/
-
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[1]);
@@ -311,6 +292,12 @@ void Query::startQuery()
                 cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
             }
         }
+        frequencySort(totalWordFrequency, pageResults);
+        for(int i = 0; i < pageResults.size(); i++) {
+            if(pageResults[i] == 0)
+                break;
+            cout << "FREQUENCY: " << totalWordFrequency[i] << " PAGE: " << pageResults[i] <<endl;
+        }
         }//end else
     }
 
@@ -343,6 +330,7 @@ void Query::startQuery()
             pageResults = qNOT(pageResults, word3Pages);
             }//end else
         }
+        }
 
         for(int b = 0; b < pageResults.size(); b++)
         {
@@ -358,10 +346,15 @@ void Query::startQuery()
                 cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
             }
 
-        }//end else
-    }
-    else
-    {
+        }//end for
+        frequencySort(totalWordFrequency, pageResults);
+        for(int i = 0; i < pageResults.size(); i++) {
+            if(pageResults[i] == 0)
+                break;
+            cout << "FREQUENCY: " << totalWordFrequency[i] << " PAGE: " << pageResults[i] <<endl;
+        }
+    }//end OR
+    else {
         word1 = table.returnWord(searchWords[0]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[0]);
@@ -379,6 +372,7 @@ void Query::startQuery()
     }
 
     Page * x;
+    //frequencySort(totalWordFrequency, pageResults);
     for(int i = 0; i < pageResults.size(); i++)
     //to return the top 15 items
     //for(int i = 0; i < 15; i++)
@@ -415,6 +409,42 @@ vector<int> Query::qNOT(vector<int> a, vector<int> b)
     set_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;
 }
+
+void Query::frequencySort(vector<int> &freq, vector<int> &pages) {
+    int left = 0;
+    int right = freq.size() - 1;
+    quickSort(freq, pages, left, right);
+}
+
+void Query::quickSort(vector<int> &freq, vector<int> &pages, int left, int right) {
+      int i = left, j = right;
+      int tmp;
+      int temp2;
+      int pivot = freq[(left + right) / 2];
+
+      while (i <= j) {
+            while (freq[i] > pivot)
+                  i++;
+            while (freq[j] < pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = freq[i];
+                  temp2 = pages[i];
+                  freq[i] = freq[j];
+                  pages[i] = pages[j];
+                  freq[j] = tmp;
+                  pages[j] = temp2;
+                  i++;
+                  j--;
+            }
+      };
+
+      if (left < j)
+            quickSort(freq, pages, left, j);
+      if (i < right)
+            quickSort(freq, pages, i, right);
+}
+
 
 Query::~Query()
 {
