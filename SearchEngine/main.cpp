@@ -22,5 +22,6 @@ int main()
     //documentation avl vs hash
     //for loop up to 15 ^
     //AND OR
-    //add file using append
+    //add file using append (maintanance mode)
+    //stress test (maybe show parsing with both)
 }

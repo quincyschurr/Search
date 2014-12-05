@@ -24,10 +24,13 @@ void UserInterface::startProgram()
 {
     IndexHandler* h = new IndexHandler();
     cout << "Welcome to MustangWiki" << endl;
+    while(true) {
+
     cout << "What would you like to do?" << endl;
     cout << "Please press 'P' to parse the data," << endl;
     cout << "'Q' to start a query," << endl;
     cout << "'C' to clear the index" << endl;
+    cout << "'E' to exit" << endl;
     cin >> input;
 
     if(input == "p" || input == "P")
@@ -53,12 +56,17 @@ void UserInterface::startProgram()
         clearIndex();
         cout << "index is now clear" << endl;
     }
+    else if(input == "E" || input == "e") {
+        cout << "Exiting" << endl;
+        break;
+    }
     else
     {
         cout << "Please choose a valid option" << endl;
         exit(1);
     }
 
+    }//end main while
 }
 
 UserInterface::~UserInterface()
