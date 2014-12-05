@@ -259,22 +259,15 @@ void Query::startQuery()
         }
         }//end else
     }
-<<<<<<< HEAD
-    else if(searchWords[0] == "OR") {
-=======
+
     else if(searchWords[0] == "OR")
     {
->>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[1]);
         //word2 = tree.returnWord(searchWords[2]);
-<<<<<<< HEAD
-        if(word1 == NULL || word2 == NULL) {
-=======
         if(word1 == NULL || word2 == NULL)
         {
->>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
             cout << "word does not exist" << endl;
         }
         else
@@ -286,12 +279,8 @@ void Query::startQuery()
         {
             word3 = table.returnWord(searchWords[4]);
             //word3 = tree.returnWord(searchWords[4]);
-<<<<<<< HEAD
-            if(word3 == NULL) {
-=======
             if(word3 == NULL)
             {
->>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
                 cout << "word does not exist" << endl;
             }
             else
@@ -320,24 +309,16 @@ void Query::startQuery()
         }//end else
     }
 
-    //Page * x;
+    Page * x;
     for(int i = 0; i < pageResults.size(); i++)
     //to return the top 15 items
     //for(int i = 0; i < 15; i++)
     {
         if(pageResults[i] == 0)
             break;
-<<<<<<< HEAD
-        cout << pageResults[i] << endl;
-        //x = pageIndex.returnObject(pageResults[i]);
-        //pageTitleResults.insert(x);
-        //cout << "Pages on which your search appears:" << endl;
-        //pageTitleResults.print3(cout);
-=======
         //cout << pageResults[i] << endl;
         x = pageIndex.returnObject(pageResults[i]);
         pageTitleResults.insert(x);
->>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
     }
         cout << "Pages on which your search appears:" << endl;
         pageTitleResults.print4(cout);
