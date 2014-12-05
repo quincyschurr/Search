@@ -8,10 +8,10 @@ Query::Query()
 void Query::buildIndex()
 {
     string indexType = "";
-    cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
-    cin >> indexType;
+    //cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
+    //cin >> indexType;
 
-    if(indexType == "A" || indexType == "a")
+    /*if(indexType == "A" || indexType == "a")
     {
         ifstream fin("output2.txt");
         ifstream fin2("output3.txt");
@@ -86,13 +86,14 @@ void Query::buildIndex()
 
             /*cout << "PAGE TITLE: " << pageTitle << endl;
             cout << "PAGE NUMBER:" << pageId << endl;
-            cout << "TEXT: " << text << endl;*/
+            cout << "TEXT: " << text << endl;
             Page* p = new Page(pageTitle, pageId, text);
             pageIndex.insert2(p);
         }
-    }
-    else if(indexType == "H" || indexType == "h")
-    {
+    }*/
+
+    //else if(indexType == "H" || indexType == "h")
+    //{
         ifstream fin("output2.txt");
         ifstream fin2("output3.txt");
         string word = "";
@@ -170,7 +171,7 @@ void Query::buildIndex()
             pageIndex.insert2(p);
         }
 
-    }
+    //}
 }
 
 void Query::startQuery()
