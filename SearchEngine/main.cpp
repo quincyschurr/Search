@@ -20,9 +20,7 @@ int main()
     return 0;
     //THINGS TO DO
     //documentation avl vs hash
-    /*sort
-    align pageresults with frequency vector ^
-    for loop up to 15 ^ */
+    //for loop up to 15 ^
     //AND OR
     //add file using append
 }

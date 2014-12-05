@@ -379,12 +379,13 @@ void Query::startQuery()
     {
         if(pageResults[i] == 0)
             break;
-        //cout << pageResults[i] << endl;
+        cout << pageResults[i] << " ";
         x = pageIndex.returnObject(pageResults[i]);
+        cout << x->getTitle() << endl;
         pageTitleResults.insert(x);
     }
         cout << "Pages on which your search appears:" << endl;
-        pageTitleResults.print4(cout);
+        pageTitleResults.print3(cout);
     searchWords.clear();
     }//end main while loop
 }
