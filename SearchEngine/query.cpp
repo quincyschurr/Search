@@ -150,8 +150,8 @@ void Query::startQuery()
     AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
     if(count  == 1) {
-        //word1 = table.returnWord(searchWords[0]);
-        word1 = tree.returnWord(searchWords[0]);
+        word1 = table.returnWord(searchWords[0]);
+        //word1 = tree.returnWord(searchWords[0]);
         if(word1 == NULL)
         {
             cout << "word does not exist" << endl;
@@ -161,10 +161,10 @@ void Query::startQuery()
     }
     else if(searchWords[0] == "AND")
     {
-        //word1 = table.returnWord(searchWords[1]);
-        //word2 = table.returnWord(searchWords[2]);
-        word1 = tree.returnWord(searchWords[1]);
-        word2 = tree.returnWord(searchWords[2]);
+        word1 = table.returnWord(searchWords[1]);
+        word2 = table.returnWord(searchWords[2]);
+        //word1 = tree.returnWord(searchWords[1]);
+        //word2 = tree.returnWord(searchWords[2]);
         if(word1 == NULL || word2 == NULL)
         {
             cout << "word does not exist" << endl;
@@ -177,8 +177,8 @@ void Query::startQuery()
         //set_union(word1Pages.begin(), word1Pages.end(), word2Pages.begin(), word2Pages.end(), pageResults.begin());
         if(count == 5)
         {
-            //word3 = table.returnWord(searchWords[4]);
-            word3 = tree.returnWord(searchWords[4]);
+            word3 = table.returnWord(searchWords[4]);
+            //word3 = tree.returnWord(searchWords[4]);
             if(word3 == NULL)
             {
                 cout << "word does not exist" << endl;
@@ -192,10 +192,10 @@ void Query::startQuery()
         }//end else
     }
     else if(searchWords[0] == "OR") {
-        //word1 = table.returnWord(searchWords[1]);
-        //word2 = table.returnWord(searchWords[2]);
-        word1 = tree.returnWord(searchWords[1]);
-        word2 = tree.returnWord(searchWords[2]);
+        word1 = table.returnWord(searchWords[1]);
+        word2 = table.returnWord(searchWords[2]);
+        //word1 = tree.returnWord(searchWords[1]);
+        //word2 = tree.returnWord(searchWords[2]);
         if(word1 == NULL || word2 == NULL) {
             cout << "word does not exist" << endl;
         }
@@ -206,8 +206,8 @@ void Query::startQuery()
         pageResults = qOR(word1Pages, word2Pages);
         if(count == 5)
         {
-            //word3 = table.returnWord(searchWords[4]);
-            word3 = tree.returnWord(searchWords[4]);
+            word3 = table.returnWord(searchWords[4]);
+            //word3 = tree.returnWord(searchWords[4]);
             if(word3 == NULL) {
                 cout << "word does not exist" << endl;
             }
@@ -234,16 +234,16 @@ void Query::startQuery()
         }//end else
     }
 
-    Page * x;
+    //Page * x;
     for(int i = 0; i < pageResults.size(); i++)
     {
         if(pageResults[i] == 0)
             break;
-        //cout << pageResults[i] << endl;
-        x = pageIndex.returnObject(pageResults[i]);
-        pageTitleResults.insert(x);
-        cout << "Pages on which your search appears:" << endl;
-        pageTitleResults.print3(cout);
+        cout << pageResults[i] << endl;
+        //x = pageIndex.returnObject(pageResults[i]);
+        //pageTitleResults.insert(x);
+        //cout << "Pages on which your search appears:" << endl;
+        //pageTitleResults.print3(cout);
     }
 
     //the stl has container classes. Iterators allow algoritms to operate on containers
