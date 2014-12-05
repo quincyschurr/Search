@@ -17,14 +17,14 @@ void IndexHandler::print()
     if(parseType == "A" || parseType == "a")
     {
         d->getInputAVL();
-        d->wordAVL.print(indexPrint);
-        d->pages.print3(pageOutput);
+        d->getwordAVL().print(indexPrint);
+        d->getPageAVL().print3(pageOutput);
     }
     else if(parseType == "H" || parseType == "h")
     {
         d->getInputHash();
-        d->table.printTrees(indexPrint);
-        d->pages.print3(pageOutput);
+        d->getTable().printTrees(indexPrint);
+        d->getPageAVL().print3(pageOutput);
     }
 
 }

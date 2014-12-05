@@ -1,6 +1,5 @@
 #include "avl2.h"
 #include "AVLNODE.h"
-#include <iostream>
 using namespace std;
 
 AVL2::AVL2()
@@ -24,9 +23,16 @@ AVLNODE* AVL2::getRoot()
     return root;
 }
 
+int AVL2::height(AVLNODE*& n)
+{
+    if(n == NULL)
+        return 0;
+    else
+        return n->height;
+}
+
 void AVL2::insert(Word* x)
 {
-    //cout << "Inserting word " << x->getWord() << endl;
     insert(x, root);
 }
 
@@ -36,12 +42,9 @@ void AVL2::insert(Word* x, AVLNODE*& root)
         root = new AVLNODE(x, NULL, NULL);
     else if(x->getWord() < root->element->getWord())
     {
-        //cout << "   Inserting " << x ->getWord() << " to left of " <<
-        //        root -> element -> getWord() << endl;
         insert(x, root->left);
         if(height(root->left) - height(root->right) == 2)
         {
-            //cout << "     Imbalance at word " << root -> element -> getWord() << endl;
             if(x->getWord() < root->left->element->getWord())
                 rotateWithLeftChild(root);
             else
@@ -50,12 +53,9 @@ void AVL2::insert(Word* x, AVLNODE*& root)
     }
     else if(x->getWord() > root->element->getWord())
     {
-        //cout << "   Inserting " << x ->getWord() << " to right of " <<
-        //        root -> element -> getWord() << endl;
         insert(x, root->right);
         if(height(root->right) - height(root->left) == 2)
         {
-            //cout << "      Imbalance at word " << root -> element -> getWord() << endl;
             if(x->getWord() > root->right->element->getWord())
                 rotateWithRightChild(root);
             else
@@ -72,14 +72,6 @@ bool AVL2::isEmpty() const
         return true;
     else
         return false;
-}
-
-int AVL2::height(AVLNODE*& n)
-{
-    if(n == NULL)
-        return 0;
-    else
-        return n->height;
 }
 
 void AVL2::makeEmpty()
@@ -107,9 +99,6 @@ Word* AVL2::returnWord(string& test, AVLNODE* root)
 {
     if(root == NULL)
     {
-        return NULL;
-        //cout << test << " does not exist" << endl;
-        //exit(11);
         throw(strerror);
     }
     else if(test == root->element->getWord())

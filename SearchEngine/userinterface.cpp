@@ -47,8 +47,10 @@ void UserInterface::startProgram()
 
 }
 
-void UserInterface::clearIndex() {
+void UserInterface::clearIndex()
+{
     ofstream("output2.txt", ios::out);
+    ofstream("output3.txt", ios::out);
 }
 
 UserInterface::~UserInterface()

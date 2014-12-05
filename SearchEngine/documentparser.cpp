@@ -1,13 +1,7 @@
 #include "documentparser.h"
-#include <sstream>
-#include <./porterstem.h>
-
-using namespace std;
-using namespace rapidxml;
 
 DocumentParser::DocumentParser()
 {
-
 }
 
 bool DocumentParser::checkForWordAVL(string& temp)
@@ -32,8 +26,8 @@ void DocumentParser::getInputAVL()
 {
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -57,8 +51,8 @@ void DocumentParser::getInputAVL()
     int page = 1;
     string sTemp;
     int iTemp;
-    //while(curPage != 0)
-    for(int i = 0; i < 80000; i++)
+    while(curPage != 0)
+    //for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -82,7 +76,6 @@ void DocumentParser::getInputAVL()
     sw->createArray();
     string testBuffer = "";
     string temp = "";
-    int size = 0;
     for(int j = 0; j < texts.size(); j++)
     {//start overall for
         temp = "";
@@ -153,8 +146,7 @@ void DocumentParser::getInputAVL()
 
      }//overall for
 
-   // wordAVL.print(cout);
-    pages.print3(cout);
+    //pages.print3(cout);
 
 
 }//end getInput
@@ -163,8 +155,8 @@ void DocumentParser::getInputHash()
 {
     xml_document<> doc;
 
-    //std::ifstream file("smallwiki.xml");
-    std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
+    std::ifstream file("smallwiki.xml");
+    //std::ifstream file("enwikibooks-20141026-pages-meta-current.xml");
 
     std::stringstream buffer;
     buffer << file.rdbuf();
@@ -198,8 +190,8 @@ void DocumentParser::getInputHash()
     int page = 1;
     string sTemp;
     int iTemp;
-    //while(curPage != 0)
-    for(int i = 0; i < 80000; i++)
+    while(curPage != 0)
+    //for(int i = 0; i < 80000; i++)
     {
         //cout << "page " << page++ << endl;
         curTitle = curPage->first_node("title");
@@ -219,17 +211,10 @@ void DocumentParser::getInputHash()
         page++;
     }
 
-    vector<char*> test;
-    test.push_back("this is running apples anot/her te?sting apples string with apples");
-    test.push_back("why w\on't this apples. !functioning apples work?");
-    test.push_back("between apples ab%l*e why becuase apples zero work?");
-    test.push_back("apples are necessary for survival and work");
-
     StopWord* sw = new StopWord();
     sw->createArray();
     string testBuffer = "";
     string temp = "";
-    int size = 0;
     for(int j = 0; j < texts.size(); j++)
     {//start overall for
         temp = "";
@@ -301,8 +286,7 @@ void DocumentParser::getInputHash()
      }//overall for
 
 
-    pages.print3(cout);
-    //table.printTrees();
+    //pages.print3(cout);
 }
 
 AVL2 DocumentParser::getwordAVL()
@@ -310,8 +294,14 @@ AVL2 DocumentParser::getwordAVL()
     return wordAVL;
 }
 
-HashTable DocumentParser::getTable() {
+HashTable DocumentParser::getTable()
+{
     return table;
+}
+
+AVLTree <Page*> DocumentParser::getPageAVL()
+{
+    return pages;
 }
 
 void DocumentParser::stripUnicode(string& temp)
