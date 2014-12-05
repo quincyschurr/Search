@@ -142,6 +142,14 @@ void DocumentParser::getInputAVL()
         pageTitle.erase(remove_if(pageTitle.begin(), pageTitle.end(), ::isspace), pageTitle.end());
         Page* p = new Page(pageTitle, ids[j], texts[j]);
         pages.insert(p);
+        string name;
+        stringstream s2;
+        int fileNum = page % 100;
+        s2 << fileNum;
+        s2 << ".txt";
+        s2 >> name;
+        ofstream fout(name, ios::app);
+        p->print(fout);
 
      }//overall for
 
@@ -291,10 +299,7 @@ void DocumentParser::getInputHash()
         ofstream fout(name, ios::app);
         p->print(fout);
 
-
      }//overall for
-
-
 
     //pages.print3(cout);
 }

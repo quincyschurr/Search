@@ -1,0 +1,20 @@
+OrganicChemistry/Introductiontoreactions : 9 [[Image:Go To Organic Chemistry Contents .png]] > Introduction to reactions
+----
+
+
+
+==Specific Reactions==
+#[[Organic Chemistry/Introduction to reactions/Polar and radical reactions|Polar and radical reactions]] {{stage short|100%|Jan 12, 2005}}
+#[[Organic Chemistry/Introduction to reactions/Redox reactions|Redox reactions]] {{stage short|75%|Jan 12, 2005}}
+#[[Organic Chemistry/Introduction to reactions/Carbocations|Carbocations]]{{stage short|50%|Jan 29, 2005}}
+#[[Organic Chemistry/Introduction to reactions/Hydroboration/oxidation|Hydroboration/oxidation]]
+#[[Organic Chemistry/Introduction to reactions/Free-radical_halogenation|Free-radical halogenation]] {{stage short|50%|Jan 12, 2005}}
+#[[Organic Chemistry/Introduction to reactions/Rearrangement reactions|Rearrangement reactions]]
+#[[Organic Chemistry/Introduction to reactions/Pericyclic reactions|Pericyclic reactions]]
+#[[Organic Chemistry/Introduction to reactions/Diels-Alder reaction|Diels-Alder reaction]]
+
+----
+
+
+{{BookCat}}
+$#**%

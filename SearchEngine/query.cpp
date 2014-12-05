@@ -8,10 +8,10 @@ Query::Query()
 void Query::buildIndex()
 {
     string indexType = "";
-    cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
-    cin >> indexType;
+    //cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
+    //cin >> indexType;
 
-    if(indexType == "A" || indexType == "a")
+    /*if(indexType == "A" || indexType == "a")
     {
         ifstream fin("output2.txt");
         ifstream fin2("output3.txt");
@@ -86,13 +86,14 @@ void Query::buildIndex()
 
             /*cout << "PAGE TITLE: " << pageTitle << endl;
             cout << "PAGE NUMBER:" << pageId << endl;
-            cout << "TEXT: " << text << endl;*/
+            cout << "TEXT: " << text << endl;
             Page* p = new Page(pageTitle, pageId, text);
             pageIndex.insert2(p);
         }
-    }
-    else if(indexType == "H" || indexType == "h")
-    {
+    }*/
+
+    //else if(indexType == "H" || indexType == "h")
+    //{
         ifstream fin("output2.txt");
         ifstream fin2("output3.txt");
         string word = "";
@@ -163,14 +164,14 @@ void Query::buildIndex()
 
             getline(fin2, text4, '%');*/
 
-            /*cout << "PAGE TITLE: " << pageTitle << endl;
-            cout << "PAGE NUMBER:" << pageId << endl;
-            cout << "TEXT: " << text << endl;*/
-            Page* p = new Page(pageTitle, pageId, text);
+            //cout << "PAGE TITLE: " << pageTitle << endl;
+            //cout << "PAGE NUMBER:" << pageId << endl;
+           // cout << "TEXT: " << text << endl;*/
+            Page* p = new Page(pageTitle, pageId);
             pageIndex.insert2(p);
         }
 
-    }
+    //}
 }
 
 void Query::startQuery()
@@ -213,12 +214,19 @@ void Query::startQuery()
     Word * word2;
     Word * word3;
     vector<int> word1Pages;
+    map <int, int> freqMap;
+    map <int, int> freqMap2;
     int totalFrequency = 0;
     vector<int> totalWordFrequency;
     AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
+<<<<<<< HEAD
     int testCount = 0;
     if(count  == 1) {
+=======
+    if(count  == 1)
+    {
+>>>>>>> ade98f11115da0820f2aaf38f981c4d61da481cf
         word1 = table.returnWord(searchWords[0]);
         //word1 = tree.returnWord(searchWords[0]);
         if(word1 == NULL)
@@ -226,7 +234,18 @@ void Query::startQuery()
             cout << searchWords[0] << " does not exist" << endl;
         }
         else
+        {
             pageResults = word1->getPages();
+            for(int b = 0; b < pageResults.size(); b++)
+            {
+                int oPage = pageResults[b];
+                freqMap = word1->getInfo();
+                totalFrequency = freqMap[oPage];
+                totalWordFrequency.push_back(totalFrequency);
+                cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+            }
+        }
+
     }
     else if(searchWords[0] == "AND")
     {
@@ -263,7 +282,6 @@ void Query::startQuery()
         word1Pages = word1->getPages();
         vector<int> word2Pages = word2->getPages();
         pageResults = qAND(word1Pages, word2Pages);
-        //set_union(word1Pages.begin(), word1Pages.end(), word2Pages.begin(), word2Pages.end(), pageResults.begin());
         if(count == 5)
         {
             word3 = table.returnWord(searchWords[4]);
@@ -277,6 +295,21 @@ void Query::startQuery()
             vector<int> word3Pages = word3->getPages();
             pageResults = qNOT(pageResults, word3Pages);
             } //end else
+        }
+
+        for(int b = 0; b < pageResults.size(); b++)
+        {
+            int oPage = pageResults[b];
+            if(oPage == 0)
+                break;
+            else
+            {
+                freqMap = word1->getInfo();
+                freqMap2 = word2->getInfo();
+                totalFrequency = freqMap[oPage] + freqMap2[oPage];
+                totalWordFrequency.push_back(totalFrequency);
+                cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+            }
         }
         }//end else
     }
@@ -310,6 +343,21 @@ void Query::startQuery()
             pageResults = qNOT(pageResults, word3Pages);
             }//end else
         }
+
+        for(int b = 0; b < pageResults.size(); b++)
+        {
+            int oPage = pageResults[b];
+            if(oPage == 0)
+                break;
+            else
+            {
+                freqMap = word1->getInfo();
+                freqMap2 = word2->getInfo();
+                totalFrequency = freqMap[oPage] + freqMap2[oPage];
+                totalWordFrequency.push_back(totalFrequency);
+                cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+            }
+
         }//end else
     }
     else
