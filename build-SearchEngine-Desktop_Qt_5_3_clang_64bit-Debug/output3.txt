@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 OrganicChemistry/Alkenes : 10
 MainPage : 1
 User:TobyBartels : 3
@@ -5,3 +6,5 @@ User:Schewek : 4
 OrganicChemistry/Cover : 5
 OrganicChemistry/Foundationalconceptsoforganicchemistry : 7
 OrganicChemistry/Introductiontoreactions : 9
+=======
+>>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6

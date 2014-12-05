@@ -10,6 +10,13 @@ Page::Page(string title, int id)
     this->id = id;
 }
 
+Page::Page(string title, int id, string text)
+{
+    this->title = title;
+    this->id = id;
+    this->text = text;
+}
+
 int Page::getId()
 {
     return id;
@@ -18,6 +25,16 @@ int Page::getId()
 string Page::getTitle()
 {
     return title;
+}
+
+string Page::getText()
+{
+    return text;
+}
+
+void Page::print(ostream& fout)
+{
+    fout << title << " : " << id << " " << text << endl << "$#**%" << endl;
 }
 
 Page::~Page()

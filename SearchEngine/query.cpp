@@ -7,9 +7,6 @@ Query::Query()
 
 void Query::buildIndex()
 {
-    //we don't need these
-    //table = dp.getTable();
-    //tree = dp.getwordAVL();
     string indexType = "";
     cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
     cin >> indexType;
@@ -19,6 +16,11 @@ void Query::buildIndex()
         ifstream fin("output2.txt");
         ifstream fin2("output3.txt");
         string word = "";
+        string text = "";
+        string text1 = "";
+        string text2 = "";
+        string text3 = "";
+        string text4 = "";
         string pageTitle = "";
         int pageId = 0;
         int numOfPages = 0;
@@ -53,10 +55,40 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            //cout << pageTitle << " " << pageId << endl;
-            Page* p = new Page(pageTitle, pageId);
-            pageIndex.insert(p);
+            /*getline(fin2, text, '$');
+            getline(fin2, text1, '#');
+            if(text1 == "$")
+            {
+                getline(fin2, text2, '*');
+                if(text2 == "#")
+                {
+                    getline(fin2, text3, '*');
+                    if(text3 == "*")
+                    {
+                        getline(fin2, text4, '%');
+                        if(text4 == "*")
+                        {
+                            break;
+                        }
+                        else
+                            text = text + text1 + text2 + text3 + text4;
+                    }
+                    else
+                        text = text + text1 + text2 + text3;
+                }
+                else
+                    text = text + text1 + text2;
+            }
+            else
+                text = text + text1;
 
+            getline(fin2, text4, '%');
+
+            /*cout << "PAGE TITLE: " << pageTitle << endl;
+            cout << "PAGE NUMBER:" << pageId << endl;
+            cout << "TEXT: " << text << endl;*/
+            Page* p = new Page(pageTitle, pageId, text);
+            pageIndex.insert2(p);
         }
     }
     else if(indexType == "H" || indexType == "h")
@@ -64,6 +96,11 @@ void Query::buildIndex()
         ifstream fin("output2.txt");
         ifstream fin2("output3.txt");
         string word = "";
+        string text = "";
+        string text1 = "";
+        string text2 = "";
+        string text3 = "";
+        string text4 = "";
         string pageTitle = "";
         int pageId = 0;
         int numOfPages = 0;
@@ -97,10 +134,40 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            //cout << pageTitle << " " << pageId << endl;
-            Page* p = new Page(pageTitle, pageId);
-            pageIndex.insert(p);
+            /*getline(fin2, text, '$');
+            getline(fin2, text1, '#');
+            if(text1 == "$")
+            {
+                getline(fin2, text2, '*');
+                if(text2 == "#")
+                {
+                    getline(fin2, text3, '*');
+                    if(text3 == "*")
+                    {
+                        getline(fin2, text4, '%');
+                        if(text4 == "*")
+                        {
+                            break;
+                        }
+                        else
+                            text = text + text1 + text2 + text3 + text4;
+                    }
+                    else
+                        text = text + text1 + text2 + text3;
+                }
+                else
+                    text = text + text1 + text2;
+            }
+            else
+                text = text + text1;
 
+            getline(fin2, text4, '%');*/
+
+            /*cout << "PAGE TITLE: " << pageTitle << endl;
+            cout << "PAGE NUMBER:" << pageId << endl;
+            cout << "TEXT: " << text << endl;*/
+            Page* p = new Page(pageTitle, pageId, text);
+            pageIndex.insert2(p);
         }
 
     }
@@ -122,10 +189,9 @@ void Query::startQuery()
 //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
     //good for parameters for a set
     cout << "To start a query please enter the words you would like to search for: " << endl;
-    //cin >> input;
-    //cin.ignore();
     getline(cin, input);
-    if(input == "E" || input == "e") {
+    if(input == "E" || input == "e")
+    {
         break;
     }
     stringstream ss(input);
@@ -147,6 +213,8 @@ void Query::startQuery()
     Word * word2;
     Word * word3;
     vector<int> word1Pages;
+    int totalFrequency = 0;
+    vector<int> totalWordFrequency;
     AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
     if(count  == 1) {
@@ -191,12 +259,22 @@ void Query::startQuery()
         }
         }//end else
     }
+<<<<<<< HEAD
     else if(searchWords[0] == "OR") {
+=======
+    else if(searchWords[0] == "OR")
+    {
+>>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[1]);
         //word2 = tree.returnWord(searchWords[2]);
+<<<<<<< HEAD
         if(word1 == NULL || word2 == NULL) {
+=======
+        if(word1 == NULL || word2 == NULL)
+        {
+>>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
             cout << "word does not exist" << endl;
         }
         else
@@ -208,7 +286,12 @@ void Query::startQuery()
         {
             word3 = table.returnWord(searchWords[4]);
             //word3 = tree.returnWord(searchWords[4]);
+<<<<<<< HEAD
             if(word3 == NULL) {
+=======
+            if(word3 == NULL)
+            {
+>>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
                 cout << "word does not exist" << endl;
             }
             else
@@ -219,15 +302,18 @@ void Query::startQuery()
         }
         }//end else
     }
-    else {
-        //word1 = table.returnWord(searchWords[0]);
-        //word2 = table.returnWord(searchWords[2]);
-        word1 = tree.returnWord(searchWords[0]);
-        word2 = tree.returnWord(searchWords[2]);
-        if(word1 == NULL || word2 == NULL) {
+    else
+    {
+        word1 = table.returnWord(searchWords[0]);
+        word2 = table.returnWord(searchWords[2]);
+        //word1 = tree.returnWord(searchWords[0]);
+        //word2 = tree.returnWord(searchWords[2]);
+        if(word1 == NULL || word2 == NULL)
+        {
             cout << "word does not exist" << endl;
         }
-        else {
+        else
+        {
         word1Pages = word1->getPages();
         vector<int> word2Pages = word2->getPages();
         pageResults =  qNOT(word1Pages, word2Pages);
@@ -236,35 +322,45 @@ void Query::startQuery()
 
     //Page * x;
     for(int i = 0; i < pageResults.size(); i++)
+    //to return the top 15 items
+    //for(int i = 0; i < 15; i++)
     {
         if(pageResults[i] == 0)
             break;
+<<<<<<< HEAD
         cout << pageResults[i] << endl;
         //x = pageIndex.returnObject(pageResults[i]);
         //pageTitleResults.insert(x);
         //cout << "Pages on which your search appears:" << endl;
         //pageTitleResults.print3(cout);
+=======
+        //cout << pageResults[i] << endl;
+        x = pageIndex.returnObject(pageResults[i]);
+        pageTitleResults.insert(x);
+>>>>>>> 366db0ec2a98e663f9f6771ad0fba0afe7ce84c6
     }
-
-    //the stl has container classes. Iterators allow algoritms to operate on containers
-    //there is a class set, Put the pages in separate set objects, could be vectors of Pages
+        cout << "Pages on which your search appears:" << endl;
+        pageTitleResults.print4(cout);
     searchWords.clear();
     }//end main while loop
 }
 
-vector<int> Query::qOR(vector<int> a, vector<int> b) {
+vector<int> Query::qOR(vector<int> a, vector<int> b)
+{
     vector<int> result(a.size()+b.size());
     set_union(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;
 }
 
-vector<int> Query::qAND(vector<int> a, vector<int> b) {
+vector<int> Query::qAND(vector<int> a, vector<int> b)
+{
     vector<int> result(a.size()+b.size());
     set_intersection(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;
 }
 
-vector<int> Query::qNOT(vector<int> a, vector<int> b) {
+vector<int> Query::qNOT(vector<int> a, vector<int> b)
+{
     vector<int> result(a.size()+b.size());
     set_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;

@@ -13,8 +13,6 @@ using namespace std;
 class StopWord
 {
 private:
-    string testWord;
-    string inputWord;
     vector<string> stWordArray;
 public:
     void createArray();

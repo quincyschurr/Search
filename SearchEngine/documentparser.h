@@ -3,11 +3,15 @@
 
 #include "word.h"
 #include "page.h"
+#include <./porterstem.h>
 #include "stopword.h"
 #include "avltree.h"
 #include "avl2.h"
 #include "rapidxml_utils.hpp"
 #include "rapidxml.hpp"
+#include "AVLNODE.h"
+#include "hashtable.h"
+
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -17,8 +21,6 @@
 #include <algorithm>
 #include <cstdlib>
 #include <map>
-#include "AVLNODE.h"
-#include "hashtable.h"
 
 using namespace std;
 using namespace rapidxml;
@@ -26,17 +28,17 @@ using namespace rapidxml;
 class DocumentParser
 {
 private:
+    AVL2 wordAVL;
+    HashTable table;
+    AVLTree <Page*> pages;
 
 public:
     DocumentParser();
     ~DocumentParser();
 
-    AVL2 wordAVL; //probably need to be private
-    HashTable table; //probably need ot be private
-    AVLTree <Page*> pages;//make private and use getter/setters
-
-    AVL2 getwordAVL();
+    AVLTree <Page*> getPageAVL();
     HashTable getTable();
+    AVL2 getwordAVL();
 
     bool checkForWordAVL(string& temp);
     bool checkForWordHash(string& temp);

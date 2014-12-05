@@ -1,14 +1,10 @@
-/*
- * Quincy Schurr
- *
-*/
-
 #ifndef AVLTREE_H
 #define AVLTREE_H
 
 #include <string>
 #include <cstring>
 #include <iostream>
+#include "page.h"
 using namespace std;
 
 //good website for the traversal
@@ -70,12 +66,54 @@ private:
         t->height = max(height(t->left), height(t->right)) + 1;
     }
 
+
+    void insert2(T x, AVLNode*& t)
+    {
+        if(t == NULL)
+            t = new AVLNode(x, NULL, NULL);
+        else if(x->getId() < t->element->getId())
+        {
+            insert2(x, t->left);
+            if(height(t->left) - height(t->right) == 2)
+            {
+                if(x->getId() < t->left->element->getId())
+                    rotateWithLeftChild(t);
+                else
+                    doubleWithLeftChild(t);
+            }
+        }
+
+        else if(x->getId() > t->element->getId())
+        {
+            insert2(x, t->right);
+            if(height(t->right) - height(t->left) == 2)
+            {
+                if(x->getId() > t->right->element->getId())
+                    rotateWithRightChild(t);
+                else
+                    doubleWithRightChild(t);
+            }
+        }
+
+        t->height = max(height(t->left), height(t->right)) + 1;
+    }
+
+    void print4(ostream &out, AVLNode* r) const
+    {
+        if(r != NULL)
+        {
+            print4(out, r->left);
+            out << r->element->getTitle() << ": " << r->element->getId() <<  endl;
+            print4(out, r->right);
+        }
+    }
+
     void print3(ostream &out, AVLNode* r) const
     {
         if(r != NULL)
         {
             print3(out, r->left);
-            out << r->element->getTitle() << " : " << r->element->getId() << endl;
+            out << r->element->getTitle() << " : " << r->element->getId() << endl;//" " << r->element->getText() << endl << "$#**%" << endl;
             print3(out, r->right);
         }
     }
@@ -167,6 +205,11 @@ public:
         insert(x, root);
     }
 
+    void insert2(const T& x)
+    {
+        insert2(x, root);
+    }
+
     bool isEmpty() const
     {
         if(root == NULL)
@@ -202,6 +245,11 @@ public:
     {
         rotateWithLeftChild(k2->right);
         rotateWithRightChild(k2);
+    }
+
+    void print4(ostream& out) const
+    {
+        print4(out, root);
     }
 
     void print3(ostream& out) const

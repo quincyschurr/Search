@@ -13,13 +13,12 @@ public:
     HashTable();
     ~HashTable();
     void addWord(Word*);
-    unsigned hashKey(const char*);
-    Word* searchTrees(string);
-    bool containsKey(char*);
     AVLNODE* getRoot(string);
-    bool searchFor(string& x, AVLNODE* root);
-    Word* returnWord(string& test);
+    unsigned hashKey(const char*);
     void printTrees(ostream&);
+    Word* returnWord(string& test);
+    bool searchFor(string& x, AVLNODE* root);
+    Word* searchTrees(string);
 };
 
 #endif // HASHTABLE_H

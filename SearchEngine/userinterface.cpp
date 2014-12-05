@@ -4,6 +4,11 @@ UserInterface::UserInterface()
 
 }
 
+void UserInterface::clearIndex()
+{
+    ofstream("output2.txt", ios::out);
+}
+
 void UserInterface::startProgram()
 {
     IndexHandler* h = new IndexHandler();
@@ -16,10 +21,8 @@ void UserInterface::startProgram()
 
     if(input == "p" || input == "P")
     {
-        //DocumentParser* dp = new DocumentParser();
         chrono::time_point<chrono::system_clock> start, end;
         start = chrono::system_clock::now();
-        //dp->getInput();
         h->print();
         end = chrono::system_clock::now();
         chrono::duration<double> elapsed_seconds = end - start;
@@ -45,10 +48,6 @@ void UserInterface::startProgram()
         exit(1);
     }
 
-}
-
-void UserInterface::clearIndex() {
-    ofstream("output2.txt", ios::out);
 }
 
 UserInterface::~UserInterface()
