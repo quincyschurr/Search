@@ -217,18 +217,39 @@ void Query::startQuery()
     vector<int> totalWordFrequency;
     AVLTree <Page*> pageTitleResults;
     vector<int> pageResults;
+    int testCount = 0;
     if(count  == 1) {
         word1 = table.returnWord(searchWords[0]);
         //word1 = tree.returnWord(searchWords[0]);
         if(word1 == NULL)
         {
-            cout << "word does not exist" << endl;
+            cout << searchWords[0] << " does not exist" << endl;
         }
         else
             pageResults = word1->getPages();
     }
     else if(searchWords[0] == "AND")
     {
+        /*//for(int i = 1; i < count; i++)
+        while(testCount < count) {
+            word1 = table.returnWord(searchWords[testCount]);
+            if(word1 == NULL) {
+                cout << searchWords[testCount] << " does not exist" << endl;
+                break;
+            }
+            else {
+                word1Pages = word1->getPages();
+            }
+            testCount++;
+            if(testCount >= count) {
+                break;
+            }
+            word2 = table.returnWord(searchWords[testCount]);
+            if(word2 == NULL) {
+                cout <<
+            }
+        }*/
+
         word1 = table.returnWord(searchWords[1]);
         word2 = table.returnWord(searchWords[2]);
         //word1 = tree.returnWord(searchWords[1]);
