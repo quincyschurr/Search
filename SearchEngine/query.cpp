@@ -149,11 +149,11 @@ void Query::startQuery()
     cout << "Enter E to quit" << endl;
     string input = "";
     string temp = "";
-    //cin.ignore();
+    cin.ignore();
 
     while(input != "E" || input != "e")
     {
-    cin.ignore();
+    //cin.ignore();
     //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
     //good for parameters for a set
     cout << "To start a query please enter the words you would like to search for: " << endl;
@@ -399,6 +399,9 @@ void Query::startQuery()
                 string text1 = "";
                 string cmpString = "$#**%";
                 ifstream fin3(name);
+
+
+
                 while(!fin3.eof())
                 {
                     string pageTitle = "";
