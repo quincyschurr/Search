@@ -99,9 +99,6 @@ void Query::buildIndex()
         string word = "";
         string text = "";
         string text1 = "";
-        string text2 = "";
-        string text3 = "";
-        string text4 = "";
         string pageTitle = "";
         int pageId = 0;
         int numOfPages = 0;
@@ -135,41 +132,10 @@ void Query::buildIndex()
             fin2 >> pageTitle;
             fin2.ignore(3);
             fin2 >> pageId;
-            /*getline(fin2, text, '$');
-            getline(fin2, text1, '#');
-            if(text1 == "$")
-            {
-                getline(fin2, text2, '*');
-                if(text2 == "#")
-                {
-                    getline(fin2, text3, '*');
-                    if(text3 == "*")
-                    {
-                        getline(fin2, text4, '%');
-                        if(text4 == "*")
-                        {
-                            break;
-                        }
-                        else
-                            text = text + text1 + text2 + text3 + text4;
-                    }
-                    else
-                        text = text + text1 + text2 + text3;
-                }
-                else
-                    text = text + text1 + text2;
-            }
-            else
-                text = text + text1;
-
-            getline(fin2, text4, '%');*/
-
-            //cout << "PAGE TITLE: " << pageTitle << endl;
-            //cout << "PAGE NUMBER:" << pageId << endl;
-           // cout << "TEXT: " << text << endl;*/
             Page* p = new Page(pageTitle, pageId);
             pageIndex.insert2(p);
         }
+        fin2.close();
 
     //}
 }
@@ -414,18 +380,57 @@ void Query::startQuery()
         }
 
         cout << endl;
+        Page* k;
         int pageChoice = 0;
-        //Page* k;
-        cout << "Please enter the page number of the page you would like to view";
+        cout << "Please enter the page number of the page you would like to view ";
         cin >> pageChoice;
+
         for(int z = 0; z < pageTitleResults.size(); z++)
         {
             if(pageChoice == pageTitleResults[z]->getId())
             {
-                Page* k = pageIndex.returnObject(pageChoice);
-                cout << k->getText() << endl;
+                string name = "";
+                int fileNum = pageTitleResults[z]->getId() % 10;
+                stringstream fs;
+                fs << fileNum;
+                fs << ".txt";
+                fs >> name;
+                string text = "";
+                string text1 = "";
+                string cmpString = "$#**%";
+                ifstream fin3(name);
+                while(!fin3.eof())
+                {
+                    string pageTitle = "";
+                    int pageId = 0;
+                    fin3 >> pageTitle;
+                    fin3.ignore(3);
+                    fin3 >> pageId;
+                    fin3.ignore();
+                    getline(fin3, text1);
+                    while(cmpString != text1)
+                    {
+                        text += text1;
+                        getline(fin3, text1);
+                    }
+
+                    Page* p = new Page(pageTitle, pageId, text);
+                    topPageIndex.insert2(p);
+                    //cout << "PAGE TITLE: " << pageTitle << endl;
+                    //cout << "PAGE NUMBER:" << pageId << endl;
+                    //cout << "TEXT: " << text << endl;
+                }
+
+                k = topPageIndex.returnObject(pageChoice);
+                //cout << outputPage->getText() << endl;
+                fin3.close();
+            }
+            else
+            {
+                //do nothing, keep looping until you find page number
             }
         }
+        break;
 
     searchWords.clear();
     }//end main while loop

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <istream>
 #include <fstream>
+#include <cstring>
 #include <iomanip>
 #include <sstream>
 #include "documentparser.h"
@@ -24,6 +25,7 @@ private:
     AVL2 tree;
     HashTable table;
     AVLTree <Page*> pageIndex;
+    AVLTree <Page*> topPageIndex;
     vector <string> searchWords;
 public:
     void buildIndex();

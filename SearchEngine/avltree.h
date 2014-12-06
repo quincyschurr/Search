@@ -151,6 +151,7 @@ private:
         }
         else if(test < root->element->getId())
         {
+            //this statement is stopping the debugger
             return returnObject(test, root->left);
         }
         else if(test > root->element->getId())
