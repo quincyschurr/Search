@@ -16,13 +16,11 @@ int main()
 {
     UserInterface* n = new UserInterface(); //START
     n->startProgram();
-    cout << "END" << endl;
     return 0;
     //THINGS TO DO
     //documentation avl vs hash
-    /*sort
-    align pageresults with frequency vector ^
-    for loop up to 15 ^ */
+    //for loop up to 15 ^
     //AND OR
-    //add file using append
+    //add file using append (maintanance mode)
+    //stress test (maybe show parsing with both)
 }

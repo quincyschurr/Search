@@ -522,6 +522,7 @@ main.o: ../SearchEngine/main.cpp ../SearchEngine/userinterface.h \
 		../SearchEngine/word.h \
 		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
+		../SearchEngine/porterstem.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h \
@@ -529,8 +530,7 @@ main.o: ../SearchEngine/main.cpp ../SearchEngine/userinterface.h \
 		../SearchEngine/rapidxml.hpp \
 		../SearchEngine/hashtable.h \
 		../SearchEngine/indexhandler.h \
-		../SearchEngine/query.h \
-		../SearchEngine/porterstem.h
+		../SearchEngine/query.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../SearchEngine/main.cpp
 
 userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface.h \
@@ -538,6 +538,7 @@ userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface
 		../SearchEngine/word.h \
 		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
+		../SearchEngine/porterstem.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h \
@@ -545,25 +546,25 @@ userinterface.o: ../SearchEngine/userinterface.cpp ../SearchEngine/userinterface
 		../SearchEngine/rapidxml.hpp \
 		../SearchEngine/hashtable.h \
 		../SearchEngine/indexhandler.h \
-		../SearchEngine/query.h \
-		../SearchEngine/porterstem.h
+		../SearchEngine/query.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userinterface.o ../SearchEngine/userinterface.cpp
 
 documentparser.o: ../SearchEngine/documentparser.cpp ../SearchEngine/documentparser.h \
 		../SearchEngine/word.h \
 		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
+		../SearchEngine/porterstem.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h \
 		../SearchEngine/rapidxml_utils.hpp \
 		../SearchEngine/rapidxml.hpp \
-		../SearchEngine/hashtable.h \
-		../SearchEngine/porterstem.h
+		../SearchEngine/hashtable.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o documentparser.o ../SearchEngine/documentparser.cpp
 
 word.o: ../SearchEngine/word.cpp ../SearchEngine/word.h \
-		../SearchEngine/avltree.h
+		../SearchEngine/avltree.h \
+		../SearchEngine/page.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o word.o ../SearchEngine/word.cpp
 
 page.o: ../SearchEngine/page.cpp ../SearchEngine/page.h
@@ -574,9 +575,10 @@ stopword.o: ../SearchEngine/stopword.cpp ../SearchEngine/stopword.h
 
 indexhandler.o: ../SearchEngine/indexhandler.cpp ../SearchEngine/indexhandler.h \
 		../SearchEngine/avltree.h \
+		../SearchEngine/page.h \
 		../SearchEngine/word.h \
 		../SearchEngine/documentparser.h \
-		../SearchEngine/page.h \
+		../SearchEngine/porterstem.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h \
@@ -588,6 +590,7 @@ indexhandler.o: ../SearchEngine/indexhandler.cpp ../SearchEngine/indexhandler.h 
 hashtable.o: ../SearchEngine/hashtable.cpp ../SearchEngine/hashtable.h \
 		../SearchEngine/word.h \
 		../SearchEngine/avltree.h \
+		../SearchEngine/page.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o hashtable.o ../SearchEngine/hashtable.cpp
@@ -595,6 +598,7 @@ hashtable.o: ../SearchEngine/hashtable.cpp ../SearchEngine/hashtable.h \
 avl2.o: ../SearchEngine/avl2.cpp ../SearchEngine/avl2.h \
 		../SearchEngine/word.h \
 		../SearchEngine/avltree.h \
+		../SearchEngine/page.h \
 		../SearchEngine/AVLNODE.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o avl2.o ../SearchEngine/avl2.cpp
 
@@ -603,13 +607,13 @@ query.o: ../SearchEngine/query.cpp ../SearchEngine/query.h \
 		../SearchEngine/word.h \
 		../SearchEngine/avltree.h \
 		../SearchEngine/page.h \
+		../SearchEngine/porterstem.h \
 		../SearchEngine/stopword.h \
 		../SearchEngine/avl2.h \
 		../SearchEngine/AVLNODE.h \
 		../SearchEngine/rapidxml_utils.hpp \
 		../SearchEngine/rapidxml.hpp \
-		../SearchEngine/hashtable.h \
-		../SearchEngine/porterstem.h
+		../SearchEngine/hashtable.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o query.o ../SearchEngine/query.cpp
 
 ####### Install

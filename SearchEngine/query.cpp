@@ -7,7 +7,7 @@ Query::Query()
 
 void Query::buildIndex()
 {
-    string indexType = "";
+    //string indexType = "";
     //cout << "How would you like to build the index? Using an AVL Tree ('A') or a Hash Table('H')?";
     //cin >> indexType;
 
@@ -185,9 +185,10 @@ void Query::startQuery()
     string temp = "";
     cin.ignore();
 
-    while(input != "E" || input != "e") {
+    while(input != "E" || input != "e")
+    {
 
-//http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
+    //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
     //good for parameters for a set
     cout << "To start a query please enter the words you would like to search for: " << endl;
     getline(cin, input);
@@ -218,15 +219,16 @@ void Query::startQuery()
     map <int, int> freqMap2;
     int totalFrequency = 0;
     vector<int> totalWordFrequency;
-    AVLTree <Page*> pageTitleResults;
+    vector <Page*> pageTitleResults;
     vector<int> pageResults;
+    int testCount = 0;
     if(count  == 1)
     {
         word1 = table.returnWord(searchWords[0]);
         //word1 = tree.returnWord(searchWords[0]);
         if(word1 == NULL)
         {
-            cout << "word does not exist" << endl;
+            cout << searchWords[0] << " does not exist" << endl;
         }
         else
         {
@@ -237,7 +239,12 @@ void Query::startQuery()
                 freqMap = word1->getInfo();
                 totalFrequency = freqMap[oPage];
                 totalWordFrequency.push_back(totalFrequency);
-                cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+                //cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+            }
+            cout << endl;
+            frequencySort(totalWordFrequency, pageResults);
+            for(int i = 0; i < pageResults.size(); i++) {
+                //cout << "FREQUENCY: " << totalWordFrequency[i] << " PAGE: " << pageResults[i] <<endl;
             }
         }
 
@@ -271,6 +278,7 @@ void Query::startQuery()
             pageResults = qNOT(pageResults, word3Pages);
             } //end else
         }
+        }
 
         for(int b = 0; b < pageResults.size(); b++)
         {
@@ -283,11 +291,17 @@ void Query::startQuery()
                 freqMap2 = word2->getInfo();
                 totalFrequency = freqMap[oPage] + freqMap2[oPage];
                 totalWordFrequency.push_back(totalFrequency);
-                cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+                //cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
             }
         }
+        frequencySort(totalWordFrequency, pageResults);
+        for(int i = 0; i < pageResults.size(); i++)
+        {
+            if(pageResults[i] == 0)
+                break;
+            //cout << "FREQUENCY: " << totalWordFrequency[i] << " PAGE: " << pageResults[i] <<endl;
+        }
         }//end else
-    }
 
     else if(searchWords[0] == "OR")
     {
@@ -318,6 +332,7 @@ void Query::startQuery()
             pageResults = qNOT(pageResults, word3Pages);
             }//end else
         }
+        }
 
         for(int b = 0; b < pageResults.size(); b++)
         {
@@ -330,12 +345,17 @@ void Query::startQuery()
                 freqMap2 = word2->getInfo();
                 totalFrequency = freqMap[oPage] + freqMap2[oPage];
                 totalWordFrequency.push_back(totalFrequency);
-                cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
+                //cout << "PAGE: " << pageResults[b] << " TOTAL FREQUENCY: " << totalFrequency << endl;
             }
         }
-
-        }//end else
-    }
+        frequencySort(totalWordFrequency, pageResults);
+        for(int i = 0; i < pageResults.size(); i++)
+        {
+            if(pageResults[i] == 0)
+                break;
+            //cout << "FREQUENCY: " << totalWordFrequency[i] << " PAGE: " << pageResults[i] <<endl;
+        }
+        }
     else
     {
         word1 = table.returnWord(searchWords[0]);
@@ -352,21 +372,61 @@ void Query::startQuery()
         vector<int> word2Pages = word2->getPages();
         pageResults =  qNOT(word1Pages, word2Pages);
         }//end else
+
+
     }
 
-    Page * x;
-    for(int i = 0; i < pageResults.size(); i++)
-    //to return the top 15 items
-    //for(int i = 0; i < 15; i++)
-    {
-        if(pageResults[i] == 0)
-            break;
-        //cout << pageResults[i] << endl;
-        x = pageIndex.returnObject(pageResults[i]);
-        pageTitleResults.insert(x);
-    }
-        cout << "Pages on which your search appears:" << endl;
-        pageTitleResults.print4(cout);
+        Page* x;
+        //frequencySort(totalWordFrequency, pageResults);
+        if(pageResults.size() <= 15)
+        {
+            for(int i = 0; i < pageResults.size(); i++)
+            //to return the top 15 items
+            //for(int i = 0; i < 15; i++)
+            {
+                if(pageResults[i] == 0)
+                    break;
+                cout << pageResults[i] << " ";
+                x = pageIndex.returnObject(pageResults[i]);
+                cout << x->getTitle() << endl;
+                pageTitleResults.push_back(x);
+            }
+        }
+        else
+        {
+        for(int i = 0; i < 15; i++)
+        //to return the top 15 items
+        //for(int i = 0; i < 15; i++)
+        {
+            if(pageResults[i] == 0)
+                break;
+            //cout << pageResults[i] << " ";
+            x = pageIndex.returnObject(pageResults[i]);
+            //cout << x->getTitle() << endl;
+            pageTitleResults.push_back(x);
+        }
+        }
+        cout << "Pages on which your search appears:" << endl << endl;
+        //pageTitleResults.print3(cout);
+        for(int s = 0; s < pageTitleResults.size(); s++)
+        {
+            cout << "Page: " << pageTitleResults[s]->getId() << " " << pageTitleResults[s]->getTitle() << endl;
+        }
+
+        cout << endl;
+        int pageChoice = 0;
+        //Page* k;
+        cout << "Please enter the page number of the page you would like to view";
+        cin >> pageChoice;
+        for(int z = 0; z < pageTitleResults.size(); z++)
+        {
+            if(pageChoice == pageTitleResults[z]->getId())
+            {
+                Page* k = pageIndex.returnObject(pageChoice);
+                cout << k->getText() << endl;
+            }
+        }
+
     searchWords.clear();
     }//end main while loop
 }
@@ -391,6 +451,42 @@ vector<int> Query::qNOT(vector<int> a, vector<int> b)
     set_difference(a.begin(), a.end(), b.begin(), b.end(), result.begin());
     return result;
 }
+
+void Query::frequencySort(vector<int> &freq, vector<int> &pages) {
+    int left = 0;
+    int right = freq.size() - 1;
+    quickSort(freq, pages, left, right);
+}
+
+void Query::quickSort(vector<int> &freq, vector<int> &pages, int left, int right) {
+      int i = left, j = right;
+      int tmp;
+      int temp2;
+      int pivot = freq[(left + right) / 2];
+
+      while (i <= j) {
+            while (freq[i] > pivot)
+                  i++;
+            while (freq[j] < pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = freq[i];
+                  temp2 = pages[i];
+                  freq[i] = freq[j];
+                  pages[i] = pages[j];
+                  freq[j] = tmp;
+                  pages[j] = temp2;
+                  i++;
+                  j--;
+            }
+      };
+
+      if (left < j)
+            quickSort(freq, pages, left, j);
+      if (i < right)
+            quickSort(freq, pages, i, right);
+}
+
 
 Query::~Query()
 {

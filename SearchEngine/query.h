@@ -33,6 +33,8 @@ public:
     vector<int> qAND(vector<int>, vector<int>);
     vector<int> qOR(vector<int>, vector<int>);
     vector<int> qNOT(vector<int>, vector<int>);
+    void frequencySort(vector<int>&, vector<int>&);
+    void quickSort(vector<int>&, vector<int>&, int, int);
 };
 
 #endif // QUERY_H
