@@ -143,6 +143,7 @@ private:
     {
         if(root == NULL)
         {
+            cout << "Before throw error" << endl;
             throw(strerror);
         }
         else if(test == root->element->getId())
@@ -151,7 +152,7 @@ private:
         }
         else if(test < root->element->getId())
         {
-            //this statement is stopping the debugger
+            //this statement is stopping the debugger for second call to this with topPageIndex();
             return returnObject(test, root->left);
         }
         else if(test > root->element->getId())

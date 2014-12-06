@@ -420,17 +420,17 @@ void Query::startQuery()
                     //cout << "PAGE NUMBER:" << pageId << endl;
                     //cout << "TEXT: " << text << endl;
                 }
-
-                k = topPageIndex.returnObject(pageChoice);
-                //cout << outputPage->getText() << endl;
                 fin3.close();
+                break;
             }
             else
             {
                 //do nothing, keep looping until you find page number
             }
         }
-        break;
+
+        //k = topPageIndex.returnObject(pageChoice);
+        //cout << outputPage->getText() << endl;
 
     searchWords.clear();
     }//end main while loop
