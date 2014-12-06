@@ -390,7 +390,7 @@ void Query::startQuery()
             if(pageChoice == pageTitleResults[z]->getId())
             {
                 string name = "";
-                int fileNum = pageTitleResults[z]->getId() % 10;
+                int fileNum = pageChoice % 100;
                 stringstream fs;
                 fs << fileNum;
                 fs << ".txt";
@@ -431,10 +431,10 @@ void Query::startQuery()
                 //do nothing, keep looping until you find page number
             }
         }
-
+        //topPageIndex.print4(cout);
         k = topPageIndex.returnObject(pageChoice);
-        //cout << outputPage->getText() << endl;
         cout << k->getText() << endl;
+        //cout << k->getText() << endl;
     searchWords.clear();
     }//end main while loop
 }
