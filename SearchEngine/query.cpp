@@ -153,10 +153,12 @@ void Query::startQuery()
 
     while(input != "E" || input != "e")
     {
+        count = 0;
     //cin.ignore();
     //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
     //good for parameters for a set
     cout << "To start a query please enter the words you would like to search for: " << endl;
+    //cin.ignore();
     getline(cin, input);
     if(input == "E" || input == "e")
     {
@@ -383,7 +385,10 @@ void Query::startQuery()
         Page* k;
         int pageChoice = 0;
         cout << "Please enter the page number of the page you would like to view " << endl;
-        cin >> pageChoice;
+        //cin >> pageChoice;
+        string pc;
+        getline(cin, pc);
+        pageChoice = stoi(pc);
 
         for(int z = 0; z < pageTitleResults.size(); z++)
         {
