@@ -149,11 +149,11 @@ void Query::startQuery()
     cout << "Enter E to quit" << endl;
     string input = "";
     string temp = "";
-    cin.ignore();
+    //cin.ignore();
 
     while(input != "E" || input != "e")
     {
-
+    cin.ignore();
     //http://www.codecogs.com/library/computing/stl/algorithms/set/set_union.php
     //good for parameters for a set
     cout << "To start a query please enter the words you would like to search for: " << endl;
@@ -382,7 +382,7 @@ void Query::startQuery()
         cout << endl;
         Page* k;
         int pageChoice = 0;
-        cout << "Please enter the page number of the page you would like to view ";
+        cout << "Please enter the page number of the page you would like to view " << endl;
         cin >> pageChoice;
 
         for(int z = 0; z < pageTitleResults.size(); z++)
@@ -431,7 +431,7 @@ void Query::startQuery()
 
         k = topPageIndex.returnObject(pageChoice);
         //cout << outputPage->getText() << endl;
-
+        cout << k->getText() << endl;
     searchWords.clear();
     }//end main while loop
 }
