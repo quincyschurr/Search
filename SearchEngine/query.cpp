@@ -420,6 +420,7 @@ void Query::startQuery()
                     //cout << "PAGE NUMBER:" << pageId << endl;
                     //cout << "TEXT: " << text << endl;
                 }
+                //topPageIndex.print4(cout);
                 fin3.close();
                 break;
             }
@@ -429,7 +430,7 @@ void Query::startQuery()
             }
         }
 
-        k = topPageIndex.returnObject(pageChoice);
+        //k = topPageIndex.returnObject(pageChoice);
         //cout << outputPage->getText() << endl;
 
     searchWords.clear();
