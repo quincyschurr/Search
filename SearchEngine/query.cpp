@@ -429,7 +429,7 @@ void Query::startQuery()
             }
         }
 
-        //k = topPageIndex.returnObject(pageChoice);
+        k = topPageIndex.returnObject(pageChoice);
         //cout << outputPage->getText() << endl;
 
     searchWords.clear();
