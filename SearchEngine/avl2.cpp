@@ -31,12 +31,12 @@ int AVL2::height(AVLNODE*& n)
         return n->height;
 }
 
-void AVL2::insert(Word* x)
+void AVL2::insert(Word*& x)
 {
     insert(x, root);
 }
 
-void AVL2::insert(Word* x, AVLNODE*& root)
+void AVL2::insert(Word*& x, AVLNODE*& root)
 {
     if(root == NULL)
         root = new AVLNODE(x, NULL, NULL);
@@ -95,7 +95,7 @@ Word* AVL2::returnWord(string& test)
     return returnWord(test, root);
 }
 
-Word* AVL2::returnWord(string& test, AVLNODE* root)
+Word* AVL2::returnWord(string& test, AVLNODE*& root)
 {
     if(root == NULL)
     {

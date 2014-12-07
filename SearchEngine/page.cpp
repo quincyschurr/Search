@@ -4,13 +4,13 @@ Page::Page()
 {
 }
 
-Page::Page(string title, int id)
+Page::Page(string& title, int& id)
 {
     this->title = title;
     this->id = id;
 }
 
-Page::Page(string title, int id, string text)
+Page::Page(string& title, int& id, string& text)
 {
     this->title = title;
     this->id = id;

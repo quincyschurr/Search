@@ -192,7 +192,10 @@ public:
         return returnObject(test, root);
     }
 
-
+    AVLNode* getRoot()
+    {
+        return root;
+    }
 
     int height(AVLNode*& n)
     {
@@ -321,10 +324,6 @@ public:
             return false;
     }
 
-    AVLNode* getRoot()
-    {
-        return root;
-    }
 };
 
 #endif // AVLTREE_H

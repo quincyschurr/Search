@@ -1,7 +1,0 @@
-User:TobyBartels : 3
-User:Schewek : 4
-OrganicChemistry/Cover : 5
-OrganicChemistry/Foundationalconceptsoforganicchemistry : 7
-OrganicChemistry/Introductiontoreactions : 9
-OrganicChemistry/Alkenes : 10
-MainPage : 1
