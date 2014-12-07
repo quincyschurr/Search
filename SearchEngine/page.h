@@ -20,8 +20,8 @@ public:
     void print(ostream&);
 
     Page();
-    Page(string title, int id);
-    Page(string title, int id, string text);
+    Page(string& title, int& id);
+    Page(string& title, int& id, string& text);
     ~Page();
 };
 

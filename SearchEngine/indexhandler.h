@@ -13,15 +13,10 @@ using namespace std;
 class IndexHandler
 {
 private:
-    AVLTree <Word> avlindex;
-    HashTable table;
-    AVL2 tree;
-    HashTable table2;
-    vector <string> searchWords;
+
 public:
 
     void print();
-    void buildIndex();
     //all this for indexinterface
     //.cpp will just look like this
     //Interface::Interface()

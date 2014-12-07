@@ -5,20 +5,20 @@ Word::Word()
 
 }
 
-Word::Word(string word)
+Word::Word(string& word)
 {
     this->word = word;
     numOfPages = 0;
 }
 
-void Word::addPages(int pageId)
+void Word::addPages(int& pageId)
 {
     vPages.push_back(pageId);
     numOfPages++;
     pages.insert(pageId);
 }
 
-void Word::addToMap(int pageId, int o)
+void Word::addToMap(int& pageId, int& o)
 {
     int page = pageId;
     int occurance = o;
@@ -58,12 +58,12 @@ string Word::getWord() const
     return word;
 }
 
-void Word::increaseFrequency(int pageId)
+void Word::increaseFrequency(int& pageId)
 {
     info[pageId]++;
 }
 
-bool Word::lookForPage(int page)
+bool Word::lookForPage(int& page)
 {
     if(pages.search(page, pages.getRoot()) == true)
         return true;

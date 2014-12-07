@@ -12,16 +12,16 @@ class AVL2
 {
 private:
     AVLNODE* root;
-    void insert(Word* x, AVLNODE*& root);
+    void insert(Word*& x, AVLNODE*& root);
     void makeEmpty(AVLNODE*&);
     void print(ostream& out, AVLNODE* p) const;
-    Word* returnWord(string& test, AVLNODE* root);
+    Word* returnWord(string& test, AVLNODE*& root);
 
 
 public:
     AVLNODE* getRoot();
     int height(AVLNODE*& n);
-    void insert(Word* x);
+    void insert(Word*& x);
     bool isEmpty() const;
     void makeEmpty();
     Word* returnWord(string& test);
