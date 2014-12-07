@@ -18,7 +18,7 @@ void Word::addPages(int& pageId)
     pages.insert(pageId);
 }
 
-void Word::addToMap(int& pageId, int& o)
+void Word::addToMap(int& pageId, int o)
 {
     int page = pageId;
     int occurance = o;

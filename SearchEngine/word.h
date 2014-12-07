@@ -23,7 +23,7 @@ private:
 
 public:
     void addPages(int& pageId);
-    void addToMap(int& pageId, int& occurance);
+    void addToMap(int& pageId, int occurance);
     map<int,int> getInfo();
     int getNumPages() const;
     vector<int> getPages();
