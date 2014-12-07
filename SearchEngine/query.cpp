@@ -385,11 +385,13 @@ void Query::startQuery()
         Page* k;
         int pageChoice = 0;
         cout << "Please enter the page number of the page you would like to view " << endl;
+        cout << "Enter -1 if you do not want to view a page" << endl;
         //cin >> pageChoice;
         string pc;
         getline(cin, pc);
         pageChoice = stoi(pc);
 
+        if(pageChoice != -1) {
         for(int z = 0; z < pageTitleResults.size(); z++)
         {
             if(pageChoice == pageTitleResults[z]->getId())
@@ -440,6 +442,7 @@ void Query::startQuery()
         k = topPageIndex.returnObject(pageChoice);
         cout << k->getText() << endl;
         //cout << k->getText() << endl;
+        }//end if statement
     searchWords.clear();
     }//end main while loop
 }

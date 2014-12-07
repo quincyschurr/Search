@@ -3,8 +3,7 @@
 HashTable::HashTable()
 {
     count = 1299827;
-    //count = 104729;
-    trees = new AVL2[count]; //might seg fault
+    trees = new AVL2[count];
     //for(int i = 0; i < count; i++)
     //{
         //trees[i] = AVL2();
